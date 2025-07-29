@@ -8,9 +8,9 @@ module.exports = function (app) {
             changeOrigin: true,
             pathRewrite: (path, req) => {
                 const newPath = "/dev" + path;
-                console.log(
-                    `[Proxy] Rewriting path from "${path}" to "${newPath}"`
-                );
+                // console.log(
+                //     `[Proxy] Rewriting path from "${path}" to "${newPath}"`
+                // );
                 return newPath;
             },
             logLevel: "debug",
