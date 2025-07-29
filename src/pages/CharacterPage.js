@@ -13,7 +13,6 @@ const availableLanguages = {
     Name_th: "ไทย",
 };
 
-// 一个简单的状态消息弹窗组件
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;
     const baseClasses =

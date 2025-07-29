@@ -4,8 +4,8 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import CommandPage from "./pages/CommandPage";
 import CharacterPage from "./pages/CharacterPage";
+import ArenaPage from "./pages/ArenaPage";
 
-const ArenaPage = () => <div>Arena Page Content</div>;
 const ContentPage = () => <div>Content/Raid Page Content</div>;
 
 function App() {

@@ -1,0 +1,69 @@
+import React from "react";
+import attackIcon from "../assets/attack.png";
+import defendIcon from "../assets/defend.png";
+import vsIcon from "../assets/vs.png";
+import winIcon from "../assets/win.png";
+import loseIcon from "../assets/lose.png";
+
+const TeamAvatars = ({ teamIds, getStudentNameById }) => (
+    <div className="team-avatars">
+        {teamIds.map((id) => (
+            <div key={id} className="rs-char-card">
+                <div className="background-plate"></div>
+                <img
+                    className="portrait-image"
+                    src={`https://schaledb.com/images/student/icon/${id}.webp`}
+                    alt={getStudentNameById(id)}
+                    onError={(e) => {
+                        e.currentTarget.parentElement.style.display = "none";
+                    }}
+                />
+            </div>
+        ))}
+    </div>
+);
+
+const ArenaRecordCard = ({ record, onDelete, getStudentNameById }) => {
+    return (
+        <div className="arena-card">
+            <div className="team-display-container">
+                <TeamAvatars
+                    teamIds={record.attackingTeamIds}
+                    getStudentNameById={getStudentNameById}
+                />
+                <div className="icon-display attacking-icon">
+                    <img src={attackIcon} alt="Attacking" />
+                </div>
+            </div>
+
+            <div className="vs-icon">
+                <img src={vsIcon} alt="VS" />
+            </div>
+
+            <div className="team-display-container">
+                <div className="icon-display defending-icon">
+                    <img src={defendIcon} alt="Defending" />
+                </div>
+                <TeamAvatars
+                    teamIds={record.defendingTeamIds}
+                    getStudentNameById={getStudentNameById}
+                />
+            </div>
+
+            <div className="icon-display status-icon">
+                <img
+                    src={record.win ? winIcon : loseIcon}
+                    alt={record.win ? "Win" : "Lose"}
+                />
+            </div>
+
+            <div
+                className="delete-record-button"
+                title="Delete this record"
+                onClick={() => onDelete(record)}
+            ></div>
+        </div>
+    );
+};
+
+export default ArenaRecordCard;
