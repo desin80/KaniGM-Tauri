@@ -1,0 +1,58 @@
+.command-card {
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px) saturate(150%);
+    -webkit-backdrop-filter: blur(8px) saturate(150%);
+    border: 1px solid rgba(229, 231, 235, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 48rem;
+    margin: 2rem auto;
+}
+
+.command-form-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.command-input {
+    flex-grow: 1; 
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #d1d5db;
+    color: #1f2937;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.command-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.command-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    min-height: 3rem;
+    background-color: rgba(243, 244, 246, 0.8);
+    color: #374151;
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    transition: all 0.3s;
+}
+
+.command-result.is-error {
+    background-color: rgba(254, 226, 226, 0.9);
+    color: #b91c1c;
+}
+
+.command-result.is-success {
+    background-color: rgba(220, 252, 231, 0.9);
+    color: #14532d;
+}

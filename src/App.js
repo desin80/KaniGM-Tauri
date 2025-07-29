@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+
+import HomePage from "./pages/HomePage";
+import CommandPage from "./pages/CommandPage";
+import CharacterPage from "./pages/CharacterPage";
+
+const ArenaPage = () => <div>Arena Page Content</div>;
+const ContentPage = () => <div>Content/Raid Page Content</div>;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<HomePage />} />
+                    <Route path="character" element={<CharacterPage />} />
+                    <Route path="arena" element={<ArenaPage />} />
+                    <Route path="content" element={<ContentPage />} />
+                    <Route path="command" element={<CommandPage />} />
+                    <Route path="*" element={<HomePage />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

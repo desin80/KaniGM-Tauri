@@ -1,0 +1,1786 @@
+[
+  {
+    "Name_en": "Aru",
+    "Id": 10000,
+    "Name_cn": "爱露",
+    "Name_jp": "アル",
+    "Name_kr": "아루",
+    "Name_th": "อารุ"
+  },
+  {
+    "Name_en": "Eimi",
+    "Id": 10001,
+    "Name_cn": "艾米",
+    "Name_jp": "エイミ",
+    "Name_kr": "에이미",
+    "Name_th": "เอมิ"
+  },
+  {
+    "Name_en": "Haruna",
+    "Id": 10002,
+    "Name_cn": "晴奈",
+    "Name_jp": "ハルナ",
+    "Name_kr": "하루나",
+    "Name_th": "ฮารุนะ"
+  },
+  {
+    "Name_en": "Hifumi",
+    "Id": 10003,
+    "Name_cn": "日富美",
+    "Name_jp": "ヒフミ",
+    "Name_kr": "히후미",
+    "Name_th": "ฮิฟุมิ"
+  },
+  {
+    "Name_en": "Hina",
+    "Id": 10004,
+    "Name_cn": "日奈",
+    "Name_jp": "ヒナ",
+    "Name_kr": "히나",
+    "Name_th": "ฮินะ"
+  },
+  {
+    "Name_en": "Hoshino",
+    "Id": 10005,
+    "Name_cn": "星野",
+    "Name_jp": "ホシノ",
+    "Name_kr": "호시노",
+    "Name_th": "โฮชิโนะ"
+  },
+  {
+    "Name_en": "Iori",
+    "Id": 10006,
+    "Name_cn": "伊织",
+    "Name_jp": "イオリ",
+    "Name_kr": "이오리",
+    "Name_th": "อิโอริ"
+  },
+  {
+    "Name_en": "Maki",
+    "Id": 10007,
+    "Name_cn": "真纪",
+    "Name_jp": "マキ",
+    "Name_kr": "마키",
+    "Name_th": "มากิ"
+  },
+  {
+    "Name_en": "Neru",
+    "Id": 10008,
+    "Name_cn": "妮露",
+    "Name_jp": "ネル",
+    "Name_kr": "네루",
+    "Name_th": "เนรุ"
+  },
+  {
+    "Name_en": "Izumi",
+    "Id": 10009,
+    "Name_cn": "泉",
+    "Name_jp": "イズミ",
+    "Name_kr": "이즈미",
+    "Name_th": "อิซุมิ"
+  },
+  {
+    "Name_en": "Shiroko",
+    "Id": 10010,
+    "Name_cn": "白子",
+    "Name_jp": "シロコ",
+    "Name_kr": "시로코",
+    "Name_th": "ชิโรโกะ"
+  },
+  {
+    "Name_en": "Shun",
+    "Id": 10011,
+    "Name_cn": "瞬",
+    "Name_jp": "シュン",
+    "Name_kr": "슌",
+    "Name_th": "ชุน"
+  },
+  {
+    "Name_en": "Sumire",
+    "Id": 10012,
+    "Name_cn": "堇",
+    "Name_jp": "スミレ",
+    "Name_kr": "스미레",
+    "Name_th": "สึมิเระ"
+  },
+  {
+    "Name_en": "Tsurugi",
+    "Id": 10013,
+    "Name_cn": "鹤城",
+    "Name_jp": "ツルギ",
+    "Name_kr": "츠루기",
+    "Name_th": "ซึรุกิ"
+  },
+  {
+    "Name_en": "Izuna",
+    "Id": 10014,
+    "Name_cn": "泉奈",
+    "Name_jp": "イズナ",
+    "Name_kr": "이즈나",
+    "Name_th": "อิซุนะ"
+  },
+  {
+    "Name_en": "Aris",
+    "Id": 10015,
+    "Name_cn": "爱丽丝",
+    "Name_jp": "アリス",
+    "Name_kr": "아리스",
+    "Name_th": "อาริสึ"
+  },
+  {
+    "Name_en": "Midori",
+    "Id": 10016,
+    "Name_cn": "绿",
+    "Name_jp": "ミドリ",
+    "Name_kr": "미도리",
+    "Name_th": "มิโดริ"
+  },
+  {
+    "Name_en": "Cherino",
+    "Id": 10017,
+    "Name_cn": "切里诺",
+    "Name_jp": "チェリノ",
+    "Name_kr": "체리노",
+    "Name_th": "เชริโน่"
+  },
+  {
+    "Name_en": "Yuzu",
+    "Id": 10018,
+    "Name_cn": "柚子",
+    "Name_jp": "ユズ",
+    "Name_kr": "유즈",
+    "Name_th": "ยูสึ"
+  },
+  {
+    "Name_en": "Azusa",
+    "Id": 10019,
+    "Name_cn": "梓",
+    "Name_jp": "アズサ",
+    "Name_kr": "아즈사",
+    "Name_th": "อาซึสะ"
+  },
+  {
+    "Name_en": "Koharu",
+    "Id": 10020,
+    "Name_cn": "小春",
+    "Name_jp": "コハル",
+    "Name_kr": "코하루",
+    "Name_th": "โคฮารุ"
+  },
+  {
+    "Name_en": "Azusa (Swimsuit)",
+    "Id": 10021,
+    "Name_cn": "梓（泳装）",
+    "Name_jp": "アズサ（水着）",
+    "Name_kr": "아즈사(수영복)",
+    "Name_th": "อาซึสะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hina (Swimsuit)",
+    "Id": 10022,
+    "Name_cn": "日奈（泳装）",
+    "Name_jp": "ヒナ（水着）",
+    "Name_kr": "히나(수영복)",
+    "Name_th": "ฮินะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Iori (Swimsuit)",
+    "Id": 10023,
+    "Name_cn": "伊织（泳装）",
+    "Name_jp": "イオリ（水着）",
+    "Name_kr": "이오리(수영복)",
+    "Name_th": "อิโอริ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Shiroko (Cycling)",
+    "Id": 10024,
+    "Name_cn": "白子（骑行）",
+    "Name_jp": "シロコ（ライディング）",
+    "Name_kr": "시로코(라이딩)",
+    "Name_th": "ชิโรโกะ (นักปั่น)"
+  },
+  {
+    "Name_en": "Shun (Small)",
+    "Id": 10025,
+    "Name_cn": "瞬（小）",
+    "Name_jp": "シュン（幼女）",
+    "Name_kr": "슌(어린이)",
+    "Name_th": "ชุน (วัยเด็ก)"
+  },
+  {
+    "Name_en": "Neru (Bunny)",
+    "Id": 10026,
+    "Name_cn": "妮露（邦妮）",
+    "Name_jp": "ネル（バニーガール）",
+    "Name_kr": "네루(바니걸)",
+    "Name_th": "เนรุ (บันนี่เกิร์ล)"
+  },
+  {
+    "Name_en": "Karin (Bunny)",
+    "Id": 10027,
+    "Name_cn": "花凛（邦妮）",
+    "Name_jp": "カリン（バニーガール）",
+    "Name_kr": "카린(바니걸)",
+    "Name_th": "คาริน (บันนี่เกิร์ล)"
+  },
+  {
+    "Name_en": "Asuna (Bunny)",
+    "Id": 10028,
+    "Name_cn": "明日奈（邦妮）",
+    "Name_jp": "アスナ（バニーガール）",
+    "Name_kr": "아스나(바니걸)",
+    "Name_th": "อาสึนะ (บันนี่เกิร์ล)"
+  },
+  {
+    "Name_en": "Natsu",
+    "Id": 10029,
+    "Name_cn": "夏",
+    "Name_jp": "ナツ",
+    "Name_kr": "나츠",
+    "Name_th": "นัตสึ"
+  },
+  {
+    "Name_en": "Chinatsu (Hot Spring)",
+    "Id": 10030,
+    "Name_cn": "千夏（温泉）",
+    "Name_jp": "チナツ（温泉）",
+    "Name_kr": "치나츠(온천)",
+    "Name_th": "ชินัตสึ (ออนเซ็น)"
+  },
+  {
+    "Name_en": "Aru (New Year)",
+    "Id": 10031,
+    "Name_cn": "爱露（新年）",
+    "Name_jp": "アル（正月）",
+    "Name_kr": "아루(새해)",
+    "Name_th": "อารุ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Mutsuki (New Year)",
+    "Id": 10032,
+    "Name_cn": "睦月（新年）",
+    "Name_jp": "ムツキ（正月）",
+    "Name_kr": "무츠키(새해)",
+    "Name_th": "มุสึกิ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Wakamo",
+    "Id": 10033,
+    "Name_cn": "若藻",
+    "Name_jp": "ワカモ",
+    "Name_kr": "와카모",
+    "Name_th": "วาคาโมะ"
+  },
+  {
+    "Name_en": "Mimori",
+    "Id": 10034,
+    "Name_cn": "三森",
+    "Name_jp": "ミモリ",
+    "Name_kr": "미모리",
+    "Name_th": "มิโมริ"
+  },
+  {
+    "Name_en": "Ui",
+    "Id": 10035,
+    "Name_cn": "忧",
+    "Name_jp": "ウイ",
+    "Name_kr": "우이",
+    "Name_th": "อุย"
+  },
+  {
+    "Name_en": "Hinata",
+    "Id": 10036,
+    "Name_cn": "日向",
+    "Name_jp": "ヒナタ",
+    "Name_kr": "히나타",
+    "Name_th": "ฮินาตะ"
+  },
+  {
+    "Name_en": "Marina",
+    "Id": 10037,
+    "Name_cn": "真里奈",
+    "Name_jp": "マリナ",
+    "Name_kr": "마리나",
+    "Name_th": "มารินะ"
+  },
+  {
+    "Name_en": "Miyako",
+    "Id": 10038,
+    "Name_cn": "宫子",
+    "Name_jp": "ミヤコ",
+    "Name_kr": "미야코",
+    "Name_th": "มิยาโกะ"
+  },
+  {
+    "Name_en": "Miyu",
+    "Id": 10039,
+    "Name_cn": "美游",
+    "Name_jp": "ミユ",
+    "Name_kr": "미유",
+    "Name_th": "มิยุ"
+  },
+  {
+    "Name_en": "Tsukuyo",
+    "Id": 10040,
+    "Name_cn": "月咏",
+    "Name_jp": "ツクヨ",
+    "Name_kr": "츠쿠요",
+    "Name_th": "สึคุโยะ"
+  },
+  {
+    "Name_en": "Misaki",
+    "Id": 10041,
+    "Name_cn": "美咲",
+    "Name_jp": "ミサキ",
+    "Name_kr": "미사키",
+    "Name_th": "มิซากิ"
+  },
+  {
+    "Name_en": "Atsuko",
+    "Id": 10042,
+    "Name_cn": "亚津子",
+    "Name_jp": "アツコ",
+    "Name_kr": "아츠코",
+    "Name_th": "อาสึโกะ"
+  },
+  {
+    "Name_en": "Wakamo (Swimsuit)",
+    "Id": 10043,
+    "Name_cn": "若藻（泳装）",
+    "Name_jp": "ワカモ（水着）",
+    "Name_kr": "와카모(수영복)",
+    "Name_th": "วาคาโมะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Nonomi (Swimsuit)",
+    "Id": 10044,
+    "Name_cn": "野宫（泳装）",
+    "Name_jp": "ノノミ（水着）",
+    "Name_kr": "노노미(수영복)",
+    "Name_th": "โนโนมิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hoshino (Swimsuit)",
+    "Id": 10045,
+    "Name_cn": "星野（泳装）",
+    "Name_jp": "ホシノ（水着）",
+    "Name_kr": "호시노(수영복)",
+    "Name_th": "โฮชิโนะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Izuna (Swimsuit)",
+    "Id": 10046,
+    "Name_cn": "泉奈（泳装）",
+    "Name_jp": "イズナ（水着）",
+    "Name_kr": "이즈나(수영복)",
+    "Name_th": "อิซุนะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Chise (Swimsuit)",
+    "Id": 10047,
+    "Name_cn": "千世（泳装）",
+    "Name_jp": "チセ（水着）",
+    "Name_kr": "치세(수영복)",
+    "Name_th": "ชิเซะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Saori",
+    "Id": 10048,
+    "Name_cn": "纱织",
+    "Name_jp": "サオリ",
+    "Name_kr": "사오리",
+    "Name_th": "ซาโอริ"
+  },
+  {
+    "Name_en": "Kazusa",
+    "Id": 10049,
+    "Name_cn": "和纱",
+    "Name_jp": "カズサ",
+    "Name_kr": "카즈사",
+    "Name_th": "คาซึสะ"
+  },
+  {
+    "Name_en": "Kokona",
+    "Id": 10050,
+    "Name_cn": "心奈",
+    "Name_jp": "ココナ",
+    "Name_kr": "코코나",
+    "Name_th": "โคโคน่า"
+  },
+  {
+    "Name_en": "Utaha (Cheer Squad)",
+    "Id": 10051,
+    "Name_cn": "歌原（应援团）",
+    "Name_jp": "ウタハ（応援団）",
+    "Name_kr": "우타하(응원단)",
+    "Name_th": "อุทาฮะ (ชุดเชียร์)"
+  },
+  {
+    "Name_en": "Noa",
+    "Id": 10052,
+    "Name_cn": "诺亚",
+    "Name_jp": "ノア",
+    "Name_kr": "노아",
+    "Name_th": "โนอา"
+  },
+  {
+    "Name_en": "Yuuka (Track)",
+    "Id": 10053,
+    "Name_cn": "优香（体操服）",
+    "Name_jp": "ユウカ（体操服）",
+    "Name_kr": "유우카(체육복)",
+    "Name_th": "ยูกะ (ชุดพละ)"
+  },
+  {
+    "Name_en": "Mari (Track)",
+    "Id": 10054,
+    "Name_cn": "玛丽（体操服）",
+    "Name_jp": "マリー（体操服）",
+    "Name_kr": "마리(체육복)",
+    "Name_th": "มารี (ชุดพละ)"
+  },
+  {
+    "Name_en": "Shigure",
+    "Id": 10055,
+    "Name_cn": "时雨",
+    "Name_jp": "シグレ",
+    "Name_kr": "시구레",
+    "Name_th": "ชิกุเระ"
+  },
+  {
+    "Name_en": "Serina (Christmas)",
+    "Id": 10056,
+    "Name_cn": "芹娜（圣诞）",
+    "Name_jp": "セリナ（クリスマス）",
+    "Name_kr": "세리나(크리스마스)",
+    "Name_th": "เซรินะ (คริสต์มาส)"
+  },
+  {
+    "Name_en": "Haruna (New Year)",
+    "Id": 10057,
+    "Name_cn": "晴奈（新年）",
+    "Name_jp": "ハルナ（正月）",
+    "Name_kr": "하루나(새해)",
+    "Name_th": "ฮารุนะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Mine",
+    "Id": 10058,
+    "Name_cn": "美祢",
+    "Name_jp": "ミネ",
+    "Name_kr": "미네",
+    "Name_th": "มิเนะ"
+  },
+  {
+    "Name_en": "Mika",
+    "Id": 10059,
+    "Name_cn": "未花",
+    "Name_jp": "ミカ",
+    "Name_kr": "미카",
+    "Name_th": "มิกะ"
+  },
+  {
+    "Name_en": "Megu",
+    "Id": 10060,
+    "Name_cn": "惠",
+    "Name_jp": "メグ",
+    "Name_kr": "메구",
+    "Name_th": "เมกุ"
+  },
+  {
+    "Name_en": "Sakurako",
+    "Id": 10061,
+    "Name_cn": "樱子",
+    "Name_jp": "サクラコ",
+    "Name_kr": "사쿠라코",
+    "Name_th": "ซากุระโกะ"
+  },
+  {
+    "Name_en": "Toki",
+    "Id": 10062,
+    "Name_cn": "时",
+    "Name_jp": "トキ",
+    "Name_kr": "토키",
+    "Name_th": "โทคิ"
+  },
+  {
+    "Name_en": "Koyuki",
+    "Id": 10063,
+    "Name_cn": "小雪",
+    "Name_jp": "コユキ",
+    "Name_kr": "코유키",
+    "Name_th": "โคยูกิ"
+  },
+  {
+    "Name_en": "Kayoko (New Year)",
+    "Id": 10064,
+    "Name_cn": "佳代子（新年）",
+    "Name_jp": "カヨコ（正月）",
+    "Name_kr": "카요코(새해)",
+    "Name_th": "คาโยโกะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Kaho",
+    "Id": 10065,
+    "Name_cn": "果穗",
+    "Name_jp": "カホ",
+    "Name_kr": "카호",
+    "Name_th": "คาโฮะ"
+  },
+  {
+    "Name_en": "Aris (Maid)",
+    "Id": 10066,
+    "Name_cn": "爱丽丝（女仆）",
+    "Name_jp": "アリス（メイド）",
+    "Name_kr": "아리스(메이드)",
+    "Name_th": "อาริสึ (ชุดเมด)"
+  },
+  {
+    "Name_en": "Toki (Bunny)",
+    "Id": 10067,
+    "Name_cn": "时（邦妮）",
+    "Name_jp": "トキ（バニーガール）",
+    "Name_kr": "토키(바니걸)",
+    "Name_th": "โทคิ (บันนี่เกิร์ล)"
+  },
+  {
+    "Name_en": "Reisa",
+    "Id": 10068,
+    "Name_cn": "玲纱",
+    "Name_jp": "レイサ",
+    "Name_kr": "레이사",
+    "Name_th": "เรอิสะ"
+  },
+  {
+    "Name_en": "Rumi",
+    "Id": 10069,
+    "Name_cn": "瑠海",
+    "Name_jp": "ルミ",
+    "Name_kr": "루미",
+    "Name_th": "รูมิ"
+  },
+  {
+    "Name_en": "Mina",
+    "Id": 10070,
+    "Name_cn": "南",
+    "Name_jp": "ミナ",
+    "Name_kr": "미나",
+    "Name_th": "มินะ"
+  },
+  {
+    "Name_en": "Miyako (Swimsuit)",
+    "Id": 10071,
+    "Name_cn": "宫子（泳装）",
+    "Name_jp": "ミヤコ（水着）",
+    "Name_kr": "미야코(수영복)",
+    "Name_th": "มิยาโกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Saki (Swimsuit)",
+    "Id": 10072,
+    "Name_cn": "咲（泳装）",
+    "Name_jp": "サキ（水着）",
+    "Name_kr": "사키(수영복)",
+    "Name_th": "ซากิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Ui (Swimsuit)",
+    "Id": 10073,
+    "Name_cn": "忧（泳装）",
+    "Name_jp": "ウイ（水着）",
+    "Name_kr": "우이(수영복)",
+    "Name_th": "อุย (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hanako (Swimsuit)",
+    "Id": 10074,
+    "Name_cn": "花子（泳装）",
+    "Name_jp": "ハナコ（水着）",
+    "Name_kr": "하나코(수영복)",
+    "Name_th": "ฮานาโกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Meru",
+    "Id": 10075,
+    "Name_cn": "芽瑠",
+    "Name_jp": "メル",
+    "Name_kr": "메루",
+    "Name_th": "เมรุ"
+  },
+  {
+    "Name_en": "Kotori (Cheer Squad)",
+    "Id": 10076,
+    "Name_cn": "琴里（应援团）",
+    "Name_jp": "コトリ（応援団）",
+    "Name_kr": "코토리(응원단)",
+    "Name_th": "โคโทริ (ชุดเชียร์)"
+  },
+  {
+    "Name_en": "Ichika",
+    "Id": 10077,
+    "Name_cn": "一花",
+    "Name_jp": "イチカ",
+    "Name_kr": "이치카",
+    "Name_th": "อิจิกะ"
+  },
+  {
+    "Name_en": "Kasumi",
+    "Id": 10078,
+    "Name_cn": "霞",
+    "Name_jp": "カスミ",
+    "Name_kr": "카스미",
+    "Name_th": "คาสุมิ"
+  },
+  {
+    "Name_en": "Misaka Mikoto",
+    "Id": 10079,
+    "Name_cn": "御坂美琴",
+    "Name_jp": "御坂美琴",
+    "Name_kr": "미사카 미코토",
+    "Name_th": "มิซากะ มิโคโตะ"
+  },
+  {
+    "Name_en": "Shokuhou Misaki",
+    "Id": 10080,
+    "Name_cn": "食蜂操祈",
+    "Name_jp": "食蜂操祈",
+    "Name_kr": "쇼쿠호 미사키",
+    "Name_th": "โชคุโฮว มิซากิ"
+  },
+  {
+    "Name_en": "Yukari",
+    "Id": 10081,
+    "Name_cn": "紫草",
+    "Name_jp": "ユカリ",
+    "Name_kr": "유카리",
+    "Name_th": "ยูคาริ"
+  },
+  {
+    "Name_en": "Renge",
+    "Id": 10082,
+    "Name_cn": "莲华",
+    "Name_jp": "レンゲ",
+    "Name_kr": "렌게",
+    "Name_th": "เรนเกะ"
+  },
+  {
+    "Name_en": "Kikyou",
+    "Id": 10083,
+    "Name_cn": "桔梗",
+    "Name_jp": "キキョウ",
+    "Name_kr": "키쿄",
+    "Name_th": "คิเคียว"
+  },
+  {
+    "Name_en": "Kotama (Camp)",
+    "Id": 10084,
+    "Name_cn": "小玉（露营）",
+    "Name_jp": "コタマ（キャンプ）",
+    "Name_kr": "코타마(캠핑)",
+    "Name_th": "โคทามะ (แคมป์)"
+  },
+  {
+    "Name_en": "Hare (Camp)",
+    "Id": 10085,
+    "Name_cn": "晴（露营）",
+    "Name_jp": "ハレ（キャンプ）",
+    "Name_kr": "하레(캠핑)",
+    "Name_th": "ฮาเระ (แคมป์)"
+  },
+  {
+    "Name_en": "Hina (Dress)",
+    "Id": 10086,
+    "Name_cn": "日奈（礼服）",
+    "Name_jp": "ヒナ（ドレス）",
+    "Name_kr": "히나(드레스)",
+    "Name_th": "ฮินะ (เดรส)"
+  },
+  {
+    "Name_en": "Ako (Dress)",
+    "Id": 10087,
+    "Name_cn": "亚子（礼服）",
+    "Name_jp": "アコ（ドレス）",
+    "Name_kr": "아코(드레스)",
+    "Name_th": "อาโกะ (เดรส)"
+  },
+  {
+    "Name_en": "Kayoko (Dress)",
+    "Id": 10088,
+    "Name_cn": "佳代子（礼服）",
+    "Name_jp": "カヨコ（ドレス）",
+    "Name_kr": "카요코(드레스)",
+    "Name_th": "คาโยโกะ (เดรส)"
+  },
+  {
+    "Name_en": "Aru (Dress)",
+    "Id": 10089,
+    "Name_cn": "爱露（礼服）",
+    "Name_jp": "アル（ドレス）",
+    "Name_kr": "아루(드레스)",
+    "Name_th": "อารุ (เดรส)"
+  },
+  {
+    "Name_en": "Umika",
+    "Id": 10090,
+    "Name_cn": "海香",
+    "Name_jp": "ウミカ",
+    "Name_kr": "우미카",
+    "Name_th": "อุมิกะ"
+  },
+  {
+    "Name_en": "Kazusa (Band)",
+    "Id": 10091,
+    "Name_cn": "和纱（乐队）",
+    "Name_jp": "カズサ（バンド）",
+    "Name_kr": "카즈사(밴드)",
+    "Name_th": "คาซึสะ (วงดนตรี)"
+  },
+  {
+    "Name_en": "Yoshimi (Band)",
+    "Id": 10092,
+    "Name_cn": "好美（乐队）",
+    "Name_jp": "ヨシミ（バンド）",
+    "Name_kr": "요시미(밴드)",
+    "Name_th": "โยชิมิ (วงดนตรี)"
+  },
+  {
+    "Name_en": "Kirara",
+    "Id": 10093,
+    "Name_cn": "绮罗罗",
+    "Name_jp": "キララ",
+    "Name_kr": "키라라",
+    "Name_th": "คิราระ"
+  },
+  {
+    "Name_en": "Momoi (Maid)",
+    "Id": 10094,
+    "Name_cn": "桃井（女仆）",
+    "Name_jp": "モモイ（メイド）",
+    "Name_kr": "모모이(메이드)",
+    "Name_th": "โมโมอิ (ชุดเมด)"
+  },
+  {
+    "Name_en": "Midori (Maid)",
+    "Id": 10095,
+    "Name_cn": "绿（女仆）",
+    "Name_jp": "ミドリ（メイド）",
+    "Name_kr": "미도리(메이드)",
+    "Name_th": "มิโดริ (ชุดเมด)"
+  },
+  {
+    "Name_en": "Kanna (Swimsuit)",
+    "Id": 10096,
+    "Name_cn": "康娜（泳装）",
+    "Name_jp": "カンナ（水着）",
+    "Name_kr": "칸나(수영복)",
+    "Name_th": "คันนะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Moe (Swimsuit)",
+    "Id": 10097,
+    "Name_cn": "萌绘（泳装）",
+    "Name_jp": "モエ（水着）",
+    "Name_kr": "모에(수영복)",
+    "Name_th": "โมเอะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hoshino (Armed)",
+    "Id": 10098,
+    "Name_cn": "星野（临战）",
+    "Name_jp": "ホシノ（臨戦）",
+    "Name_kr": "호시노(무장)",
+    "Name_th": "โฮชิโนะ (คอมแบต)"
+  },
+  {
+    "Name_en": "Hoshino (Armed)",
+    "Id": 10099,
+    "Name_cn": "星野（临战）",
+    "Name_jp": "ホシノ（臨戦）",
+    "Name_kr": "호시노(무장)",
+    "Name_th": "โฮชิโนะ (คอมแบต)"
+  },
+  {
+    "Name_en": "Shiroko*Terror",
+    "Id": 10100,
+    "Name_cn": "白子＊恐怖",
+    "Name_jp": "シロコ＊テラー",
+    "Name_kr": "시로코*테러",
+    "Name_th": "ชิโรโกะ*เทอเรอร์"
+  },
+  {
+    "Name_en": "Saori (Swimsuit)",
+    "Id": 10101,
+    "Name_cn": "纱织（泳装）",
+    "Name_jp": "サオリ（水着）",
+    "Name_kr": "사오리(수영복)",
+    "Name_th": "ซาโอริ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hiyori (Swimsuit)",
+    "Id": 10102,
+    "Name_cn": "日和（泳装）",
+    "Name_jp": "ヒヨリ（水着）",
+    "Name_kr": "히요리(수영복)",
+    "Name_th": "ฮิโยริ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Marina (Qipao)",
+    "Id": 10103,
+    "Name_cn": "真里奈（旗袍）",
+    "Name_jp": "マリナ（チーパオ）",
+    "Name_kr": "마리나(치파오)",
+    "Name_th": "มารินะ (กี่เพ้า)"
+  },
+  {
+    "Name_en": "Reijo",
+    "Id": 10104,
+    "Name_cn": "丽情",
+    "Name_jp": "レイジョ",
+    "Name_kr": "레이죠",
+    "Name_th": "เรย์โจว"
+  },
+  {
+    "Name_en": "Mari (Pop Idol)",
+    "Id": 10105,
+    "Name_cn": "玛丽（偶像）",
+    "Name_jp": "マリー（アイドル）",
+    "Name_kr": "마리(아이돌)",
+    "Name_th": "มารี (ไอดอล)"
+  },
+  {
+    "Name_en": "Sakurako (Pop Idol)",
+    "Id": 10106,
+    "Name_cn": "樱子（偶像）",
+    "Name_jp": "サクラコ（アイドル）",
+    "Name_kr": "사쿠라코(아이돌)",
+    "Name_th": "ซากุระโกะ (ไอดอล)"
+  },
+  {
+    "Name_en": "Chiaki",
+    "Id": 10107,
+    "Name_cn": "千秋",
+    "Name_jp": "チアキ",
+    "Name_kr": "치아키",
+    "Name_th": "จิอากิ"
+  },
+  {
+    "Name_en": "Yuuka (Pajamas)",
+    "Id": 10108,
+    "Name_cn": "优香（睡衣）",
+    "Name_jp": "ユウカ（パジャマ）",
+    "Name_kr": "유우카(파자마)",
+    "Name_th": "ยูกะ (ชุดนอน)"
+  },
+  {
+    "Name_en": "Noa (Pajamas)",
+    "Id": 10109,
+    "Name_cn": "诺亚（睡衣）",
+    "Name_jp": "ノア（パジャマ）",
+    "Name_kr": "노아(파자마)",
+    "Name_th": "โนอา (ชุดนอน)"
+  },
+  {
+    "Name_en": "Seia",
+    "Id": 10110,
+    "Name_cn": "圣娅",
+    "Name_jp": "セイア",
+    "Name_kr": "세이아",
+    "Name_th": "เซอา"
+  },
+  {
+    "Name_en": "Neru (Uniform)",
+    "Id": 10111,
+    "Name_cn": "妮露（制服）",
+    "Name_jp": "ネル（制服）",
+    "Name_kr": "네루(교복)",
+    "Name_th": "เนรุ (ชุดนักเรียน)"
+  },
+  {
+    "Name_en": "Asuna (Uniform)",
+    "Id": 10112,
+    "Name_cn": "明日奈（制服）",
+    "Name_jp": "アスナ（制服）",
+    "Name_kr": "아스나(교복)",
+    "Name_th": "อาสึนะ (ชุดนักเรียน)"
+  },
+  {
+    "Name_en": "Sena (Casual)",
+    "Id": 10113,
+    "Name_cn": "濑名（便服）",
+    "Name_jp": "セナ（私服）",
+    "Name_kr": "세나(사복)",
+    "Name_th": "เซนะ (ชุดลำลอง)"
+  },
+  {
+    "Name_en": "Juri (Part-time Job)",
+    "Id": 10114,
+    "Name_cn": "朱莉（打工）",
+    "Name_jp": "ジュリ（アルバイト）",
+    "Name_kr": "주리(아르바이트)",
+    "Name_th": "จูริ (พาร์ทไทม์)"
+  },
+  {
+    "Name_en": "Rei",
+    "Id": 10115,
+    "Name_cn": "丽",
+    "Name_jp": "レイ",
+    "Name_kr": "레이",
+    "Name_th": "เรย์"
+  },
+  {
+    "Name_en": "Saori (Dress)",
+    "Id": 10116,
+    "Name_cn": "纱织（礼服）",
+    "Name_jp": "サオリ（ドレス）",
+    "Name_kr": "사오리(드레스)",
+    "Name_th": "ซาโอริ (เดรส)"
+  },
+  {
+    "Name_en": "Hikari",
+    "Id": 10117,
+    "Name_cn": "光",
+    "Name_jp": "ヒカリ",
+    "Name_kr": "히카리",
+    "Name_th": "ฮิคาริ"
+  },
+  {
+    "Name_en": "Nozomi",
+    "Id": 10118,
+    "Name_cn": "望",
+    "Name_jp": "ノゾミ",
+    "Name_kr": "노조미",
+    "Name_th": "โนโซมิ"
+  },
+  {
+    "Name_en": "Nagusa",
+    "Id": 10119,
+    "Name_cn": "名草",
+    "Name_jp": "ナグサ",
+    "Name_kr": "나구사",
+    "Name_th": "นางุสะ"
+  },
+  {
+    "Name_en": "Akane",
+    "Id": 13000,
+    "Name_cn": "茜",
+    "Name_jp": "アカネ",
+    "Name_kr": "아카네",
+    "Name_th": "อาคาเนะ"
+  },
+  {
+    "Name_en": "Chise",
+    "Id": 13001,
+    "Name_cn": "千世",
+    "Name_jp": "チセ",
+    "Name_kr": "치세",
+    "Name_th": "ชิเซะ"
+  },
+  {
+    "Name_en": "Akari",
+    "Id": 13002,
+    "Name_cn": "明里",
+    "Name_jp": "アカリ",
+    "Name_kr": "아카리",
+    "Name_th": "อาคาริ"
+  },
+  {
+    "Name_en": "Hasumi",
+    "Id": 13003,
+    "Name_cn": "莲见",
+    "Name_jp": "ハスミ",
+    "Name_kr": "하스미",
+    "Name_th": "ฮาสุมิ"
+  },
+  {
+    "Name_en": "Nonomi",
+    "Id": 13004,
+    "Name_cn": "野宫",
+    "Name_jp": "ノノミ",
+    "Name_kr": "노노미",
+    "Name_th": "โนโนมิ"
+  },
+  {
+    "Name_en": "Kayoko",
+    "Id": 13005,
+    "Name_cn": "佳代子",
+    "Name_jp": "カヨコ",
+    "Name_kr": "카요코",
+    "Name_th": "คาโยโกะ"
+  },
+  {
+    "Name_en": "Mutsuki",
+    "Id": 13006,
+    "Name_cn": "睦月",
+    "Name_jp": "ムツキ",
+    "Name_kr": "무츠키",
+    "Name_th": "มุสึกิ"
+  },
+  {
+    "Name_en": "Junko",
+    "Id": 13007,
+    "Name_cn": "纯子",
+    "Name_jp": "ジュンコ",
+    "Name_kr": "준코",
+    "Name_th": "จุนโกะ"
+  },
+  {
+    "Name_en": "Serika",
+    "Id": 13008,
+    "Name_cn": "芹香",
+    "Name_jp": "セリカ",
+    "Name_kr": "세리카",
+    "Name_th": "เซริกะ"
+  },
+  {
+    "Name_en": "Tsubaki",
+    "Id": 13009,
+    "Name_cn": "椿",
+    "Name_jp": "ツバキ",
+    "Name_kr": "츠바키",
+    "Name_th": "สึบากิ"
+  },
+  {
+    "Name_en": "Yuuka",
+    "Id": 13010,
+    "Name_cn": "优香",
+    "Name_jp": "ユウカ",
+    "Name_kr": "유우카",
+    "Name_th": "ยูกะ"
+  },
+  {
+    "Name_en": "Momoi",
+    "Id": 13011,
+    "Name_cn": "桃",
+    "Name_jp": "モモイ",
+    "Name_kr": "모모이",
+    "Name_th": "โมโมอิ"
+  },
+  {
+    "Name_en": "Kirino",
+    "Id": 13012,
+    "Name_cn": "桐乃",
+    "Name_jp": "キリノ",
+    "Name_kr": "키리노",
+    "Name_th": "คิริโนะ"
+  },
+  {
+    "Name_en": "Momiji",
+    "Id": 13013,
+    "Name_cn": "红叶",
+    "Name_jp": "モミジ",
+    "Name_kr": "모미지",
+    "Name_th": "โมมิจิ"
+  },
+  {
+    "Name_en": "Haruka",
+    "Id": 16000,
+    "Name_cn": "春香",
+    "Name_jp": "ハルカ",
+    "Name_kr": "하루카",
+    "Name_th": "ฮารุกะ"
+  },
+  {
+    "Name_en": "Asuna",
+    "Id": 16001,
+    "Name_cn": "明日奈",
+    "Name_jp": "アスナ",
+    "Name_kr": "아스나",
+    "Name_th": "อาสึนะ"
+  },
+  {
+    "Name_en": "Kotori",
+    "Id": 16002,
+    "Name_cn": "琴里",
+    "Name_jp": "コトリ",
+    "Name_kr": "코토리",
+    "Name_th": "โคโทริ"
+  },
+  {
+    "Name_en": "Suzumi",
+    "Id": 16003,
+    "Name_cn": "铃美",
+    "Name_jp": "スズミ",
+    "Name_kr": "스즈미",
+    "Name_th": "สึซึมิ"
+  },
+  {
+    "Name_en": "Pina",
+    "Id": 16004,
+    "Name_cn": "菲娜",
+    "Name_jp": "フィーナ",
+    "Name_kr": "피나",
+    "Name_th": "พีน่า"
+  },
+  {
+    "Name_en": "Tsurugi (Swimsuit)",
+    "Id": 16005,
+    "Name_cn": "鹤城（泳装）",
+    "Name_jp": "ツルギ（水着）",
+    "Name_kr": "츠루기(수영복)",
+    "Name_th": "ซึรุกิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Izumi (Swimsuit)",
+    "Id": 16006,
+    "Name_cn": "泉（泳装）",
+    "Name_jp": "イズミ（水着）",
+    "Name_kr": "이즈미(수영복)",
+    "Name_th": "อิซุมิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Tomoe",
+    "Id": 16007,
+    "Name_cn": "巴",
+    "Name_jp": "トモエ",
+    "Name_kr": "토모에",
+    "Name_th": "โทโมเอะ"
+  },
+  {
+    "Name_en": "Fubuki",
+    "Id": 16008,
+    "Name_cn": "吹雪",
+    "Name_jp": "フブキ",
+    "Name_kr": "후부키",
+    "Name_th": "ฟุบุกิ"
+  },
+  {
+    "Name_en": "Michiru",
+    "Id": 16009,
+    "Name_cn": "满",
+    "Name_jp": "ミチル",
+    "Name_kr": "미치루",
+    "Name_th": "มิจิรุ"
+  },
+  {
+    "Name_en": "Hibiki (Cheer Squad)",
+    "Id": 16010,
+    "Name_cn": "响（应援团）",
+    "Name_jp": "ヒビキ（応援団）",
+    "Name_kr": "히비키(응원단)",
+    "Name_th": "ฮิบิกิ (ชุดเชียร์)"
+  },
+  {
+    "Name_en": "Hasumi (Track)",
+    "Id": 16011,
+    "Name_cn": "莲见（体操服）",
+    "Name_jp": "ハスミ（体操服）",
+    "Name_kr": "하스미(체육복)",
+    "Name_th": "ฮาสุมิ (ชุดพละ)"
+  },
+  {
+    "Name_en": "Junko (New Year)",
+    "Id": 16012,
+    "Name_cn": "纯子（新年）",
+    "Name_jp": "ジュンコ（正月）",
+    "Name_kr": "준코(새해)",
+    "Name_th": "จุนโกะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Koharu (Swimsuit)",
+    "Id": 16013,
+    "Name_cn": "小春（泳装）",
+    "Name_jp": "コハル（水着）",
+    "Name_kr": "코하루(수영복)",
+    "Name_th": "โคฮารุ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Ibuki",
+    "Id": 16014,
+    "Name_cn": "伊吹",
+    "Name_jp": "イブキ",
+    "Name_kr": "이부키",
+    "Name_th": "อิบูกิ"
+  },
+  {
+    "Name_en": "Airi (Band)",
+    "Id": 16015,
+    "Name_cn": "爱莉（乐队）",
+    "Name_jp": "アイリ（バンド）",
+    "Name_kr": "아이리(밴드)",
+    "Name_th": "ไอริ (วงดนตรี)"
+  },
+  {
+    "Name_en": "Mine (Pop Idol)",
+    "Id": 16016,
+    "Name_cn": "美祢（偶像）",
+    "Name_jp": "ミネ（アイドル）",
+    "Name_kr": "미네(아이돌)",
+    "Name_th": "มิเนะ (ไอดอล)"
+  },
+  {
+    "Name_en": "Aoba",
+    "Id": 16017,
+    "Name_cn": "青叶",
+    "Name_jp": "アオバ",
+    "Name_kr": "아오바",
+    "Name_th": "อาโอบะ"
+  },
+  {
+    "Name_en": "Hibiki",
+    "Id": 20000,
+    "Name_cn": "响",
+    "Name_jp": "ヒビキ",
+    "Name_kr": "히비키",
+    "Name_th": "ฮิบิกิ"
+  },
+  {
+    "Name_en": "Karin",
+    "Id": 20001,
+    "Name_cn": "花凛",
+    "Name_jp": "カリン",
+    "Name_kr": "카린",
+    "Name_th": "คาริน"
+  },
+  {
+    "Name_en": "Saya",
+    "Id": 20002,
+    "Name_cn": "纱绫",
+    "Name_jp": "サヤ",
+    "Name_kr": "사야",
+    "Name_th": "ซายะ"
+  },
+  {
+    "Name_en": "Mashiro",
+    "Id": 20003,
+    "Name_cn": "真白",
+    "Name_jp": "マシロ",
+    "Name_kr": "마시로",
+    "Name_th": "มาชิโระ"
+  },
+  {
+    "Name_en": "Mashiro (Swimsuit)",
+    "Id": 20004,
+    "Name_cn": "真白（泳装）",
+    "Name_jp": "マシロ（水着）",
+    "Name_kr": "마시로(수영복)",
+    "Name_th": "มาชิโระ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hifumi (Swimsuit)",
+    "Id": 20005,
+    "Name_cn": "日富美（泳装）",
+    "Name_jp": "ヒフミ（水着）",
+    "Name_kr": "히후미(수영복)",
+    "Name_th": "ฮิฟุมิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Saya (Casual)",
+    "Id": 20006,
+    "Name_cn": "纱绫（便服）",
+    "Name_jp": "サヤ（私服）",
+    "Name_kr": "사야(사복)",
+    "Name_th": "ซายะ (ชุดลำลอง)"
+  },
+  {
+    "Name_en": "Hatsune Miku",
+    "Id": 20007,
+    "Name_cn": "初音未来",
+    "Name_jp": "初音ミク",
+    "Name_kr": "하츠네 미쿠",
+    "Name_th": "ฮัตสึเนะ มิกุ"
+  },
+  {
+    "Name_en": "Ako",
+    "Id": 20008,
+    "Name_cn": "亚子",
+    "Name_jp": "アコ",
+    "Name_kr": "아코",
+    "Name_th": "อาโกะ"
+  },
+  {
+    "Name_en": "Cherino (Hot Spring)",
+    "Id": 20009,
+    "Name_cn": "切里诺（温泉）",
+    "Name_jp": "チェリノ（温泉）",
+    "Name_kr": "체리노(온천)",
+    "Name_th": "เชริโน่ (ออนเซ็น)"
+  },
+  {
+    "Name_en": "Nodoka (Hot Spring)",
+    "Id": 20010,
+    "Name_cn": "和香（温泉）",
+    "Name_jp": "ノドカ（温泉）",
+    "Name_kr": "노도카(온천)",
+    "Name_th": "โนโดกะ (ออนเซ็น)"
+  },
+  {
+    "Name_en": "Serika (New Year)",
+    "Id": 20011,
+    "Name_cn": "芹香（新年）",
+    "Name_jp": "セリカ（正月）",
+    "Name_kr": "세리카(새해)",
+    "Name_th": "เซริกะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Sena",
+    "Id": 20012,
+    "Name_cn": "濑名",
+    "Name_jp": "セナ",
+    "Name_kr": "세나",
+    "Name_th": "เซนะ"
+  },
+  {
+    "Name_en": "Chihiro",
+    "Id": 20013,
+    "Name_cn": "千寻",
+    "Name_jp": "チヒロ",
+    "Name_kr": "치히로",
+    "Name_th": "จิฮิโระ"
+  },
+  {
+    "Name_en": "Saki",
+    "Id": 20014,
+    "Name_cn": "咲",
+    "Name_jp": "サキ",
+    "Name_kr": "사키",
+    "Name_th": "ซากิ"
+  },
+  {
+    "Name_en": "Kaede",
+    "Id": 20015,
+    "Name_cn": "枫",
+    "Name_jp": "カエデ",
+    "Name_kr": "카에데",
+    "Name_th": "คาเอเดะ"
+  },
+  {
+    "Name_en": "Iroha",
+    "Id": 20016,
+    "Name_cn": "伊吕波",
+    "Name_jp": "イロハ",
+    "Name_kr": "이로하",
+    "Name_th": "อิโรฮะ"
+  },
+  {
+    "Name_en": "Hiyori",
+    "Id": 20017,
+    "Name_cn": "日和",
+    "Name_jp": "ヒヨリ",
+    "Name_kr": "히요리",
+    "Name_th": "ฮิโยริ"
+  },
+  {
+    "Name_en": "Moe",
+    "Id": 20018,
+    "Name_cn": "萌绘",
+    "Name_jp": "モエ",
+    "Name_kr": "모에",
+    "Name_th": "โมเอะ"
+  },
+  {
+    "Name_en": "Akane (Bunny)",
+    "Id": 20019,
+    "Name_cn": "茜（邦妮）",
+    "Name_jp": "アカネ（バニーガール）",
+    "Name_kr": "아카네(바니걸)",
+    "Name_th": "อาคาเนะ (บันนี่เกิร์ล)"
+  },
+  {
+    "Name_en": "Himari",
+    "Id": 20020,
+    "Name_cn": "日鞠",
+    "Name_jp": "ヒマリ",
+    "Name_kr": "히마리",
+    "Name_th": "ฮิมาริ"
+  },
+  {
+    "Name_en": "Hanae (Christmas)",
+    "Id": 20021,
+    "Name_cn": "花江（圣诞）",
+    "Name_jp": "ハナエ（クリスマス）",
+    "Name_kr": "하나에(크리스마스)",
+    "Name_th": "ฮานาเอะ (คริสต์มาส)"
+  },
+  {
+    "Name_en": "Fuuka (New Year)",
+    "Id": 20022,
+    "Name_cn": "风香（新年）",
+    "Name_jp": "フウカ（正月）",
+    "Name_kr": "후우카(새해)",
+    "Name_th": "ฟูกะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Kanna",
+    "Id": 20023,
+    "Name_cn": "康娜",
+    "Name_jp": "カンナ",
+    "Name_kr": "칸나",
+    "Name_th": "คันนะ"
+  },
+  {
+    "Name_en": "Nagisa",
+    "Id": 20024,
+    "Name_cn": "渚",
+    "Name_jp": "ナギサ",
+    "Name_kr": "나기사",
+    "Name_th": "นางิสะ"
+  },
+  {
+    "Name_en": "Haruka (New Year)",
+    "Id": 20025,
+    "Name_cn": "春香（新年）",
+    "Name_jp": "ハルカ（正月）",
+    "Name_kr": "하루카(새해)",
+    "Name_th": "ฮารุกะ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Minori",
+    "Id": 20026,
+    "Name_cn": "实梨",
+    "Name_jp": "ミノリ",
+    "Name_kr": "미노리",
+    "Name_th": "มิโนริ"
+  },
+  {
+    "Name_en": "Shiroko (Swimsuit)",
+    "Id": 20027,
+    "Name_cn": "白子（泳装）",
+    "Name_jp": "シロコ（水着）",
+    "Name_kr": "시로코(수영복)",
+    "Name_th": "ชิโรโกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Hinata (Swimsuit)",
+    "Id": 20028,
+    "Name_cn": "日向（泳装）",
+    "Name_jp": "ヒナタ（水着）",
+    "Name_kr": "히나타(수영복)",
+    "Name_th": "ฮินาตะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Mimori (Swimsuit)",
+    "Id": 20029,
+    "Name_cn": "三森（泳装）",
+    "Name_jp": "ミモリ（水着）",
+    "Name_kr": "미모리(수영복)",
+    "Name_th": "มิโมริ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Haruna (Track)",
+    "Id": 20030,
+    "Name_cn": "晴奈（体操服）",
+    "Name_jp": "ハルナ（体操服）",
+    "Name_kr": "하루나(체육복)",
+    "Name_th": "ฮารุนะ (ชุดพละ)"
+  },
+  {
+    "Name_en": "Shigure (Hot Spring)",
+    "Id": 20031,
+    "Name_cn": "时雨（温泉）",
+    "Name_jp": "シグレ（温泉）",
+    "Name_kr": "시구레(온천)",
+    "Name_th": "ชิกุเระ (ออนเซ็น)"
+  },
+  {
+    "Name_en": "Eimi (Swimsuit)",
+    "Id": 20032,
+    "Name_cn": "艾米（泳装）",
+    "Name_jp": "エイミ（水着）",
+    "Name_kr": "에이미(수영복)",
+    "Name_th": "เอมิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Makoto",
+    "Id": 20033,
+    "Name_cn": "真琴",
+    "Name_jp": "マコト",
+    "Name_kr": "마코토",
+    "Name_th": "มาโคโตะ"
+  },
+  {
+    "Name_en": "Akari (New Year)",
+    "Id": 20034,
+    "Name_cn": "明里（正月）",
+    "Name_jp": "アカリ（正月）",
+    "Name_kr": "아카리(새해)",
+    "Name_th": "อาคาริ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Tsubaki (Guide)",
+    "Id": 20035,
+    "Name_cn": "椿（导游）",
+    "Name_jp": "ツバキ（ガイド）",
+    "Name_kr": "츠바키(가이드)",
+    "Name_th": "สึบากิ (ไกด์)"
+  },
+  {
+    "Name_en": "Serika (Swimsuit)",
+    "Id": 20036,
+    "Name_cn": "芹香（泳装）",
+    "Name_jp": "セリカ（水着）",
+    "Name_kr": "세리카(수영복)",
+    "Name_th": "เซริกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Fubuki (Swimsuit)",
+    "Id": 20037,
+    "Name_cn": "吹雪（泳装）",
+    "Name_jp": "フブキ（水着）",
+    "Name_kr": "후부키(수영복)",
+    "Name_th": "ฟุบุกิ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Tomoe (Qipao)",
+    "Id": 20038,
+    "Name_cn": "巴（旗袍）",
+    "Name_jp": "トモエ（チーパオ）",
+    "Name_kr": "토모에(치파오)",
+    "Name_th": "โทโมเอะ (กี่เพ้า)"
+  },
+  {
+    "Name_en": "Kisaki",
+    "Id": 20039,
+    "Name_cn": "妃咲",
+    "Name_jp": "キサキ",
+    "Name_kr": "키사키",
+    "Name_th": "คิซากิ"
+  },
+  {
+    "Name_en": "Satsuki",
+    "Id": 20040,
+    "Name_cn": "皋月",
+    "Name_jp": "サツキ",
+    "Name_kr": "사츠키",
+    "Name_th": "ซัตสึกิ"
+  },
+  {
+    "Name_en": "Rio",
+    "Id": 20041,
+    "Name_cn": "莉音",
+    "Name_jp": "リオ",
+    "Name_kr": "리오",
+    "Name_th": "ริโอะ"
+  },
+  {
+    "Name_en": "Maki (Camp)",
+    "Id": 20042,
+    "Name_cn": "真纪（露营）",
+    "Name_jp": "マキ（キャンプ）",
+    "Name_kr": "마키(캠핑)",
+    "Name_th": "มากิ (แคมป์)"
+  },
+  {
+    "Name_en": "Izumi (New Year)",
+    "Id": 20043,
+    "Name_cn": "泉（正月）",
+    "Name_jp": "イズミ（正月）",
+    "Name_kr": "이즈미(새해)",
+    "Name_th": "อิซุมิ (ปีใหม่)"
+  },
+  {
+    "Name_en": "Sumire (Part-time Job)",
+    "Id": 20044,
+    "Name_cn": "堇（打工）",
+    "Name_jp": "スミレ（アルバイト）",
+    "Name_kr": "스미레(아르바이트)",
+    "Name_th": "สึมิเระ (พาร์ทไทม์)"
+  },
+  {
+    "Name_en": "Pina (Guide)",
+    "Id": 20045,
+    "Name_cn": "菲娜（导游）",
+    "Name_jp": "フィーナ（ガイド）",
+    "Name_kr": "피나(가이드)",
+    "Name_th": "พีน่า (ไกด์)"
+  },
+  {
+    "Name_en": "Niya",
+    "Id": 20046,
+    "Name_cn": "妮娅",
+    "Name_jp": "ニヤ",
+    "Name_kr": "니야",
+    "Name_th": "นิยะ"
+  },
+  {
+    "Name_en": "Airi",
+    "Id": 23000,
+    "Name_cn": "爱理",
+    "Name_jp": "アイリ",
+    "Name_kr": "아이리",
+    "Name_th": "ไอริ"
+  },
+  {
+    "Name_en": "Fuuka",
+    "Id": 23001,
+    "Name_cn": "风香",
+    "Name_jp": "フウカ",
+    "Name_kr": "후우카",
+    "Name_th": "ฟูกะ"
+  },
+  {
+    "Name_en": "Hanae",
+    "Id": 23002,
+    "Name_cn": "花江",
+    "Name_jp": "ハナエ",
+    "Name_kr": "하나에",
+    "Name_th": "ฮานาเอะ"
+  },
+  {
+    "Name_en": "Hare",
+    "Id": 23003,
+    "Name_cn": "晴",
+    "Name_jp": "ハレ",
+    "Name_kr": "하레",
+    "Name_th": "ฮาเระ"
+  },
+  {
+    "Name_en": "Utaha",
+    "Id": 23004,
+    "Name_cn": "歌原",
+    "Name_jp": "ウタハ",
+    "Name_kr": "우타하",
+    "Name_th": "อุทาฮะ"
+  },
+  {
+    "Name_en": "Ayane",
+    "Id": 23005,
+    "Name_cn": "绫音",
+    "Name_jp": "アヤネ",
+    "Name_kr": "아야네",
+    "Name_th": "อายาเนะ"
+  },
+  {
+    "Name_en": "Shizuko",
+    "Id": 23006,
+    "Name_cn": "静子",
+    "Name_jp": "シズコ",
+    "Name_kr": "시즈코",
+    "Name_th": "ชิซุโกะ"
+  },
+  {
+    "Name_en": "Hanako",
+    "Id": 23007,
+    "Name_cn": "花子",
+    "Name_jp": "ハナコ",
+    "Name_kr": "하나코",
+    "Name_th": "ฮานาโกะ"
+  },
+  {
+    "Name_en": "Mari",
+    "Id": 23008,
+    "Name_cn": "玛丽",
+    "Name_jp": "マリー",
+    "Name_kr": "마리",
+    "Name_th": "มารี"
+  },
+  {
+    "Name_en": "Chinatsu",
+    "Id": 26000,
+    "Name_cn": "千夏",
+    "Name_jp": "チナツ",
+    "Name_kr": "치나츠",
+    "Name_th": "ชินัตสึ"
+  },
+  {
+    "Name_en": "Kotama",
+    "Id": 26001,
+    "Name_cn": "小玉",
+    "Name_jp": "コタマ",
+    "Name_kr": "코타마",
+    "Name_th": "โคทามะ"
+  },
+  {
+    "Name_en": "Juri",
+    "Id": 26002,
+    "Name_cn": "朱莉",
+    "Name_jp": "ジュリ",
+    "Name_kr": "주리",
+    "Name_th": "จูริ"
+  },
+  {
+    "Name_en": "Serina",
+    "Id": 26003,
+    "Name_cn": "芹娜",
+    "Name_jp": "セリナ",
+    "Name_kr": "세리나",
+    "Name_th": "เซรินะ"
+  },
+  {
+    "Name_en": "Shimiko",
+    "Id": 26004,
+    "Name_cn": "志美子",
+    "Name_jp": "シミコ",
+    "Name_kr": "시미코",
+    "Name_th": "ชิมิโกะ"
+  },
+  {
+    "Name_en": "Yoshimi",
+    "Id": 26005,
+    "Name_cn": "好美",
+    "Name_jp": "ヨシミ",
+    "Name_kr": "요시미",
+    "Name_th": "โยชิมิ"
+  },
+  {
+    "Name_en": "Nodoka",
+    "Id": 26006,
+    "Name_cn": "和香",
+    "Name_jp": "ノドカ",
+    "Name_kr": "노도카",
+    "Name_th": "โนโดกะ"
+  },
+  {
+    "Name_en": "Ayane (Swimsuit)",
+    "Id": 26007,
+    "Name_cn": "绫音（泳装）",
+    "Name_jp": "アヤネ（水着）",
+    "Name_kr": "아야네(수영복)",
+    "Name_th": "อายาเนะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Shizuko (Swimsuit)",
+    "Id": 26008,
+    "Name_cn": "静子（泳装）",
+    "Name_jp": "シズコ（水着）",
+    "Name_kr": "시즈코(수영복)",
+    "Name_th": "ชิซุโกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Yuzu (Maid)",
+    "Id": 26009,
+    "Name_cn": "柚子（女仆）",
+    "Name_jp": "ユズ（メイド）",
+    "Name_kr": "유즈(메이드)",
+    "Name_th": "ยูสึ (ชุดเมด)"
+  },
+  {
+    "Name_en": "Miyu (Swimsuit)",
+    "Id": 26010,
+    "Name_cn": "美游（泳装）",
+    "Name_jp": "ミユ（水着）",
+    "Name_kr": "미유(수영복)",
+    "Name_th": "มิยุ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Saten Ruiko",
+    "Id": 26011,
+    "Name_cn": "佐天泪子",
+    "Name_jp": "佐天涙子",
+    "Name_kr": "사텐 루이코",
+    "Name_th": "ซาเต็น รุยโกะ"
+  },
+  {
+    "Name_en": "Kirino (Swimsuit)",
+    "Id": 26012,
+    "Name_cn": "桐乃（泳装）",
+    "Name_jp": "キリノ（水着）",
+    "Name_kr": "키리노(수영복)",
+    "Name_th": "คิริโนะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Atsuko (Swimsuit)",
+    "Id": 26013,
+    "Name_cn": "亚津子（泳装）",
+    "Name_jp": "アツコ（水着）",
+    "Name_kr": "아츠코(수영복)",
+    "Name_th": "อาสึโกะ (ชุดว่ายน้ำ)"
+  },
+  {
+    "Name_en": "Karin (Uniform)",
+    "Id": 26014,
+    "Name_cn": "花凛（制服）",
+    "Name_jp": "カリン（制服）",
+    "Name_kr": "카린(교복)",
+    "Name_th": "คาริน (ชุดนักเรียน)"
+  }
+]
