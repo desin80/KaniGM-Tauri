@@ -1,8 +1,8 @@
-## Usage
+## Setup and Installation
 
-Install [Node.js](https://nodejs.org/)
-Open a terminal,
+1. Download and install Node.js from [nodejs.org](https://nodejs.org/)
 
-```bash
-cd path/to/kanigm
-```
+2. Open a new terminal window and navigate to the project's root directory.
+
+3. Run `npm install`
+4. Run `npm start`
