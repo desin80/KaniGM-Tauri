@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:80";
+// const API_BASE_URL = "http://127.0.0.1:80";
 
 const api = {
     ResponseStatus: {
@@ -80,7 +80,7 @@ const api = {
      * @returns {Promise<Array<object>>} A promise that resolves to the 'data' property of the API response.
      */
     getCharacter: function () {
-        return fetch(`${API_BASE_URL}/dev/api/get_character`, {
+        return fetch(`/dev/api/get_character`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property of the server's success response.
      */
     modifyCharacter: function (characterData) {
-        return fetch(`${API_BASE_URL}/dev/api/modify_character`, {
+        return fetch(`/dev/api/modify_character`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -135,7 +135,7 @@ const api = {
      * @returns {Promise<any>} A promise that resolves with the 'data' property of the result.
      */
     executeCommand: function (commandText) {
-        return fetch(`${API_BASE_URL}/dev/api/command`, {
+        return fetch(`/dev/api/command`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -155,7 +155,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property containing raid types.
      */
     getRaid: function () {
-        return fetch(`${API_BASE_URL}/dev/api/get_raid`).then((response) =>
+        return fetch(`/dev/api/get_raid`).then((response) =>
             this._handleResponse(response)
         );
     },
@@ -167,7 +167,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property of the server's success response.
      */
     setRaid: function (raidType, seasonId) {
-        return fetch(`${API_BASE_URL}/dev/api/set_raid`, {
+        return fetch(`/dev/api/set_raid`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -184,25 +184,25 @@ const api = {
     // --- Arena APIs ---
 
     getArenaRecords: function () {
-        return fetch(`${API_BASE_URL}/dev/api/get_arena_records`).then(
-            (response) => this._handleResponse(response)
+        return fetch(`/dev/api/get_arena_records`).then((response) =>
+            this._handleResponse(response)
         );
     },
 
     getArenaSummaries: function () {
-        return fetch(`${API_BASE_URL}/dev/api/get_arena_summaries`).then(
-            (response) => this._handleResponse(response)
+        return fetch(`/dev/api/get_arena_summaries`).then((response) =>
+            this._handleResponse(response)
         );
     },
 
     getArenaDummy: function () {
-        return fetch(`${API_BASE_URL}/dev/api/get_arena_dummy`).then(
-            (response) => this._handleResponse(response)
+        return fetch(`/dev/api/get_arena_dummy`).then((response) =>
+            this._handleResponse(response)
         );
     },
 
     setArenaDummy: function (characterData) {
-        return fetch(`${API_BASE_URL}/dev/api/set_arena_dummy`, {
+        return fetch(`/dev/api/set_arena_dummy`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -219,7 +219,7 @@ const api = {
     },
 
     deleteArenaRecord: function (recordObject) {
-        return fetch(`${API_BASE_URL}/dev/api/delete_arena_record`, {
+        return fetch(`/dev/api/delete_arena_record`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -233,7 +233,7 @@ const api = {
     },
 
     deleteArenaSummary: function (attackingTeamIds, defendingTeamIds) {
-        return fetch(`${API_BASE_URL}/dev/api/delete_arena_summary`, {
+        return fetch(`/dev/api/delete_arena_summary`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

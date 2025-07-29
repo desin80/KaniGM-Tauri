@@ -1,16 +1,21 @@
 import React from "react";
 
-const RaidItem = ({ raid, raidType, onSetRaid }) => {
+const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
     const [isSetting, setIsSetting] = React.useState(false);
 
-    const handleSetRaid = async () => {
+    const handleSetRaid = async (e) => {
+        e.stopPropagation();
         setIsSetting(true);
         await onSetRaid(raidType, raid.id);
         setIsSetting(false);
     };
 
+    const itemClassName = `raid-item ${
+        isSelected ? "raid-item--selected" : ""
+    }`;
+
     return (
-        <div className="raid-item">
+        <div className={itemClassName} onClick={() => onSelect(raid)}>
             <div
                 className="raid-art-panel"
                 style={{ backgroundImage: `url('${raid.bgImageUrl}')` }}

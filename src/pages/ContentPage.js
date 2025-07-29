@@ -36,10 +36,15 @@ const formatRaidData = (item, raidTypeKey) => {
         bgImageUrl =
             "https://schaledb.com/images/raid/MultiFloorRaid_Floor_BG.png";
     }
+    const date =
+        item.date ||
+        item.SeasonStartData ||
+        item.seasonStartDate ||
+        item.StartDate;
     return {
-        id: item.seasonId,
-        title: `${item.seasonId}. ${item.bossDetail}`,
-        date: item.date || item.SeasonStartData || item.seasonStartDate,
+        id: item.seasonId || item.Id,
+        title: `${item.seasonId || item.Id}. ${item.bossDetail}`,
+        date,
         bgImageUrl,
         portraitImageUrl: `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_Lobby.png`,
     };
@@ -53,10 +58,11 @@ const formatDrillData = (item) => {
         3: "https://schaledb.com/images/enemy/enemyinfo_totem03_timeattack.webp",
         4: "https://schaledb.com/images/enemy/enemyinfo_avantgardekun_millenium_ar.webp",
     };
+    const date = item.date || item.startDate;
     return {
         id: item.id,
         title: `${item.id}. ${drillName} Drill`,
-        date: item.date || item.startDate,
+        date,
         bgImageUrl: "",
         portraitImageUrl: urlMapping[item.jfdType],
     };
@@ -88,7 +94,6 @@ const ContentPage = () => {
         multiFloorRaids: [],
     });
     const [isLoading, setIsLoading] = useState(true);
-
     const [statusMessage, setStatusMessage] = useState({
         text: "",
         isError: false,
@@ -106,20 +111,36 @@ const ContentPage = () => {
                 const normalizedData = {
                     raids: (data.raids || data.Raids)
                         .map((item) => formatRaidData(item, "raids"))
-                        .sort((a, b) => b.id - a.id),
+                        .sort(
+                            (a, b) =>
+                                new Date(b.date.split("~")[0]) -
+                                new Date(a.date.split("~")[0])
+                        ),
                     timeAttackDungeons: (
                         data.timeAttackDungeons || data.TimeAttackDungeons
                     )
                         .map(formatDrillData)
-                        .sort((a, b) => b.id - a.id),
+                        .sort(
+                            (a, b) =>
+                                new Date(b.date.split("~")[0]) -
+                                new Date(a.date.split("~")[0])
+                        ),
                     eliminateRaids: (data.eliminateRaids || data.EliminateRaids)
                         .map((item) => formatRaidData(item, "eliminateraids"))
-                        .sort((a, b) => b.id - a.id),
+                        .sort(
+                            (a, b) =>
+                                new Date(b.date.split("~")[0]) -
+                                new Date(a.date.split("~")[0])
+                        ),
                     multiFloorRaids: (
                         data.multiFloorRaids || data.MultiFloorRaids
                     )
                         .map((item) => formatRaidData(item, "multifloreraids"))
-                        .sort((a, b) => b.id - a.id),
+                        .sort(
+                            (a, b) =>
+                                new Date(b.date.split("~")[0]) -
+                                new Date(a.date.split("~")[0])
+                        ),
                 };
                 setRaidData(normalizedData);
             } catch (error) {
@@ -148,7 +169,6 @@ const ContentPage = () => {
                 message={statusMessage.text}
                 isError={statusMessage.isError}
             />
-
             <div className="details-grid">
                 <RaidSection
                     title="Total Assault"
