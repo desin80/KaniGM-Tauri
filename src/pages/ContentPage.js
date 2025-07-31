@@ -176,6 +176,7 @@ const ContentPage = () => {
                     raidType="raids"
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
+                    showStatus={showStatus}
                 />
                 <RaidSection
                     title="Grand Assault"
@@ -183,6 +184,7 @@ const ContentPage = () => {
                     raidType="eliminateraids"
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
+                    showStatus={showStatus}
                 />
                 <RaidSection
                     title="Joint Firing Drill"
@@ -190,6 +192,7 @@ const ContentPage = () => {
                     raidType="timeattackdungeons"
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
+                    showStatus={showStatus}
                 />
                 <RaidSection
                     title="Final Restriction Release"
@@ -197,6 +200,7 @@ const ContentPage = () => {
                     raidType="multifloreraids"
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
+                    showStatus={showStatus}
                 />
             </div>
         </main>

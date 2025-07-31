@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import RaidItem from "./RaidItem";
+import RaidDetailsPanel from "./RaidDetailsPanel";
+import GrandAssaultDetailsPanel from "./GrandAssaultDetailsPanel";
 
-const RaidSection = ({ title, raids, raidType, onSetRaid, isLoading }) => {
+const RaidSection = ({
+    title,
+    raids,
+    raidType,
+    onSetRaid,
+    isLoading: isLoadingList,
+    showStatus,
+}) => {
     const [selectedRaid, setSelectedRaid] = useState(null);
+
+    const handleSelectRaid = (raid) => {
+        setSelectedRaid(raid);
+    };
 
     return (
         <details>
@@ -11,17 +24,17 @@ const RaidSection = ({ title, raids, raidType, onSetRaid, isLoading }) => {
                 <div className="inner-content-grid">
                     <div className="raid-list-column">
                         <div className="raid-item-container">
-                            {isLoading && (
+                            {isLoadingList && (
                                 <p className="text-center text-gray-500 py-4">
                                     Loading data...
                                 </p>
                             )}
-                            {!isLoading && raids.length === 0 && (
+                            {!isLoadingList && raids.length === 0 && (
                                 <p className="text-center text-gray-500 py-4">
                                     No data available.
                                 </p>
                             )}
-                            {!isLoading &&
+                            {!isLoadingList &&
                                 raids.map((raid) => (
                                     <RaidItem
                                         key={raid.id}
@@ -31,21 +44,23 @@ const RaidSection = ({ title, raids, raidType, onSetRaid, isLoading }) => {
                                         isSelected={
                                             selectedRaid?.id === raid.id
                                         }
-                                        onSelect={setSelectedRaid}
+                                        onSelect={handleSelectRaid}
                                     />
                                 ))}
                         </div>
                     </div>
-                    <div className="boss-details-panel">
-                        {selectedRaid ? (
-                            <div>
-                                <h3>Details for {selectedRaid.title}</h3>
-                                <p>Not Implemented Yet.</p>
-                            </div>
-                        ) : (
-                            <p>Select a Boss to view details.</p>
-                        )}
-                    </div>
+
+                    {raidType === "eliminateraids" ? (
+                        <GrandAssaultDetailsPanel
+                            selectedRaid={selectedRaid}
+                            showStatus={showStatus}
+                        />
+                    ) : (
+                        <RaidDetailsPanel
+                            selectedRaid={selectedRaid}
+                            showStatus={showStatus}
+                        />
+                    )}
                 </div>
             </div>
         </details>

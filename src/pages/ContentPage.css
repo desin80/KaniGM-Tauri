@@ -173,3 +173,202 @@ details[open]>summary::after {
 .raid-item .raid-action {
     padding-right: 1.5rem;
 }
+
+/* raid record */
+.raid-record-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(229, 231, 235, 0.6);
+    border-radius: 16px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.raid-record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+}
+
+.difficulty-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.score-display {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+.score-display small {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+    margin-right: 0.25rem;
+}
+
+.teams-list {
+    display: flex;
+    flex-direction: column; 
+    gap: 0.75rem; 
+}
+
+.team-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    background-color: rgba(243, 244, 246, 0.5);
+    border-radius: 10px;
+}
+
+.team-attempt-number {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #4b5563;
+    min-width: 1.5rem;
+}
+
+.team-avatars-horizontal {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+}
+
+.record-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -0.5rem;
+}
+
+.difficulty-insane { background-color: #be185d; }
+.difficulty-torment { background-color: #7e22ce; }
+.difficulty-extreme { background-color: #c2410c; }
+.difficulty-hardcore { background-color: #b91c1c; }
+.difficulty-veryhard { background-color: #1d4ed8; }
+.difficulty-hard { background-color: #15803d; }
+.difficulty-normal { background-color: #6b7280; }
+.difficulty-lunatic { background: linear-gradient(45deg, #7e22ce, #be185d, #c2410c); } 
+.difficulty-unknown { background-color: #4b5563; }
+
+.raid-char-card {
+    width: 5rem; 
+}
+.raid-char-card .info-container {
+    position: absolute;
+    bottom: 1em;
+    left: 45%;
+    transform: translateX(-50%); 
+    display: flex;
+    align-items: center;
+    gap:1.5rem;
+}
+.raid-char-card .stars-group {
+
+    transform: translateX(6px); 
+}
+.raid-char-card .info-text {
+    color: #1f2937; 
+    font-size: 0.8rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 
+        -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff,
+         -1.5px -1.5px 2px rgba(0,0,0,0.3); 
+}
+
+.star-info {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-info .star-icon {
+    position: absolute;
+    width: auto;
+    height: auto;
+    max-width: 1.2em; 
+    max-height: 1.2em;
+    filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.7));
+    transform: translateX(2%) translateY(-4%);
+}
+
+.star-info .star-value {
+    position: relative; 
+    z-index: 1;
+}
+
+.has-weapon-animation .character-star-info {
+    animation: fade-swap-stars 4s infinite ease-in-out;
+}
+
+.has-weapon-animation .weapon-star-info {
+    animation: fade-swap-weapon-stars 4s infinite ease-in-out;
+}
+
+@keyframes fade-swap-stars {
+    0%, 40% { opacity: 1; }
+    50% { opacity: 0; }
+    50.01%, 90% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fade-swap-weapon-stars {
+    0%, 40% { opacity: 0; }
+    50% { opacity: 1; }
+    50.01%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+/* Grand Assault */
+.armor-tabs-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+    padding-bottom: 1rem;
+}
+
+.armor-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db; 
+    cursor: pointer;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.7); 
+    color: #4b5563; 
+    transition: all 0.2s ease-in-out;
+}
+
+.armor-tab:hover {
+    background-color: rgba(243, 244, 246, 1);
+}
+
+.armor-tab--active {
+    color: white !important; 
+    border-color: transparent !important;
+}
+
+.armor-tab--heavy.armor-tab--active { background-color: rgb(167, 12, 25); } /* red-700 */
+.armor-tab--light.armor-tab--active { background-color: rgb(178, 109, 31); } /* amber-700 */
+.armor-tab--unarmed.armor-tab--active { background-color: rgb(33, 111, 156); } /* blue-700 */
+.armor-tab--elastic.armor-tab--active { background-color: rgb(148, 49, 165); } /* teal-600 */

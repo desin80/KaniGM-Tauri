@@ -181,6 +181,191 @@ const api = {
         }).then((response) => this._handleResponse(response));
     },
 
+    // --- Raid Record APIs ---
+
+    // ------------------------------------------------------------------------------------------------------------------------------
+    // The functions below are placeholders
+    /**
+     * Fetches battle records for a specific raid season.
+     * @param {number|string} seasonId - The ID of the raid season.
+     * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects.
+     */
+    getRaidRecordsBySeason: function (seasonId) {
+        // This is a placeholder for the actual API call.
+        // In a real scenario, you would fetch from an endpoint like:
+        // return fetch(`/dev/api/get_raid_records?seasonId=${seasonId}`).then(this._handleResponse);
+
+        // For now, returning mock data to simulate the feature.
+        console.warn("API call 'getRaidRecordsBySeason' is using mock data.");
+        return Promise.resolve([
+            {
+                battleId: "rec1",
+                score: 9876543,
+                difficulty: 5,
+                teams: {
+                    1: [
+                        {
+                            id: 10004,
+                            level: 85,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10022,
+                            level: 85,
+                            starGrade: 5,
+                            weaponStarGrade: 2,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec2",
+                score: 12345678,
+                difficulty: 6,
+                teams: {
+                    1: [
+                        {
+                            id: 10000,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10031,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+        ]);
+    },
+
+    /**
+     * Fetches battle records for a specific Grand Assault season.
+     * @param {number|string} seasonId - The ID of the raid season.
+     * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects with armor types.
+     */
+    getGrandAssaultRecordsBySeason: function (seasonId) {
+        console.warn(
+            "API call 'getGrandAssaultRecordsBySeason' is using mock data."
+        );
+        const mockData = [
+            {
+                battleId: "ga_rec1",
+                score: 25000000,
+                difficulty: 6,
+                armor: "HeavyArmor",
+                teams: {
+                    1: [
+                        {
+                            id: 10006,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10000,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "ga_rec2",
+                score: 24500000,
+                difficulty: 6,
+                armor: "HeavyArmor",
+                teams: {
+                    1: [
+                        {
+                            id: 10007,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10015,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "ga_rec3",
+                score: 26000000,
+                difficulty: 6,
+                armor: "LightArmor",
+                teams: {
+                    1: [
+                        {
+                            id: 10013,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10019,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "ga_rec4",
+                score: 27100000,
+                difficulty: 6,
+                armor: "Unarmed",
+                teams: {
+                    1: [
+                        {
+                            id: 10059,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10020,
+                            level: 90,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+        ];
+        return Promise.resolve(mockData);
+    },
+
+    // ------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * Deletes a specific raid battle record.
+     * @param {string} battleId - The unique identifier of the battle record to delete.
+     * @returns {Promise<object>} A promise that resolves on successful deletion.
+     */
+    deleteRaidRecord: function (battleId) {
+        // This is a placeholder for the actual API call.
+        // return fetch(`/dev/api/delete_raid_record`, {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ UserId: api.getCurrentUserId(), BattleId: battleId })
+        // }).then(this._handleResponse);
+
+        console.warn("API call 'deleteRaidRecord' is using mock data.");
+        return Promise.resolve({
+            status: "Success",
+            message: "Record deleted successfully.",
+        });
+    },
+
     // --- Arena APIs ---
 
     getArenaRecords: function () {
