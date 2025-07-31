@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const DummyCharacterAvatar = ({
     charInfo,
@@ -49,13 +50,14 @@ const DummyTeamDisplay = ({
     onEditCharacter,
     dragHandlers,
 }) => {
+    const { t } = useTranslation();
     return (
         <div className="mb-6">
             <div className="dummy-team-strip bg-white/75 backdrop-blur-md backdrop-saturate-150 border border-gray-200/50 text-slate-700 p-4 rounded-lg shadow-lg my-4">
                 <div className="flex flex-col md:flex-row justify-around items-center gap-4">
                     <div className="main-team-section text-center">
                         <h4 className="text-xl font-medium mb-2 text-sky-600 ">
-                            Main Team
+                            {t("arena.mainTeam")}
                         </h4>
                         <div className="team-avatars main-team-avatars flex justify-center flex-wrap gap-2 md:gap-3">
                             {dummyTeam.main.map((charInfo, index) => (
@@ -78,7 +80,7 @@ const DummyTeamDisplay = ({
 
                     <div className="support-team-section text-center">
                         <h4 className="text-xl font-medium mb-2 text-amber-600 ">
-                            Support Team
+                            {t("arena.supportTeam")}
                         </h4>
                         <div className="team-avatars support-team-avatars flex justify-center flex-wrap gap-2 md:gap-3">
                             {dummyTeam.support.map((charInfo, index) => (

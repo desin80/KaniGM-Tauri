@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./CharacterPage.css";
 
 import CharacterCard from "../components/CharacterCard";
 import CharacterEditorModal from "../components/CharacterEditorModal";
-
-const availableLanguages = {
-    Name_en: "English",
-    Name_cn: "中文",
-    Name_jp: "日本語",
-    Name_kr: "한국어",
-    Name_th: "ไทย",
-};
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;
@@ -22,9 +15,7 @@ const StatusPopup = ({ message, isError }) => {
     const errorClasses = "bg-red-100 border border-red-400 text-red-700";
     return (
         <div
-            className={`${baseClasses} ${
-                isError ? errorClasses : successClasses
-            }`}
+            className={`${baseClasses} ${isError ? errorClasses : successClasses}`}
         >
             {message}
         </div>
@@ -32,14 +23,13 @@ const StatusPopup = ({ message, isError }) => {
 };
 
 const CharacterPage = () => {
+    const { t, i18n } = useTranslation();
     const [allCharacters, setAllCharacters] = useState([]);
     const [localization, setLocalization] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const [searchTerm, setSearchTerm] = useState("");
-    const [currentLanguage, setCurrentLanguage] = useState("Name_en");
-    const [isLangDropdownOpen, setLangDropdownOpen] = useState(false);
 
     const [editingCharacter, setEditingCharacter] = useState(null);
 
@@ -78,15 +68,22 @@ const CharacterPage = () => {
         (uniqueId) => {
             if (localization.length > 0) {
                 const entry = localization.find((item) => item.Id === uniqueId);
+                const langKeyMap = {
+                    en: "Name_en",
+                    zh: "Name_cn",
+                    ja: "Name_jp",
+                };
+                const currentLanguageKey =
+                    langKeyMap[i18n.language] || "Name_en";
                 return (
-                    entry?.[currentLanguage] ||
+                    entry?.[currentLanguageKey] ||
                     entry?.Name_en ||
                     String(uniqueId)
                 );
             }
             return String(uniqueId);
         },
-        [localization, currentLanguage]
+        [localization, i18n.language]
     );
 
     const filteredCharacters = allCharacters.filter((charWrapper) => {
@@ -128,7 +125,10 @@ const CharacterPage = () => {
             showStatus(`Character ${charName} saved successfully!`, false);
         } catch (error) {
             console.error("Error saving character:", error);
-            showStatus(`Error saving: ${error.message}`, true);
+            showStatus(
+                `${t("common.errorSaving", { error: error.message })}`,
+                true
+            );
         } finally {
             setEditingCharacter(null);
         }
@@ -145,48 +145,12 @@ const CharacterPage = () => {
                     <input
                         type="search"
                         id="searchInput"
-                        placeholder="Search by Name or Unique ID"
+                        placeholder={t("character.search")}
                         className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:ring-sky-500 focus:border-sky-500 placeholder-gray-400 shadow-sm"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         disabled={isLoading}
                     />
-                    <div className="relative">
-                        <button
-                            id="languageSelectorButton"
-                            type="button"
-                            className="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 whitespace-nowrap"
-                            onClick={() =>
-                                setLangDropdownOpen(!isLangDropdownOpen)
-                            }
-                            disabled={isLoading}
-                        >
-                            {availableLanguages[currentLanguage]}
-                        </button>
-                        {isLangDropdownOpen && (
-                            <div
-                                id="languageDropdown"
-                                className="absolute right-0 mt-1 w-32 bg-white rounded-md shadow-lg z-20 ring-1 ring-black ring-opacity-5"
-                            >
-                                {Object.entries(availableLanguages).map(
-                                    ([langKey, langName]) => (
-                                        <button
-                                            key={langKey}
-                                            type="button"
-                                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                setCurrentLanguage(langKey);
-                                                setLangDropdownOpen(false);
-                                            }}
-                                        >
-                                            {langName}
-                                        </button>
-                                    )
-                                )}
-                            </div>
-                        )}
-                    </div>
                 </div>
             </header>
 
@@ -196,17 +160,17 @@ const CharacterPage = () => {
             >
                 {isLoading && (
                     <p className="col-span-full text-center text-gray-500">
-                        Loading characters...
+                        {t("character.loading")}
                     </p>
                 )}
                 {error && (
                     <p className="col-span-full text-center text-red-500">
-                        Failed to load data: {error}
+                        {t("character.loadError")}: {error}
                     </p>
                 )}
                 {!isLoading && !error && filteredCharacters.length === 0 && (
                     <p className="col-span-full text-center text-gray-500">
-                        No characters found.
+                        {t("character.noCharacters")}
                     </p>
                 )}
                 {!isLoading &&

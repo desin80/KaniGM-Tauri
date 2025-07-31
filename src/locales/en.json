@@ -1,0 +1,132 @@
+{
+    "nav": {
+        "character": "Character",
+        "arena": "Arena",
+        "raid": "Raid",
+        "command": "Command",
+        "uid": "UID"
+    },
+    "home": {
+        "character": {
+            "title": "Character",
+            "description": "View and edit your character profiles."
+        },
+        "arena": {
+            "title": "Arena",
+            "description": "Check battle records and modify dummy."
+        },
+        "content": {
+            "title": "Game Contents",
+            "description": "Switch content schedules."
+        },
+        "command": {
+            "title": "Command",
+            "description": "Execute commands."
+        }
+    },
+    "character": {
+        "title": "Character Management",
+        "search": "Search by Name or Unique ID",
+        "searchButton": "Search",
+        "loading": "Loading characters...",
+        "noCharacters": "No characters found.",
+        "loadError": "Failed to load data",
+        "starGrade": "Star Grade",
+        "level": "Level",
+        "favorRank": "Favor Rank",
+        "uniqueId": "Unique ID",
+        "serverId": "Server ID",
+        "skills": "Skills",
+        "exSkill": "EX Skill",
+        "normalSkill": "Normal Skill",
+        "passiveSkill": "Passive Skill",
+        "subSkill": "Sub Skill",
+        "potentialStats": "Potential Stats",
+        "maxHP": "MaxHP",
+        "attack": "Attack",
+        "heal": "Heal",
+        "weapon": "Weapon",
+        "equipment": "Equipment Tiers",
+        "equipmentTiers": "Equipment Tiers",
+        "gear": "Gear",
+        "gearTier": "Gear Tier",
+        "tier": "Tier",
+        "characterStats": "Character Stats",
+        "imageNotFound": "Image not found",
+        "idLabel": "ID"
+    },
+    "arena": {
+        "title": "Arena Management",
+        "mainTeam": "Main Team",
+        "supportTeam": "Support Team",
+        "battleRecords": "Battle Records",
+        "teamSummaries": "Team Summaries",
+        "loadingRecords": "Loading records...",
+        "loadingSummaries": "Loading summaries...",
+        "loadingDummyTeam": "Loading dummy team...",
+        "noRecords": "No battle records found.",
+        "noSummaries": "No team summaries found.",
+        "savingOrder": "Saving new order...",
+        "orderSaved": "Order saved successfully!",
+        "errorSavingOrder": "Error saving order",
+        "confirmDeleteRecord": "Are you sure you want to delete this battle record?",
+        "recordDeleted": "Record deleted successfully.",
+        "confirmDeleteSummary": "Are you sure you want to delete this team summary?\\nThis will also delete ALL associated battle records for this team.",
+        "summaryDeleted": "Summary and associated records deleted successfully.",
+        "characterSaved": "Character saved successfully!",
+        "winRate": "Win Rate",
+        "deleteSummary": "Delete this summary"
+    },
+    "content": {
+        "title": "Content Management",
+        "totalAssault": "Total Assault",
+        "grandAssault": "Grand Assault",
+        "jointFiringDrill": "Joint Firing Drill",
+        "finalRestrictionRelease": "Final Restriction Release",
+        "setting": "Setting...",
+        "set": "Set",
+        "raidSetSuccess": "Successfully set raid (ID: {{id}})!",
+        "raidSetError": "Error setting raid: {{error}}",
+        "loadingData": "Loading data...",
+        "noData": "No data available.",
+        "detailsFor": "Details for {{title}}",
+        "notImplemented": "Not Implemented Yet.",
+        "selectBoss": "Select a Boss to view details."
+    },
+    "command": {
+        "title": "Command Executor",
+        "placeholder": "Enter command (e.g., /help)",
+        "execute": "Execute",
+        "executing": "Executing...",
+        "networkError": "A network error occurred. Check the console for details.",
+        "initialMessage": "Enter a command and press Execute.",
+        "pleaseEnter": "Please enter a command.",
+        "executingCommand": "Executing \"{{command}}\"...",
+        "unknownError": "An unknown error occurred."
+    },
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "close": "Close",
+        "delete": "Delete",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "win": "Win",
+        "lose": "Lose",
+        "attacking": "Attacking",
+        "defending": "Defending",
+        "vs": "VS",
+        "na": "N/A",
+        "dragToReorder": "Drag to reorder",
+        "clickToEdit": "Click to edit",
+        "deleteRecord": "Delete this record",
+        "searchByIdOrName": "Search by ID or Name...",
+        "errorSaving": "Error saving: {{error}}"
+    },
+    "languages": {
+        "en": "English",
+        "zh": "中文",
+        "ja": "日本語"
+    }
+}

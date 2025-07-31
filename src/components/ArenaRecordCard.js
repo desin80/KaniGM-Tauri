@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import attackIcon from "../assets/attack.png";
 import defendIcon from "../assets/defend.png";
 import vsIcon from "../assets/vs.png";
@@ -24,6 +25,7 @@ const TeamAvatars = ({ teamIds, getStudentNameById }) => (
 );
 
 const ArenaRecordCard = ({ record, onDelete, getStudentNameById }) => {
+    const { t } = useTranslation();
     return (
         <div className="arena-card">
             <div className="team-display-container">
@@ -53,13 +55,13 @@ const ArenaRecordCard = ({ record, onDelete, getStudentNameById }) => {
             <div className="icon-display status-icon">
                 <img
                     src={record.win ? winIcon : loseIcon}
-                    alt={record.win ? "Win" : "Lose"}
+                    alt={record.win ? t("common.win") : t("common.lose")}
                 />
             </div>
 
             <div
                 className="delete-record-button"
-                title="Delete this record"
+                title={t("common.deleteRecord")}
                 onClick={() => onDelete(record)}
             ></div>
         </div>

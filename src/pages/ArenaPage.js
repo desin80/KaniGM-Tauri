@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ArenaPage.css";
 
@@ -16,9 +17,7 @@ const StatusPopup = ({ message, isError }) => {
     const errorClasses = "bg-red-100 border border-red-400 text-red-700";
     return (
         <div
-            className={`${baseClasses} ${
-                isError ? errorClasses : successClasses
-            }`}
+            className={`${baseClasses} ${isError ? errorClasses : successClasses}`}
         >
             {message}
         </div>
@@ -26,6 +25,7 @@ const StatusPopup = ({ message, isError }) => {
 };
 
 const ArenaPage = () => {
+    const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState("records");
     const [isLoading, setIsLoading] = useState({
         dummy: true,
@@ -101,11 +101,7 @@ const ArenaPage = () => {
     );
 
     const handleDeleteRecord = async (recordToDelete) => {
-        if (
-            window.confirm(
-                "Are you sure you want to delete this battle record?"
-            )
-        ) {
+        if (window.confirm(t("arena.confirmDeleteRecord"))) {
             try {
                 await api.deleteArenaRecord(recordToDelete);
                 setRecords((prev) =>
@@ -114,7 +110,7 @@ const ArenaPage = () => {
                             JSON.stringify(r) !== JSON.stringify(recordToDelete)
                     )
                 );
-                showStatus("Record deleted successfully.", false);
+                showStatus(t("arena.recordDeleted"), false);
             } catch (error) {
                 showStatus(`Error: ${error.message}`, true);
             }
@@ -122,18 +118,11 @@ const ArenaPage = () => {
     };
 
     const handleDeleteSummary = async (attackingIds, defendingIds) => {
-        if (
-            window.confirm(
-                "Are you sure you want to delete this team summary?\nThis will also delete ALL associated battle records for this team."
-            )
-        ) {
+        if (window.confirm(t("arena.confirmDeleteSummary"))) {
             try {
                 await api.deleteArenaSummary(attackingIds, defendingIds);
                 await loadAllData();
-                showStatus(
-                    "Summary and associated records deleted successfully.",
-                    false
-                );
+                showStatus(t("arena.summaryDeleted"), false);
             } catch (error) {
                 showStatus(`Error: ${error.message}`, true);
             }
@@ -147,14 +136,12 @@ const ArenaPage = () => {
 
     const handleSaveCharacter = async (updatedCharData) => {
         showStatus(
-            `Saving ${getStudentNameById(
-                updatedCharData.character.uniqueId
-            )}...`
+            `Saving ${getStudentNameById(updatedCharData.character.uniqueId)}...`
         );
         try {
             await api.setArenaDummy(updatedCharData);
             await loadAllData();
-            showStatus("Character saved successfully!", false);
+            showStatus(t("arena.characterSaved"), false);
         } catch (error) {
             showStatus(`Error saving: ${error.message}`, true);
         } finally {
@@ -233,13 +220,13 @@ const ArenaPage = () => {
             });
         }
 
-        showStatus("Saving new order...", false);
+        showStatus(t("arena.savingOrder"), false);
         try {
             await Promise.all([
                 api.setArenaDummy(payloadForSourceSlot),
                 api.setArenaDummy(payloadForTargetSlot),
             ]);
-            showStatus("Order saved successfully!", false);
+            showStatus(t("arena.orderSaved"), false);
         } catch (error) {
             showStatus(`Error saving order: ${error.message}`, true);
         } finally {
@@ -264,7 +251,7 @@ const ArenaPage = () => {
 
             {isLoading.dummy ? (
                 <p className="text-center text-gray-500 py-8">
-                    Loading dummy team...
+                    {t("arena.loadingDummyTeam")}
                 </p>
             ) : (
                 dummyTeam && (
@@ -300,7 +287,7 @@ const ArenaPage = () => {
                                     : "text-gray-500 border-transparent"
                             }`}
                         >
-                            Battle Records
+                            {t("arena.battleRecords")}
                         </button>
                         <button
                             onClick={() => setActiveTab("summaries")}
@@ -310,7 +297,7 @@ const ArenaPage = () => {
                                     : "text-gray-500 border-transparent"
                             }`}
                         >
-                            Team Summaries
+                            {t("arena.teamSummaries")}
                         </button>
                     </nav>
                 </div>
@@ -321,12 +308,12 @@ const ArenaPage = () => {
                     <div>
                         {isLoading.records && (
                             <p className="text-center text-gray-500 py-8">
-                                Loading records...
+                                {t("arena.loadingRecords")}
                             </p>
                         )}
                         {!isLoading.records && records.length === 0 && (
                             <p className="text-center text-gray-500 py-8">
-                                No battle records found.
+                                {t("arena.noRecords")}
                             </p>
                         )}
                         {records.map((record, index) => (
@@ -343,12 +330,12 @@ const ArenaPage = () => {
                     <div>
                         {isLoading.summaries && (
                             <p className="text-center text-gray-500 py-8">
-                                Loading summaries...
+                                {t("arena.loadingSummaries")}
                             </p>
                         )}
                         {!isLoading.summaries && summaries.length === 0 && (
                             <p className="text-center text-gray-500 py-8">
-                                No team summaries found.
+                                {t("arena.noSummaries")}
                             </p>
                         )}
                         {summaries.map((summary, index) => (

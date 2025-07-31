@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
+    const { t } = useTranslation();
     const [isSetting, setIsSetting] = React.useState(false);
 
     const handleSetRaid = async (e) => {
@@ -10,9 +12,7 @@ const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
         setIsSetting(false);
     };
 
-    const itemClassName = `raid-item ${
-        isSelected ? "raid-item--selected" : ""
-    }`;
+    const itemClassName = `raid-item ${isSelected ? "raid-item--selected" : ""}`;
 
     return (
         <div className={itemClassName} onClick={() => onSelect(raid)}>
@@ -41,7 +41,11 @@ const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
                     disabled={isSetting}
                 >
                     <div className="skewed-button-content">
-                        <span>{isSetting ? "Setting..." : "Set"}</span>
+                        <span>
+                            {isSetting
+                                ? t("content.setting")
+                                : t("content.set")}
+                        </span>
                     </div>
                 </button>
             </div>

@@ -1,0 +1,131 @@
+{
+    "nav": {
+        "character": "角色",
+        "arena": "竞技场",
+        "raid": "团本",
+        "command": "命令",
+        "uid": "UID"
+    },
+    "home": {
+        "character": {
+            "title": "角色",
+            "description": "查看和编辑角色档案。"
+        },
+        "arena": {
+            "title": "竞技场",
+            "description": "查看战斗记录和修改虚拟队伍。"
+        },
+        "content": {
+            "title": "游戏内容",
+            "description": "切换内容时间表。"
+        },
+        "command": {
+            "title": "命令",
+            "description": "执行命令。"
+        }
+    },
+    "character": {
+        "title": "角色管理",
+        "search": "按名称或唯一ID搜索",
+        "searchButton": "搜索",
+        "loading": "加载角色中...",
+        "noCharacters": "未找到角色。",
+        "loadError": "加载数据失败",
+        "starGrade": "星级",
+        "level": "等级",
+        "favorRank": "好感度",
+        "uniqueId": "唯一ID",
+        "serverId": "服务器ID",
+        "skills": "技能",
+        "exSkill": "EX技能",
+        "normalSkill": "普通技能",
+        "passiveSkill": "被动技能",
+        "subSkill": "子技能",
+        "potentialStats": "潜力属性",
+        "maxHP": "最大血量",
+        "attack": "攻击力",
+        "heal": "治疗力",
+        "weapon": "武器",
+        "equipment": "装备等级",
+        "equipmentTiers": "装备等级",
+        "gear": "饰品",
+        "gearTier": "饰品等级",
+        "tier": "等级",
+        "characterStats": "角色属性",
+        "idLabel": "ID"
+    },
+    "arena": {
+        "title": "竞技场管理",
+        "mainTeam": "主力队伍",
+        "supportTeam": "支援队伍",
+        "battleRecords": "战斗记录",
+        "teamSummaries": "队伍总结",
+        "loadingRecords": "加载记录中...",
+        "loadingSummaries": "加载总结中...",
+        "loadingDummyTeam": "加载虚拟队伍中...",
+        "noRecords": "未找到战斗记录。",
+        "noSummaries": "未找到队伍总结。",
+        "savingOrder": "保存新顺序中...",
+        "orderSaved": "顺序保存成功！",
+        "errorSavingOrder": "保存顺序时出错",
+        "confirmDeleteRecord": "您确定要删除这个战斗记录吗？",
+        "recordDeleted": "记录删除成功。",
+        "confirmDeleteSummary": "您确定要删除这个队伍总结吗？\\n这也会删除该队伍的所有相关战斗记录。",
+        "summaryDeleted": "总结和相关记录删除成功。",
+        "characterSaved": "角色保存成功！",
+        "winRate": "胜率",
+        "deleteSummary": "删除此总结"
+    },
+    "content": {
+        "title": "内容管理",
+        "totalAssault": "总力战",
+        "grandAssault": "大决战",
+        "jointFiringDrill": "联合射击演习",
+        "finalRestrictionRelease": "最终限制解除",
+        "setting": "设置中...",
+        "set": "设置",
+        "raidSetSuccess": "成功设置团本 (ID: {{id}})！",
+        "raidSetError": "设置团本时出错: {{error}}",
+        "loadingData": "加载数据中...",
+        "noData": "没有可用数据。",
+        "detailsFor": "{{title}} 的详细信息",
+        "notImplemented": "尚未实现。",
+        "selectBoss": "选择一个Boss以查看详细信息。"
+    },
+    "command": {
+        "title": "命令执行器",
+        "placeholder": "输入命令 (例如: /help)",
+        "execute": "执行",
+        "executing": "执行中...",
+        "networkError": "发生网络错误。请检查控制台获取详细信息。",
+        "initialMessage": "输入命令并按执行。",
+        "pleaseEnter": "请输入命令。",
+        "executingCommand": "正在执行 \"{{command}}\"...",
+        "unknownError": "发生未知错误。"
+    },
+    "common": {
+        "save": "保存",
+        "cancel": "取消",
+        "close": "关闭",
+        "delete": "删除",
+        "loading": "加载中...",
+        "error": "错误",
+        "success": "成功",
+        "win": "胜利",
+        "lose": "失败",
+        "attacking": "攻击方",
+        "defending": "防守方",
+        "vs": "对战",
+        "na": "无",
+        "dragToReorder": "拖拽重新排序",
+        "clickToEdit": "点击编辑",
+        "deleteRecord": "删除此记录",
+        "searchByIdOrName": "按ID或名称搜索...",
+        "errorSaving": "保存时出错: {{error}}"
+    },
+    "languages": {
+        "en": "English",
+        "zh": "中文",
+        "ja": "日本語"
+    }
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ContentPage.css";
 import RaidSection from "../components/RaidSection";
@@ -77,9 +78,7 @@ const StatusPopup = ({ message, isError }) => {
     const errorClasses = "bg-red-100 border border-red-400 text-red-700";
     return (
         <div
-            className={`${baseClasses} ${
-                isError ? errorClasses : successClasses
-            }`}
+            className={`${baseClasses} ${isError ? errorClasses : successClasses}`}
         >
             {message}
         </div>
@@ -87,6 +86,7 @@ const StatusPopup = ({ message, isError }) => {
 };
 
 const ContentPage = () => {
+    const { t } = useTranslation();
     const [raidData, setRaidData] = useState({
         raids: [],
         timeAttackDungeons: [],
@@ -156,10 +156,16 @@ const ContentPage = () => {
     const handleSetRaid = async (raidType, seasonId) => {
         try {
             await api.setRaid(raidType, seasonId);
-            showStatus(`Successfully set raid (ID: ${seasonId})!`, false);
+            showStatus(
+                `${t("content.raidSetSuccess", { id: seasonId })}`,
+                false
+            );
         } catch (error) {
             console.error("Error setting raid:", error);
-            showStatus(`Error setting raid: ${error.message}`, true);
+            showStatus(
+                `${t("content.raidSetError", { error: error.message })}`,
+                true
+            );
         }
     };
 
@@ -171,7 +177,7 @@ const ContentPage = () => {
             />
             <div className="details-grid">
                 <RaidSection
-                    title="Total Assault"
+                    title={t("content.totalAssault")}
                     raids={raidData.raids}
                     raidType="raids"
                     onSetRaid={handleSetRaid}
@@ -179,7 +185,7 @@ const ContentPage = () => {
                     showStatus={showStatus}
                 />
                 <RaidSection
-                    title="Grand Assault"
+                    title={t("content.grandAssault")}
                     raids={raidData.eliminateRaids}
                     raidType="eliminateraids"
                     onSetRaid={handleSetRaid}
@@ -187,7 +193,7 @@ const ContentPage = () => {
                     showStatus={showStatus}
                 />
                 <RaidSection
-                    title="Joint Firing Drill"
+                    title={t("content.jointFiringDrill")}
                     raids={raidData.timeAttackDungeons}
                     raidType="timeattackdungeons"
                     onSetRaid={handleSetRaid}
@@ -195,7 +201,7 @@ const ContentPage = () => {
                     showStatus={showStatus}
                 />
                 <RaidSection
-                    title="Final Restriction Release"
+                    title={t("content.finalRestrictionRelease")}
                     raids={raidData.multiFloorRaids}
                     raidType="multifloreraids"
                     onSetRaid={handleSetRaid}

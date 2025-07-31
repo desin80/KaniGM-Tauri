@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import "./HomePage.css";
 
@@ -7,6 +8,8 @@ import logoLarge from "../assets/logo_large.png";
 import arenaIcon from "../assets/attack_icon.png";
 
 const HomePage = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="flex-grow flex flex-col items-center justify-center relative overflow-hidden p-5 sm:p-8 md:p-12 text-center">
             <div>
@@ -29,10 +32,10 @@ const HomePage = () => {
                                 />
                                 <div className="shortcut-text-content">
                                     <h5 className="shortcut-title">
-                                        Character
+                                        {t("home.character.title")}
                                     </h5>
                                     <p className="shortcut-description">
-                                        View and edit your character profiles.
+                                        {t("home.character.description")}
                                     </p>
                                 </div>
                             </div>
@@ -49,9 +52,11 @@ const HomePage = () => {
                                     alt="Arena Icon"
                                 />
                                 <div className="shortcut-text-content">
-                                    <h5 className="shortcut-title">Arena</h5>
+                                    <h5 className="shortcut-title">
+                                        {t("home.arena.title")}
+                                    </h5>
                                     <p className="shortcut-description">
-                                        Check battle records and modify dummy.
+                                        {t("home.arena.description")}
                                     </p>
                                 </div>
                             </div>
@@ -69,10 +74,10 @@ const HomePage = () => {
                                 />
                                 <div className="shortcut-text-content">
                                     <h5 className="shortcut-title">
-                                        Game Contents
+                                        {t("home.content.title")}
                                     </h5>
                                     <p className="shortcut-description">
-                                        Switch content schedules.
+                                        {t("home.content.description")}
                                     </p>
                                 </div>
                             </div>
@@ -89,9 +94,11 @@ const HomePage = () => {
                                     alt="CMD Icon"
                                 />
                                 <div className="shortcut-text-content">
-                                    <h5 className="shortcut-title">Command</h5>
+                                    <h5 className="shortcut-title">
+                                        {t("home.command.title")}
+                                    </h5>
                                     <p className="shortcut-description">
-                                        Execute commands.
+                                        {t("home.command.description")}
                                     </p>
                                 </div>
                             </div>

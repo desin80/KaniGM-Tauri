@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 
 const getNestedValue = (obj, path) => {
@@ -11,6 +12,7 @@ const ArenaCharacterEditModal = ({
     onClose,
     onSave,
 }) => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState(
         JSON.parse(JSON.stringify(characterData))
     );
@@ -106,12 +108,12 @@ const ArenaCharacterEditModal = ({
                     >
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Character Details
+                                {t("character.title")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                                 <div className="relative sm:col-span-2">
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Unique ID:
+                                        {t("character.uniqueId")}:
                                     </label>
                                     <input
                                         type="text"
@@ -127,7 +129,9 @@ const ArenaCharacterEditModal = ({
                                                 150
                                             )
                                         }
-                                        placeholder="Search by ID or Name..."
+                                        placeholder={t(
+                                            "common.searchByIdOrName"
+                                        )}
                                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
                                     />
                                     {isDropdownOpen && (
@@ -164,7 +168,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Star Grade:
+                                        {t("character.starGrade")}:
                                     </label>
                                     <input
                                         type="number"
@@ -187,7 +191,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Level:
+                                        {t("character.level")}:
                                     </label>
                                     <input
                                         type="number"
@@ -210,7 +214,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Favor Rank:
+                                        {t("character.favorRank")}:
                                     </label>
                                     <input
                                         type="number"
@@ -236,12 +240,12 @@ const ArenaCharacterEditModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Skills
+                                {t("character.skills")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        EX Skill:
+                                        {t("character.exSkill")}:
                                     </label>
                                     <input
                                         type="number"
@@ -264,7 +268,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Normal Skill:
+                                        {t("character.normalSkill")}:
                                     </label>
                                     <input
                                         type="number"
@@ -287,7 +291,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Passive Skill:
+                                        {t("character.passiveSkill")}:
                                     </label>
                                     <input
                                         type="number"
@@ -310,7 +314,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Sub Skill:
+                                        {t("character.subSkill")}:
                                     </label>
                                     <input
                                         type="number"
@@ -336,12 +340,12 @@ const ArenaCharacterEditModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Potential Stats
+                                {t("character.potentialStats")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-3">
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        MaxHP:
+                                        {t("character.maxHP")}:
                                     </label>
                                     <input
                                         type="number"
@@ -364,7 +368,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Attack:
+                                        {t("character.attack")}:
                                     </label>
                                     <input
                                         type="number"
@@ -387,7 +391,7 @@ const ArenaCharacterEditModal = ({
                                 </div>
                                 <div>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Heal:
+                                        {t("character.heal")}:
                                     </label>
                                     <input
                                         type="number"
@@ -413,12 +417,12 @@ const ArenaCharacterEditModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Weapon
+                                {t("character.weapon")}
                             </legend>
                             {weapon ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Level:
+                                        {t("character.level")}:
                                         <input
                                             type="number"
                                             value={
@@ -439,7 +443,7 @@ const ArenaCharacterEditModal = ({
                                         />
                                     </label>
                                     <label className="block text-xs font-medium text-gray-700">
-                                        Star Grade:
+                                        {t("character.starGrade")}:
                                         <input
                                             type="number"
                                             value={
@@ -462,14 +466,14 @@ const ArenaCharacterEditModal = ({
                                 </div>
                             ) : (
                                 <div className="text-gray-500 italic text-center py-2">
-                                    N/A
+                                    {t("common.na")}
                                 </div>
                             )}
                         </fieldset>
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Equipment Tiers
+                                {t("character.equipmentTiers")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-3">
                                 {[0, 1, 2].map((i) => (
@@ -482,7 +486,7 @@ const ArenaCharacterEditModal = ({
                                                     : ""
                                             }
                                         >
-                                            Eq. {i + 1} Tier:
+                                            Eq. {i + 1} {t("character.tier")}:
                                         </label>
                                         <input
                                             type="number"
@@ -504,7 +508,7 @@ const ArenaCharacterEditModal = ({
                                             disabled={!equippedEquipment?.[i]}
                                             placeholder={
                                                 !equippedEquipment?.[i]
-                                                    ? "N/A"
+                                                    ? t("common.na")
                                                     : ""
                                             }
                                         />
@@ -515,14 +519,14 @@ const ArenaCharacterEditModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Gear Tier
+                                {t("character.gearTier")}
                             </legend>
                             <div>
                                 <label
                                     className="block text-xs font-medium text-gray-700"
                                     title={gear ? `UID: ${gear.uniqueId}` : ""}
                                 >
-                                    Tier:
+                                    {t("character.tier")}:
                                 </label>
                                 <input
                                     type="number"
@@ -537,7 +541,7 @@ const ArenaCharacterEditModal = ({
                                     max="2"
                                     className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
                                     disabled={!gear}
-                                    placeholder={!gear ? "N/A" : ""}
+                                    placeholder={!gear ? t("common.na") : ""}
                                 />
                             </div>
                         </fieldset>
@@ -549,7 +553,7 @@ const ArenaCharacterEditModal = ({
                         onClick={onClose}
                     >
                         <div className="skewed-button-content">
-                            <span>Cancel</span>
+                            <span>{t("common.cancel")}</span>
                         </div>
                     </button>
                     <button
@@ -557,7 +561,7 @@ const ArenaCharacterEditModal = ({
                         onClick={() => onSave(formData)}
                     >
                         <div className="skewed-button-content">
-                            <span>Save</span>
+                            <span>{t("common.save")}</span>
                         </div>
                     </button>
                 </div>

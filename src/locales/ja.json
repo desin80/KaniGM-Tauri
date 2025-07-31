@@ -1,0 +1,132 @@
+{
+    "nav": {
+        "character": "キャラクター",
+        "arena": "アリーナ",
+        "raid": "レイド",
+        "command": "コマンド",
+        "uid": "UID"
+    },
+    "home": {
+        "character": {
+            "title": "キャラクター",
+            "description": "キャラクタープロフィールを表示・編集します。"
+        },
+        "arena": {
+            "title": "アリーナ",
+            "description": "バトル記録を確認し、ダミーを変更します。"
+        },
+        "content": {
+            "title": "ゲームコンテンツ",
+            "description": "コンテンツスケジュールを切り替えます。"
+        },
+        "command": {
+            "title": "コマンド",
+            "description": "コマンドを実行します。"
+        }
+    },
+    "character": {
+        "title": "キャラクター管理",
+        "search": "名前またはユニークIDで検索",
+        "searchButton": "検索",
+        "loading": "キャラクター読み込み中...",
+        "noCharacters": "キャラクターが見つかりません。",
+        "loadError": "データの読み込みに失敗しました",
+        "starGrade": "星級",
+        "level": "レベル",
+        "favorRank": "好感度",
+        "uniqueId": "ユニークID",
+        "serverId": "サーバーID",
+        "skills": "スキル",
+        "exSkill": "EXスキル",
+        "normalSkill": "ノーマルスキル",
+        "passiveSkill": "パッシブスキル",
+        "subSkill": "サブスキル",
+        "potentialStats": "ポテンシャルステータス",
+        "maxHP": "最大HP",
+        "attack": "攻撃力",
+        "heal": "治癒力",
+        "weapon": "武器",
+        "equipment": "装備ティア",
+        "equipmentTiers": "装備ティア",
+        "gear": "ギア",
+        "gearTier": "ギアティア",
+        "tier": "ティア",
+        "characterStats": "キャラクターステータス",
+        "imageNotFound": "画像が見つかりません",
+        "idLabel": "ID"
+    },
+    "arena": {
+        "title": "アリーナ管理",
+        "mainTeam": "メインチーム",
+        "supportTeam": "サポートチーム",
+        "battleRecords": "バトル記録",
+        "teamSummaries": "チーム総括",
+        "loadingRecords": "記録読み込み中...",
+        "loadingSummaries": "総括読み込み中...",
+        "loadingDummyTeam": "ダミーチーム読み込み中...",
+        "noRecords": "バトル記録が見つかりません。",
+        "noSummaries": "チーム総括が見つかりません。",
+        "savingOrder": "新しい順序を保存中...",
+        "orderSaved": "順序が正常に保存されました！",
+        "errorSavingOrder": "順序保存エラー",
+        "confirmDeleteRecord": "このバトル記録を削除してもよろしいですか？",
+        "recordDeleted": "記録が正常に削除されました。",
+        "confirmDeleteSummary": "このチーム総括を削除してもよろしいですか？\\nこのチームに関連するすべてのバトル記録も削除されます。",
+        "summaryDeleted": "総括と関連記録が正常に削除されました。",
+        "characterSaved": "キャラクターが正常に保存されました！",
+        "winRate": "勝率",
+        "deleteSummary": "この総括を削除"
+    },
+    "content": {
+        "title": "コンテンツ管理",
+        "totalAssault": "総力戦",
+        "grandAssault": "大決戦",
+        "jointFiringDrill": "合同火力演習",
+        "finalRestrictionRelease": "最終制限解除",
+        "setting": "設定中...",
+        "set": "設定",
+        "raidSetSuccess": "レイドの設定が完了しました (ID: {{id}})！",
+        "raidSetError": "レイド設定エラー: {{error}}",
+        "loadingData": "データ読み込み中...",
+        "noData": "利用可能なデータがありません。",
+        "detailsFor": "{{title}}の詳細",
+        "notImplemented": "まだ実装されていません。",
+        "selectBoss": "詳細を表示するボスを選択してください。"
+    },
+    "command": {
+        "title": "コマンド実行器",
+        "placeholder": "コマンドを入力 (例: /help)",
+        "execute": "実行",
+        "executing": "実行中...",
+        "networkError": "ネットワークエラーが発生しました。詳細はコンソールを確認してください。",
+        "initialMessage": "コマンドを入力して実行を押してください。",
+        "pleaseEnter": "コマンドを入力してください。",
+        "executingCommand": "\"{{command}}\" を実行中...",
+        "unknownError": "不明なエラーが発生しました。"
+    },
+    "common": {
+        "save": "保存",
+        "cancel": "キャンセル",
+        "close": "閉じる",
+        "delete": "削除",
+        "loading": "読み込み中...",
+        "error": "エラー",
+        "success": "成功",
+        "win": "勝利",
+        "lose": "敗北",
+        "attacking": "攻撃側",
+        "defending": "守備側",
+        "vs": "VS",
+        "na": "N/A",
+        "dragToReorder": "ドラッグして並び替え",
+        "clickToEdit": "クリックして編集",
+        "deleteRecord": "この記録を削除",
+        "searchByIdOrName": "IDまたは名前で検索...",
+        "errorSaving": "保存エラー: {{error}}"
+    },
+    "languages": {
+        "en": "English",
+        "zh": "中文",
+        "ja": "日本語"
+    }
+}

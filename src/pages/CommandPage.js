@@ -1,32 +1,41 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./CommandPage.css";
 
 const CommandPage = () => {
+    const { t } = useTranslation();
     const [command, setCommand] = useState("");
 
     const [result, setResult] = useState({
-        text: "Enter a command and press Execute.",
+        text: "",
         status: "idle",
     });
 
     const [isLoading, setIsLoading] = useState(false);
+
+    React.useEffect(() => {
+        setResult({ text: t("command.initialMessage"), status: "idle" });
+    }, [t]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const commandText = command.trim();
 
         if (!commandText) {
-            setResult({ text: "Please enter a command.", status: "error" });
+            setResult({ text: t("command.pleaseEnter"), status: "error" });
             return;
         }
 
         setIsLoading(true);
-        setResult({ text: `Executing "${commandText}"...`, status: "pending" });
+        setResult({
+            text: t("command.executingCommand", { command: commandText }),
+            status: "pending",
+        });
 
         try {
             const responseText = await api.executeCommand(commandText);
-            let processedText = responseText || "An unknown error occurred.";
+            let processedText = responseText || t("command.unknownError");
 
             if (processedText.startsWith('"') && processedText.endsWith('"')) {
                 processedText = processedText.substring(
@@ -39,8 +48,7 @@ const CommandPage = () => {
             setResult({ text: processedText, status: "success" });
         } catch (error) {
             console.error("Fetch error:", error);
-            const errorMsg =
-                "A network error occurred. Check the console for details.";
+            const errorMsg = t("command.networkError");
             setResult({ text: errorMsg, status: "error" });
         } finally {
             setIsLoading(false);
@@ -62,7 +70,7 @@ const CommandPage = () => {
         <div className="flex-grow flex flex-col items-center justify-center p-4">
             <div className="command-card">
                 <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-                    Command Executor
+                    {t("command.title")}
                 </h2>
                 <form id="commandForm" onSubmit={handleSubmit}>
                     <div className="command-form-container">
@@ -70,7 +78,7 @@ const CommandPage = () => {
                             type="text"
                             id="commandInput"
                             className="command-input"
-                            placeholder="Enter command (e.g., /help)"
+                            placeholder={t("command.placeholder")}
                             value={command}
                             onChange={(e) => setCommand(e.target.value)}
                             disabled={isLoading}
@@ -83,7 +91,9 @@ const CommandPage = () => {
                         >
                             <div className="skewed-button-content">
                                 <span>
-                                    {isLoading ? "Executing..." : "Execute"}
+                                    {isLoading
+                                        ? t("command.executing")
+                                        : t("command.execute")}
                                 </span>
                             </div>
                         </button>
