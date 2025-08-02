@@ -90,7 +90,9 @@
         "noData": "没有可用数据。",
         "detailsFor": "{{title}} 的详细信息",
         "notImplemented": "尚未实现。",
-        "selectBoss": "选择一个Boss以查看详细信息。"
+        "selectBoss": "选择一个Boss以查看详细信息。",
+        "noRecords": "未找到此Boss的对战记录。",
+        "noRecordsForArmor": "未找到此护甲类型的对战记录。"
     },
     "command": {
         "title": "命令执行器",
@@ -125,7 +127,6 @@
     },
     "languages": {
         "en": "English",
-        "zh": "中文",
-        "ja": "日本語"
+        "zh": "中文"
     }
 }

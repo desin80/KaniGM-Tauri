@@ -8,7 +8,6 @@ const LanguageSwitcher = () => {
     const languages = [
         { code: "en", name: t("languages.en") },
         { code: "zh", name: t("languages.zh") },
-        { code: "ja", name: t("languages.ja") },
     ];
 
     const changeLanguage = (lng) => {

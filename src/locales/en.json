@@ -91,7 +91,9 @@
         "noData": "No data available.",
         "detailsFor": "Details for {{title}}",
         "notImplemented": "Not Implemented Yet.",
-        "selectBoss": "Select a Boss to view details."
+        "selectBoss": "Select a Boss to view details.",
+        "noRecords": "No battle records found for this boss.",
+        "noRecordsForArmor": "No battle records found for this armor type."
     },
     "command": {
         "title": "Command Executor",
@@ -126,7 +128,6 @@
     },
     "languages": {
         "en": "English",
-        "zh": "中文",
-        "ja": "日本語"
+        "zh": "中文"
     }
 }

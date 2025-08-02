@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import charStarIcon from "../assets/char_star.png";
 import weaponStarIcon from "../assets/weapon_star.png";
 
@@ -71,10 +72,12 @@ const RaidDetailsPanel = ({
     isLoading,
     onDeleteRecord,
 }) => {
+    const { t } = useTranslation();
+
     if (!selectedRaid) {
         return (
             <div className="boss-details-panel">
-                <p>Select a Boss to view details.</p>
+                <p>{t("content.selectBoss")}</p>
             </div>
         );
     }
@@ -82,7 +85,7 @@ const RaidDetailsPanel = ({
     if (isLoading) {
         return (
             <div className="boss-details-panel">
-                <p>Loading records...</p>
+                <p>{t("content.loadingData")}</p>
             </div>
         );
     }
@@ -111,7 +114,7 @@ const RaidDetailsPanel = ({
             />
 
             {sortedRecords.length === 0 ? (
-                <p>No battle records found for this boss.</p>
+                <p>{t("content.noRecords")}</p>
             ) : (
                 sortedRecords.map((record) => {
                     const difficultyName =

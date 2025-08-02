@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import charStarIcon from "../assets/char_star.png";
 import weaponStarIcon from "../assets/weapon_star.png";
@@ -14,12 +15,12 @@ const difficultyMap = {
     7: "Lunatic",
 };
 
-// CharacterIcon 组件保持不变
 const CharacterIcon = ({ charInfo }) => {
     const { id, level, starGrade, weaponStarGrade } = charInfo;
     const hasWeapon = weaponStarGrade > 0;
     const animationClass = hasWeapon ? "has-weapon-animation" : "";
     const titleText = `ID: ${id}\nLevel: ${level}\nStars: ${starGrade}★\nWeapon: ${weaponStarGrade}★`;
+
     return (
         <div
             className={`rs-char-card raid-char-card ${animationClass}`}
@@ -67,13 +68,17 @@ const CharacterIcon = ({ charInfo }) => {
 };
 
 const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
+    const { t } = useTranslation();
     const [records, setRecords] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [activeArmor, setActiveArmor] = useState("HeavyArmor");
     const armorTypes = ["HeavyArmor", "LightArmor", "Unarmed", "ElasticArmor"];
 
     useEffect(() => {
-        if (!selectedRaid) return;
+        if (!selectedRaid) {
+            setIsLoading(false);
+            return;
+        }
 
         const fetchRecords = async () => {
             setIsLoading(true);
@@ -95,7 +100,7 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
     if (!selectedRaid) {
         return (
             <div className="boss-details-panel">
-                <p>Select a Boss to view details.</p>
+                <p>{t("content.selectBoss")}</p>
             </div>
         );
     }
@@ -103,7 +108,7 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
     if (isLoading) {
         return (
             <div className="boss-details-panel">
-                <p>Loading records...</p>
+                <p>{t("content.loadingData")}</p>
             </div>
         );
     }
@@ -112,7 +117,6 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
         .filter((rec) => rec.armor === activeArmor)
         .sort((a, b) => b.score - a.score);
 
-    // 辅助函数，用于生成 CSS 类名
     const getArmorClass = (armor) => {
         if (armor === "HeavyArmor") return "heavy";
         if (armor === "LightArmor") return "light";
@@ -150,7 +154,7 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
             </div>
 
             {filteredRecords.length === 0 ? (
-                <p>No battle records found for this armor type.</p>
+                <p>{t("content.noRecordsForArmor")}</p>
             ) : (
                 filteredRecords.map((record) => (
                     <div key={record.battleId} className="raid-record-card">
