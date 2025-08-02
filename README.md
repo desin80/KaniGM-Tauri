@@ -4,5 +4,5 @@
 
 2. Open a new terminal window and navigate to the project's root directory.
 
-3. Run `npm install`
+3. Run `npm install --legacy-peer-deps`
 4. Run `npm start`

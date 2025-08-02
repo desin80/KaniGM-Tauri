@@ -2,7 +2,7 @@
     "nav": {
         "character": "角色",
         "arena": "竞技场",
-        "raid": "团本",
+        "raid": "周期战役",
         "command": "命令",
         "uid": "UID"
     },
@@ -13,7 +13,7 @@
         },
         "arena": {
             "title": "竞技场",
-            "description": "查看战斗记录和修改虚拟队伍。"
+            "description": "查看战斗记录和修改假人队伍。"
         },
         "content": {
             "title": "游戏内容",
@@ -26,7 +26,7 @@
     },
     "character": {
         "title": "角色管理",
-        "search": "按名称或唯一ID搜索",
+        "search": "按名称或角色ID搜索",
         "searchButton": "搜索",
         "loading": "加载角色中...",
         "noCharacters": "未找到角色。",
@@ -34,7 +34,7 @@
         "starGrade": "星级",
         "level": "等级",
         "favorRank": "好感度",
-        "uniqueId": "唯一ID",
+        "uniqueId": "角色ID",
         "serverId": "服务器ID",
         "skills": "技能",
         "exSkill": "EX技能",
@@ -46,18 +46,18 @@
         "attack": "攻击力",
         "heal": "治疗力",
         "weapon": "武器",
-        "equipment": "装备等级",
+        "equipment": "装备",
         "equipmentTiers": "装备等级",
-        "gear": "饰品",
-        "gearTier": "饰品等级",
+        "gear": "爱用品",
+        "gearTier": "爱用品等级",
         "tier": "等级",
         "characterStats": "角色属性",
         "idLabel": "ID"
     },
     "arena": {
         "title": "竞技场管理",
-        "mainTeam": "主力队伍",
-        "supportTeam": "支援队伍",
+        "mainTeam": "突击",
+        "supportTeam": "支援",
         "battleRecords": "战斗记录",
         "teamSummaries": "队伍总结",
         "loadingRecords": "加载记录中...",
@@ -80,12 +80,12 @@
         "title": "内容管理",
         "totalAssault": "总力战",
         "grandAssault": "大决战",
-        "jointFiringDrill": "联合射击演习",
-        "finalRestrictionRelease": "最终限制解除",
+        "jointFiringDrill": "综合战术测试",
+        "finalRestrictionRelease": "限制解除决战",
         "setting": "设置中...",
         "set": "设置",
-        "raidSetSuccess": "成功设置团本 (ID: {{id}})！",
-        "raidSetError": "设置团本时出错: {{error}}",
+        "raidSetSuccess": "成功设置 (ID: {{id}})！",
+        "raidSetError": "设置时出错: {{error}}",
         "loadingData": "加载数据中...",
         "noData": "没有可用数据。",
         "detailsFor": "{{title}} 的详细信息",
