@@ -431,6 +431,39 @@ const api = {
             }),
         }).then((response) => this._handleResponse(response));
     },
+
+    // --- Settings APIs ---
+    // currently hardcoded for testing
+    /**
+     * Fetches the current account settings.
+     * @returns {Promise<object>} A promise that resolves with the settings object.
+     */
+    getSettings: function () {
+        console.warn("API call 'getSettings' is using mock data.");
+
+        return Promise.resolve({
+            trackpvp: true,
+            usefinal: false,
+            bypassteam: true,
+            changetime: {
+                enabled: true,
+                offset: 5,
+            },
+        });
+    },
+
+    /**
+     * Saves the account settings.
+     * @param {object} settings - The complete settings object to save.
+     * @returns {Promise<object>} A promise that resolves on successful save.
+     */
+    setSettings: function (settings) {
+        console.log("API call 'setSettings' received:", settings);
+        return Promise.resolve({
+            status: "Success",
+            message: "Settings saved successfully.",
+        });
+    },
 };
 
 export default api;

@@ -69,9 +69,6 @@ const CommandPage = () => {
     return (
         <div className="flex-grow flex flex-col items-center justify-center p-4">
             <div className="command-card">
-                <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-                    {t("command.title")}
-                </h2>
                 <form id="commandForm" onSubmit={handleSubmit}>
                     <div className="command-form-container">
                         <input

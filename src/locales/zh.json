@@ -4,6 +4,7 @@
         "arena": "竞技场",
         "raid": "周期战役",
         "command": "命令",
+        "settings": "设置",
         "uid": "UID"
     },
     "home": {
@@ -16,12 +17,16 @@
             "description": "查看战斗记录和修改假人队伍。"
         },
         "content": {
-            "title": "游戏内容",
-            "description": "切换内容时间表。"
+            "title": "周期战役",
+            "description": "切换周期战役和查看记录。"
         },
         "command": {
             "title": "命令",
             "description": "执行命令。"
+        },
+        "settings": {
+            "title": "设置",
+            "description": "修改账户设置。"
         }
     },
     "character": {
@@ -124,6 +129,31 @@
         "deleteRecord": "删除此记录",
         "searchByIdOrName": "按ID或名称搜索...",
         "errorSaving": "保存时出错: {{error}}"
+    },
+    "settings": {
+        "trackpvp": {
+            "title": "追踪竞技场战斗 (trackpvp)",
+            "description": "启用/禁用竞技场战斗数据导出。"
+        },
+        "usefinal": {
+            "title": "开启限制解除决战 (usefinal)",
+            "description": "启用/禁用限制解除决战。"
+        },
+        "bypassteam": {
+            "title": "绕过队伍部署 (bypassteam)",
+            "description": "启用/禁用队伍部署绕过。"
+        },
+        "changetime": {
+            "title": "操控游戏时间 (changetime)",
+            "description": "启用以重置为当前时间，或设置天数偏移。"
+        },
+        "saveButton": "保存设置",
+        "loading": "加载设置中...",
+        "saving": "正在保存设置...",
+        "saveSuccess": "设置保存成功！",
+        "loadError": "加载设置出错: {{message}}",
+        "saveError": "保存设置出错: {{message}}",
+        "daysPlaceholder": "天数"
     },
     "languages": {
         "en": "English",

@@ -81,6 +81,12 @@ const Layout = () => {
                                     >
                                         {t("nav.command")}
                                     </Link>
+                                    <Link
+                                        to="/settings"
+                                        className="hover:bg-gray-200 px-3 py-2 rounded-md topbar-title transition-colors"
+                                    >
+                                        {t("nav.settings")}
+                                    </Link>
                                 </div>
                             </div>
                         </div>

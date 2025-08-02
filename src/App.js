@@ -7,6 +7,7 @@ import CommandPage from "./pages/CommandPage";
 import CharacterPage from "./pages/CharacterPage";
 import ArenaPage from "./pages/ArenaPage";
 import ContentPage from "./pages/ContentPage";
+import SettingsPage from "./pages/SettingsPage";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                     <Route path="arena" element={<ArenaPage />} />
                     <Route path="content" element={<ContentPage />} />
                     <Route path="command" element={<CommandPage />} />
+                    <Route path="settings" element={<SettingsPage />} />
                     <Route path="*" element={<HomePage />} />
                 </Route>
             </Routes>
