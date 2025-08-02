@@ -28,15 +28,39 @@ const formatRaidData = (item, raidTypeKey) => {
         bossName = detailParts[0];
         terrain = detailParts.length > 1 ? detailParts[1] : "";
     }
+
     const aliasMapping = { ShiroKuro: "Shirokuro", Kaitenger: "KaitenFxMk0" };
     let finalBossName = aliasMapping[bossName] || bossName;
-    let bgImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_LobbyBG${
-        terrain ? `_${terrain}` : ""
-    }.png`;
+
+    const terrainAliasMapping = {
+        KaitenFxMk0: "Outdoor",
+        HOD: "Street",
+        Shirokuro: "Street",
+        EN0005: "Indoor",
+        HoverCraft: "Outdoor",
+        EN0006: "Street",
+        Chesed: "Indoor",
+        Binah: "Outdoor",
+    };
+
+    const terrainKey = terrain;
+    let finalTerrain = terrain ? `_${terrain}` : "";
+
+    if (
+        terrainAliasMapping[finalBossName] &&
+        terrainAliasMapping[finalBossName] === terrainKey
+    ) {
+        finalTerrain = "";
+    }
+
+    let portraitImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_Lobby.png`;
+    let bgImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_LobbyBG${finalTerrain}.png`;
+
     if (raidTypeKey === "multifloreraids") {
         bgImageUrl =
             "https://schaledb.com/images/raid/MultiFloorRaid_Floor_BG.png";
     }
+
     const date =
         item.date ||
         item.SeasonStartData ||
@@ -47,7 +71,7 @@ const formatRaidData = (item, raidTypeKey) => {
         title: `${item.seasonId || item.Id}. ${item.bossDetail}`,
         date,
         bgImageUrl,
-        portraitImageUrl: `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_Lobby.png`,
+        portraitImageUrl,
     };
 };
 

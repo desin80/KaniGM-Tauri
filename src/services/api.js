@@ -199,20 +199,104 @@ const api = {
         console.warn("API call 'getRaidRecordsBySeason' is using mock data.");
         return Promise.resolve([
             {
-                battleId: "rec1",
-                score: 9876543,
+                battleId: "rec_d1",
+                score: 1000000,
+                difficulty: 1,
+                teams: {
+                    1: [
+                        {
+                            id: 10001,
+                            level: 60,
+                            starGrade: 3,
+                            weaponStarGrade: 1,
+                        },
+                        {
+                            id: 10002,
+                            level: 60,
+                            starGrade: 3,
+                            weaponStarGrade: 1,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec_d2",
+                score: 2000000,
+                difficulty: 2,
+                teams: {
+                    1: [
+                        {
+                            id: 10003,
+                            level: 65,
+                            starGrade: 3,
+                            weaponStarGrade: 2,
+                        },
+                        {
+                            id: 10004,
+                            level: 65,
+                            starGrade: 4,
+                            weaponStarGrade: 1,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec_d3",
+                score: 3500000,
+                difficulty: 3,
+                teams: {
+                    1: [
+                        {
+                            id: 10005,
+                            level: 70,
+                            starGrade: 4,
+                            weaponStarGrade: 2,
+                        },
+                        {
+                            id: 10006,
+                            level: 70,
+                            starGrade: 4,
+                            weaponStarGrade: 2,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec_d4",
+                score: 5000000,
+                difficulty: 4,
+                teams: {
+                    1: [
+                        {
+                            id: 10007,
+                            level: 75,
+                            starGrade: 4,
+                            weaponStarGrade: 2,
+                        },
+                        {
+                            id: 10008,
+                            level: 75,
+                            starGrade: 4,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec_d5",
+                score: 6500000,
                 difficulty: 5,
                 teams: {
                     1: [
                         {
-                            id: 10004,
-                            level: 85,
+                            id: 10009,
+                            level: 80,
                             starGrade: 5,
-                            weaponStarGrade: 3,
+                            weaponStarGrade: 2,
                         },
                         {
-                            id: 10022,
-                            level: 85,
+                            id: 10010,
+                            level: 80,
                             starGrade: 5,
                             weaponStarGrade: 2,
                         },
@@ -220,19 +304,40 @@ const api = {
                 },
             },
             {
-                battleId: "rec2",
-                score: 12345678,
+                battleId: "rec_d6",
+                score: 8000000,
                 difficulty: 6,
                 teams: {
                     1: [
                         {
-                            id: 10000,
+                            id: 10011,
+                            level: 85,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                        {
+                            id: 10012,
+                            level: 85,
+                            starGrade: 5,
+                            weaponStarGrade: 3,
+                        },
+                    ],
+                },
+            },
+            {
+                battleId: "rec_d7",
+                score: 9500000,
+                difficulty: 7,
+                teams: {
+                    1: [
+                        {
+                            id: 10013,
                             level: 90,
                             starGrade: 5,
                             weaponStarGrade: 3,
                         },
                         {
-                            id: 10031,
+                            id: 10014,
                             level: 90,
                             starGrade: 5,
                             weaponStarGrade: 3,

@@ -99,6 +99,12 @@
         "noRecords": "未找到此Boss的对战记录。",
         "noRecordsForArmor": "未找到此护甲类型的对战记录。"
     },
+    "armorTypes": {
+        "heavy": "重装甲",
+        "light": "轻装甲",
+        "unarmed": "特殊装甲",
+        "elastic": "弹力装甲"
+    },
     "command": {
         "title": "命令执行器",
         "placeholder": "输入命令 (例如: /help)",

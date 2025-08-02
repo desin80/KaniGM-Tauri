@@ -88,14 +88,17 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
                 );
                 setRecords(fetchedRecords);
             } catch (error) {
-                showStatus(`Failed to load records: ${error.message}`, true);
+                showStatus(
+                    t("content.loadRecordsError", { message: error.message }),
+                    true
+                );
                 setRecords([]);
             } finally {
                 setIsLoading(false);
             }
         };
         fetchRecords();
-    }, [selectedRaid, showStatus]);
+    }, [selectedRaid, showStatus, t]);
 
     if (!selectedRaid) {
         return (
@@ -125,8 +128,10 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
         return "";
     };
 
+    const panelClassName = `boss-details-panel boss-details-panel--${getArmorClass(activeArmor)}`;
+
     return (
-        <div className="boss-details-panel">
+        <div className={panelClassName}>
             <h3
                 style={{
                     fontSize: "1.5rem",
@@ -148,7 +153,7 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
                         )} ${activeArmor === armor ? "armor-tab--active" : ""}`}
                         onClick={() => setActiveArmor(armor)}
                     >
-                        {armor.replace("Armor", "")}
+                        {t(`armorTypes.${getArmorClass(armor)}`)}
                     </button>
                 ))}
             </div>

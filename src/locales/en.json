@@ -100,6 +100,12 @@
         "noRecords": "No battle records found for this boss.",
         "noRecordsForArmor": "No battle records found for this armor type."
     },
+    "armorTypes": {
+        "heavy": "Heavy",
+        "light": "Light",
+        "unarmed": "Unarmed",
+        "elastic": "Elastic"
+    },
     "command": {
         "title": "Command Executor",
         "placeholder": "Enter command (e.g., /help)",

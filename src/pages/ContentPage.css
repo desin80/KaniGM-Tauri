@@ -62,7 +62,6 @@ details[open]>summary::after {
 
 .inner-content-grid {
     display: grid;
-    /* 左边 43%，右边 57% */
     grid-template-columns: 4.3fr 5.7fr;
     gap: 1.5rem;
 }
@@ -75,6 +74,8 @@ details[open]>summary::after {
 }
 
 .boss-details-panel {
+    position: relative; 
+    overflow: hidden; 
     background-color: rgba(243, 244, 246, 0.7); 
     backdrop-filter: blur(3px);
     border-radius: 12px;
@@ -82,6 +83,7 @@ details[open]>summary::after {
     color: #374151;
     overflow-y: auto;
     max-height: 500px;
+    z-index: 0; 
 }
 
 .boss-details-panel p {
@@ -90,6 +92,7 @@ details[open]>summary::after {
     text-align: center;
     padding-top: 2rem;
 }
+
 
 .raid-item-container {
     display: flex;
@@ -253,15 +256,62 @@ details[open]>summary::after {
     margin-top: -0.5rem;
 }
 
-.difficulty-insane { background-color: #be185d; }
-.difficulty-torment { background-color: #7e22ce; }
-.difficulty-extreme { background-color: #c2410c; }
-.difficulty-hardcore { background-color: #b91c1c; }
-.difficulty-veryhard { background-color: #1d4ed8; }
-.difficulty-hard { background-color: #15803d; }
-.difficulty-normal { background-color: #6b7280; }
-.difficulty-lunatic { background: linear-gradient(45deg, #7e22ce, #be185d, #c2410c); } 
-.difficulty-unknown { background-color: #4b5563; }
+
+.difficulty-normal { background-color: #6b7280; } /* gray-500 */
+.difficulty-unknown { background-color: #4b5563; } /* gray-600 */
+.difficulty-hard { background-color: #1d4ed8; } /* blue-700 */
+.difficulty-veryhard { background-color: #7e22ce; } /* purple-700 */
+.difficulty-hardcore { background-color: #c2410c; } /* orange-700 */
+.difficulty-extreme { background-color: #b91c1c; } /* red-700 */
+.difficulty-insane { background-color: #be185d; } /* pink-700 */
+
+.difficulty-torment { 
+    background: linear-gradient(45deg, #7e22ce, #be185d, #c2410c); 
+}
+
+.difficulty-lunatic {
+    position: relative;
+    overflow: hidden; 
+    background: linear-gradient(-45deg, #7e22ce, #be185d, #c2410c, #b45309);
+    background-size: 400% 400%;
+    animation: gradient-animation 5s ease infinite;
+}
+
+.difficulty-lunatic::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%; 
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg); 
+    animation: shine-animation 2.5s ease-in-out infinite;
+}
+
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shine-animation {
+    0% {
+        left: -100%; 
+    }
+    40% {
+        left: 120%;
+    }
+    100% {
+        left: 120%;
+    }
+}
 
 .raid-char-card {
     width: 5rem; 
