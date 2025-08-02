@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import attackIcon from "../assets/attack.png";
 import defendIcon from "../assets/defend.png";
 import vsIcon from "../assets/vs.png";
@@ -22,6 +23,7 @@ const TeamAvatars = ({ teamIds, getStudentNameById }) => (
 );
 
 const ArenaSummaryCard = ({ summary, onDelete, getStudentNameById }) => {
+    const { t } = useTranslation();
     const winRate = (summary.winRate * 100).toFixed(0);
 
     return (
@@ -55,13 +57,13 @@ const ArenaSummaryCard = ({ summary, onDelete, getStudentNameById }) => {
                     {summary.wins}W / {summary.losses}L
                 </p>
                 <p className="win-rate font-regular text-sky-600 whitespace-nowrap">
-                    Win Rate: {winRate}%
+                    {t("arena.winRate")}: {winRate}%
                 </p>
             </div>
 
             <div
                 className="delete-record-button"
-                title="Delete this summary"
+                title={t("arena.deleteSummary")}
                 onClick={() =>
                     onDelete(summary.attackingTeamIds, summary.defendingTeamIds)
                 }

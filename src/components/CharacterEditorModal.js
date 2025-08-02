@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const getNestedValue = (obj, path) => {
     const keys = path.split(".");
@@ -19,6 +20,7 @@ const CharacterEditorModal = ({
     onClose,
     onSave,
 }) => {
+    const { t } = useTranslation();
     const [formData, setFormData] = useState(
         JSON.parse(JSON.stringify(characterData))
     );
@@ -100,8 +102,10 @@ const CharacterEditorModal = ({
                                 {localizedName}
                             </h2>
                             <p className="character-ids text-xs text-gray-500">
-                                Unique ID: <span>{character.uniqueId}</span> |
-                                Server ID: <span>{character.serverId}</span>
+                                {t("character.uniqueId")}:{" "}
+                                <span>{character.uniqueId}</span> |
+                                {t("character.serverId")}:{" "}
+                                <span>{character.serverId}</span>
                             </p>
                         </div>
                     </div>
@@ -115,12 +119,12 @@ const CharacterEditorModal = ({
                     >
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Character Stats
+                                {t("character.characterStats")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Star Grade:
+                                        {t("character.starGrade")}:
                                     </span>
                                     <input
                                         type="number"
@@ -143,7 +147,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Level:
+                                        {t("character.level")}:
                                     </span>
                                     <input
                                         type="number"
@@ -166,7 +170,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Favor Rank:
+                                        {t("character.favorRank")}:
                                     </span>
                                     <input
                                         type="number"
@@ -192,12 +196,12 @@ const CharacterEditorModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Skills
+                                {t("character.skills")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        EX Skill:
+                                        {t("character.exSkill")}:
                                     </span>
                                     <input
                                         type="number"
@@ -220,7 +224,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Normal Skill:
+                                        {t("character.normalSkill")}:
                                     </span>
                                     <input
                                         type="number"
@@ -243,7 +247,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Passive Skill:
+                                        {t("character.passiveSkill")}:
                                     </span>
                                     <input
                                         type="number"
@@ -266,7 +270,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Sub Skill:
+                                        {t("character.subSkill")}:
                                     </span>
                                     <input
                                         type="number"
@@ -292,12 +296,12 @@ const CharacterEditorModal = ({
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
-                                Potential Stats
+                                {t("character.potentialStats")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        MaxHP:
+                                        {t("character.maxHP")}:
                                     </span>
                                     <input
                                         type="number"
@@ -320,7 +324,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Attack:
+                                        {t("character.attack")}:
                                     </span>
                                     <input
                                         type="number"
@@ -343,7 +347,7 @@ const CharacterEditorModal = ({
                                 </label>
                                 <label className="block">
                                     <span className="stat-label inline-block">
-                                        Heal:
+                                        {t("character.heal")}:
                                     </span>
                                     <input
                                         type="number"
@@ -370,13 +374,13 @@ const CharacterEditorModal = ({
                         <div className="weapon-stats-container">
                             <fieldset className="border border-gray-300 p-3 rounded-md">
                                 <legend className="text-gray-500 px-1 text-xs">
-                                    Weapon
+                                    {t("character.weapon")}
                                 </legend>
                                 {weapon ? (
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
                                         <label className="block">
                                             <span className="stat-label inline-block">
-                                                Level:
+                                                {t("character.level")}:
                                             </span>
                                             <input
                                                 type="number"
@@ -399,7 +403,7 @@ const CharacterEditorModal = ({
                                         </label>
                                         <label className="block">
                                             <span className="stat-label inline-block">
-                                                Star Grade:
+                                                {t("character.starGrade")}:
                                             </span>
                                             <input
                                                 type="number"
@@ -423,7 +427,7 @@ const CharacterEditorModal = ({
                                     </div>
                                 ) : (
                                     <div className="weapon-internal-na-message">
-                                        N/A
+                                        {t("common.na")}
                                     </div>
                                 )}
                             </fieldset>
@@ -432,7 +436,7 @@ const CharacterEditorModal = ({
                         <div className="equipment-container">
                             <fieldset className="border border-gray-300 p-3 rounded-md">
                                 <legend className="text-gray-500 px-1 text-xs">
-                                    Equipment Tiers
+                                    {t("character.equipmentTiers")}
                                 </legend>
                                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-2 equipment-slots">
                                     {[0, 1, 2].map((i) => (
@@ -484,7 +488,7 @@ const CharacterEditorModal = ({
                                                     : ""
                                             }
                                         >
-                                            Gear:
+                                            {t("character.gear")}:
                                         </span>
                                         <input
                                             type="number"
@@ -504,7 +508,9 @@ const CharacterEditorModal = ({
                                             max="2"
                                             className="number-input form-input"
                                             disabled={!gear}
-                                            placeholder={!gear ? "N/A" : ""}
+                                            placeholder={
+                                                !gear ? t("common.na") : ""
+                                            }
                                         />
                                     </label>
                                 </div>
@@ -520,7 +526,7 @@ const CharacterEditorModal = ({
                             onClick={onClose}
                         >
                             <div className="skewed-button-content">
-                                <span>Close</span>
+                                <span>{t("common.close")}</span>
                             </div>
                         </button>
                         <button
@@ -528,7 +534,7 @@ const CharacterEditorModal = ({
                             onClick={() => onSave(formData)}
                         >
                             <div className="skewed-button-content">
-                                <span>Save</span>
+                                <span>{t("common.save")}</span>
                             </div>
                         </button>
                     </div>

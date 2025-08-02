@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import RaidItem from "./RaidItem";
 import RaidDetailsPanel from "./RaidDetailsPanel";
 import GrandAssaultDetailsPanel from "./GrandAssaultDetailsPanel";
@@ -11,6 +12,7 @@ const RaidSection = ({
     isLoading: isLoadingList,
     showStatus,
 }) => {
+    const { t } = useTranslation();
     const [selectedRaid, setSelectedRaid] = useState(null);
 
     const handleSelectRaid = (raid) => {
@@ -26,12 +28,12 @@ const RaidSection = ({
                         <div className="raid-item-container">
                             {isLoadingList && (
                                 <p className="text-center text-gray-500 py-4">
-                                    Loading data...
+                                    {t("content.loadingData")}
                                 </p>
                             )}
                             {!isLoadingList && raids.length === 0 && (
                                 <p className="text-center text-gray-500 py-4">
-                                    No data available.
+                                    {t("content.noData")}
                                 </p>
                             )}
                             {!isLoadingList &&

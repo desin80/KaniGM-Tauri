@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import "./i18n";
 
 import HomePage from "./pages/HomePage";
 import CommandPage from "./pages/CommandPage";

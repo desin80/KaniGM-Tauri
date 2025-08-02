@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "./Layout.css";
 import logo from "../assets/logo.png";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Layout = () => {
+    const { t } = useTranslation();
+
     useEffect(() => {
         const randomIndex = Math.floor(Math.random() * 8);
         const selectedImage = `bg${randomIndex}.jpg`;
@@ -57,36 +61,36 @@ const Layout = () => {
                                         to="/character"
                                         className="hover:bg-gray-200 px-3 py-2 rounded-md topbar-title transition-colors"
                                     >
-                                        Character
+                                        {t("nav.character")}
                                     </Link>
                                     <Link
                                         to="/arena"
                                         className="hover:bg-gray-200 px-3 py-2 rounded-md topbar-title transition-colors"
                                     >
-                                        Arena
+                                        {t("nav.arena")}
                                     </Link>
                                     <Link
                                         to="/content"
                                         className="hover:bg-gray-200 px-3 py-2 rounded-md topbar-title transition-colors"
                                     >
-                                        Raid
+                                        {t("nav.raid")}
                                     </Link>
                                     <Link
                                         to="/command"
                                         className="hover:bg-gray-200 px-3 py-2 rounded-md topbar-title transition-colors"
                                     >
-                                        Command
+                                        {t("nav.command")}
                                     </Link>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="flex items-center">
+                        <div className="flex items-center space-x-4">
                             <label
                                 htmlFor="uid-input"
                                 className="text-lg font-medium text-gray-700 pr-4"
                             >
-                                UID
+                                {t("nav.uid")}
                             </label>
                             <input
                                 id="uid-input"
@@ -94,6 +98,7 @@ const Layout = () => {
                                 defaultValue="1"
                                 className="flex-grow bg-white/80 text-slate-800 placeholder-slate-400 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 shadow-sm w-24"
                             />
+                            <LanguageSwitcher />
                         </div>
                     </div>
                 </div>
