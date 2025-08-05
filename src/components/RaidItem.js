@@ -1,5 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import typeDefenseIcon from "../assets/Type_Defense.png";
+
+const getArmorClass = (armor) => {
+    if (armor === "HeavyArmor") return "heavy";
+    if (armor === "LightArmor") return "light";
+    if (armor === "Unarmed") return "unarmed";
+    if (armor === "ElasticArmor") return "elastic";
+    return "";
+};
 
 const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
     const { t } = useTranslation();
@@ -32,6 +41,23 @@ const RaidItem = ({ raid, raidType, onSetRaid, isSelected, onSelect }) => {
                 <div className="raid-info">
                     <div className="raid-title">{raid.title}</div>
                     <div className="raid-date">{raid.date}</div>
+                    {raid.armors && raid.armors.length > 0 && (
+                        <div className="armor-icon-list">
+                            {raid.armors.map((armor) => (
+                                <div
+                                    key={armor}
+                                    title={armor}
+                                    className={`armor-icon-container armor-icon--${getArmorClass(armor)}`}
+                                >
+                                    <img
+                                        src={typeDefenseIcon}
+                                        alt={armor}
+                                        className="armor-icon-image"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="raid-action">

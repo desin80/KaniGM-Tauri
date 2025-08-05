@@ -12,17 +12,22 @@ const jfdTypeMap = {
 };
 
 const formatRaidData = (item, raidTypeKey) => {
-    let bossName, terrain;
+    let bossName,
+        terrain,
+        armors = [];
+
     if (raidTypeKey === "eliminateraids") {
-        const match = (item.bossDetail || "").match(/^(.+?)\s*\(([^)]+)\)/);
-        if (!match) {
-            bossName = item.bossDetail;
-            terrain = "";
-        } else {
-            const nameAndTerrain = match[1].trim().split(/\s+/);
-            bossName = nameAndTerrain[0];
-            terrain = nameAndTerrain.length > 1 ? nameAndTerrain[1] : "";
+        let bossDetail = item.bossDetail || "";
+        const armorMatch = bossDetail.match(/^(.*?)\s*\((.*)\)$/);
+
+        if (armorMatch && armorMatch[1] && armorMatch[2]) {
+            bossDetail = armorMatch[1].trim();
+            armors = armorMatch[2].split(",").map((a) => a.trim());
         }
+
+        const nameAndTerrain = bossDetail.split(/\s+/);
+        bossName = nameAndTerrain[0];
+        terrain = nameAndTerrain.length > 1 ? nameAndTerrain[1] : "";
     } else {
         const detailParts = (item.bossDetail || "default").split("_");
         bossName = detailParts[0];
@@ -66,12 +71,23 @@ const formatRaidData = (item, raidTypeKey) => {
         item.SeasonStartData ||
         item.seasonStartDate ||
         item.StartDate;
+
+    let title = `${item.seasonId || item.Id}. ${item.bossDetail}`;
+    if (raidTypeKey === "eliminateraids") {
+        const match = item.bossDetail.match(/^(.*?)\s*\(/);
+        const bossDisplayName = (
+            match && match[1] ? match[1] : item.bossDetail
+        ).trim();
+        title = `${item.seasonId || item.Id}. ${bossDisplayName}`;
+    }
+
     return {
         id: item.seasonId || item.Id,
-        title: `${item.seasonId || item.Id}. ${item.bossDetail}`,
+        title: title,
         date,
         bgImageUrl,
         portraitImageUrl,
+        armors: raidTypeKey === "eliminateraids" ? armors : [],
     };
 };
 
