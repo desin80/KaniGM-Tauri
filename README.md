@@ -1,4 +1,4 @@
-## Setup and Installation
+## Setup
 
 1. Download and install Node.js from [nodejs.org](https://nodejs.org/)
 
