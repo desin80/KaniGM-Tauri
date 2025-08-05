@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./CharacterPage.css";
@@ -25,14 +25,10 @@ const StatusPopup = ({ message, isError }) => {
 const CharacterPage = () => {
     const { t, i18n } = useTranslation();
     const [allCharacters, setAllCharacters] = useState([]);
-    const [localization, setLocalization] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-
     const [searchTerm, setSearchTerm] = useState("");
-
     const [editingCharacter, setEditingCharacter] = useState(null);
-
     const [statusMessage, setStatusMessage] = useState({
         text: "",
         isError: false,
@@ -46,54 +42,54 @@ const CharacterPage = () => {
     useEffect(() => {
         const loadData = async () => {
             setIsLoading(true);
+            setError(null);
             try {
-                const [locData, charData] = await Promise.all([
-                    api.getLocalization(),
-                    api.getCharacter(),
-                ]);
-                if (!Array.isArray(charData))
-                    throw new Error("Invalid character data format");
-                setLocalization(locData);
-                setAllCharacters(charData);
+                const backendCharacters = await api.getCharacter();
+                if (!Array.isArray(backendCharacters)) {
+                    throw new Error(
+                        "Invalid character data format from backend"
+                    );
+                }
+
+                const schaleDbData = await api.getSchaleDBStudents(
+                    i18n.language
+                );
+
+                const mergedCharacters = backendCharacters.map(
+                    (charWrapper) => {
+                        const schaleDbInfo =
+                            schaleDbData[charWrapper.character.uniqueId];
+                        if (schaleDbInfo) {
+                            return {
+                                ...charWrapper,
+                                character: {
+                                    ...schaleDbInfo,
+                                    ...charWrapper.character,
+                                },
+                            };
+                        }
+                        return charWrapper;
+                    }
+                );
+                setAllCharacters(mergedCharacters);
             } catch (err) {
+                console.error("Failed to load character data:", err);
                 setError(err.message);
             } finally {
                 setIsLoading(false);
             }
         };
         loadData();
-    }, []);
-
-    const getLocalizedName = useCallback(
-        (uniqueId) => {
-            if (localization.length > 0) {
-                const entry = localization.find((item) => item.Id === uniqueId);
-                const langKeyMap = {
-                    en: "Name_en",
-                    zh: "Name_cn",
-                    ja: "Name_jp",
-                };
-                const currentLanguageKey =
-                    langKeyMap[i18n.language] || "Name_en";
-                return (
-                    entry?.[currentLanguageKey] ||
-                    entry?.Name_en ||
-                    String(uniqueId)
-                );
-            }
-            return String(uniqueId);
-        },
-        [localization, i18n.language]
-    );
+    }, [i18n.language]);
 
     const filteredCharacters = allCharacters.filter((charWrapper) => {
         const char = charWrapper.character;
         if (!char) return false;
         const lowerSearchTerm = searchTerm.toLowerCase();
-        const nameMatch = getLocalizedName(char.uniqueId)
-            .toLowerCase()
-            .includes(lowerSearchTerm);
+
+        const nameMatch = char.Name?.toLowerCase().includes(lowerSearchTerm);
         const idMatch = String(char.uniqueId).includes(lowerSearchTerm);
+
         return nameMatch || idMatch;
     });
 
@@ -107,15 +103,17 @@ const CharacterPage = () => {
     };
 
     const handleSaveChanges = async (updatedCharacterData) => {
-        const uniqueId = updatedCharacterData.character.uniqueId;
-        const charName = getLocalizedName(uniqueId);
+        const charName = updatedCharacterData.character.Name;
         showStatus(`Saving character ${charName}...`);
 
         try {
             await api.modifyCharacter(updatedCharacterData);
 
             const updatedList = allCharacters.map((charWrapper) => {
-                if (charWrapper.character.uniqueId === uniqueId) {
+                if (
+                    charWrapper.character.uniqueId ===
+                    updatedCharacterData.character.uniqueId
+                ) {
                     return updatedCharacterData;
                 }
                 return charWrapper;
@@ -178,10 +176,7 @@ const CharacterPage = () => {
                     filteredCharacters.map((charWrapper) => (
                         <CharacterCard
                             key={charWrapper.character.uniqueId}
-                            character={charWrapper}
-                            localizedName={getLocalizedName(
-                                charWrapper.character.uniqueId
-                            )}
+                            characterWrapper={charWrapper}
                             onCardClick={handleOpenModal}
                         />
                     ))}
@@ -190,9 +185,6 @@ const CharacterPage = () => {
             {editingCharacter && (
                 <CharacterEditorModal
                     characterData={editingCharacter}
-                    localizedName={getLocalizedName(
-                        editingCharacter.character.uniqueId
-                    )}
                     onClose={() => setEditingCharacter(null)}
                     onSave={handleSaveChanges}
                 />

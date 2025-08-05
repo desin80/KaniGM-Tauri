@@ -3,14 +3,13 @@ import { useTranslation } from "react-i18next";
 
 const DummyCharacterAvatar = ({
     charInfo,
-    getStudentNameById,
     teamType,
     index,
     onEditCharacter,
     dragHandlers,
 }) => {
     if (!charInfo || !charInfo.character) return null;
-    const { uniqueId } = charInfo.character;
+    const { uniqueId, Name } = charInfo.character;
 
     return (
         <div
@@ -31,7 +30,7 @@ const DummyCharacterAvatar = ({
                 <img
                     className="portrait-image"
                     src={`https://schaledb.com/images/student/icon/${uniqueId}.webp`}
-                    alt={getStudentNameById(uniqueId)}
+                    alt={Name || `ID: ${uniqueId}`}
                     onError={(e) => {
                         e.target.src = `https://placehold.co/96x96/cccccc/9ca3af?text=N/A`;
                     }}
@@ -44,12 +43,7 @@ const DummyCharacterAvatar = ({
     );
 };
 
-const DummyTeamDisplay = ({
-    dummyTeam,
-    getStudentNameById,
-    onEditCharacter,
-    dragHandlers,
-}) => {
+const DummyTeamDisplay = ({ dummyTeam, onEditCharacter, dragHandlers }) => {
     const { t } = useTranslation();
     return (
         <div className="mb-6">
@@ -64,7 +58,6 @@ const DummyTeamDisplay = ({
                                 <DummyCharacterAvatar
                                     key={charInfo.character.serverId || index}
                                     charInfo={charInfo}
-                                    getStudentNameById={getStudentNameById}
                                     teamType="main"
                                     index={index}
                                     onEditCharacter={onEditCharacter}
@@ -87,7 +80,6 @@ const DummyTeamDisplay = ({
                                 <DummyCharacterAvatar
                                     key={charInfo.character.serverId || index}
                                     charInfo={charInfo}
-                                    getStudentNameById={getStudentNameById}
                                     teamType="support"
                                     index={index}
                                     onEditCharacter={onEditCharacter}

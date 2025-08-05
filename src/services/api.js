@@ -1,5 +1,13 @@
 // const API_BASE_URL = "http://127.0.0.1:80";
 
+const getSchaleDbLangCode = (lang) => {
+    const langMap = {
+        zh: "cn",
+        en: "en",
+    };
+    return langMap[lang] || "en";
+};
+
 const api = {
     ResponseStatus: {
         Success: "Success",
@@ -118,14 +126,14 @@ const api = {
      * Fetches localization data.
      * @returns {Promise<Array<object>>} A promise that resolves to an array of localization objects.
      */
-    getLocalization: function () {
-        return fetch("/assets/localization.json").then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        });
-    },
+    // getLocalization: function () {
+    //     return fetch("/assets/localization.json").then((response) => {
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! status: ${response.status}`);
+    //         }
+    //         return response.json();
+    //     });
+    // },
 
     // --- Command API ---
 
@@ -538,7 +546,8 @@ const api = {
     },
 
     // --- Settings APIs ---
-    // currently hardcoded for testing
+    // ---------------------------------------------------------------------------------------
+    // CURRENTLY HARDCODED FOR TESTING
     /**
      * Fetches the current account settings.
      * @returns {Promise<object>} A promise that resolves with the settings object.
@@ -568,6 +577,47 @@ const api = {
             status: "Success",
             message: "Settings saved successfully.",
         });
+    },
+    // ---------------------------------------------------------------------------------------
+    /**
+     * Fetches extensive student data from SchaleDB, with session-level caching.
+     * @param {string} lang - The current language code (e.g., 'en', 'zh').
+     * @returns {Promise<object>} A promise that resolves to the student data object from SchaleDB.
+     */
+    getSchaleDBStudents: async function (lang) {
+        const schaleDbLang = getSchaleDbLangCode(lang);
+        const cacheKey = `schaledb_students_${schaleDbLang}`;
+        const url = `https://schaledb.com/data/${schaleDbLang}/students.json`;
+
+        const cachedData = sessionStorage.getItem(cacheKey);
+        if (cachedData) {
+            console.log(
+                `[Cache] Loading ${schaleDbLang} students data from sessionStorage.`
+            );
+            return JSON.parse(cachedData);
+        }
+
+        console.log(
+            `[API] Fetching ${schaleDbLang} students data from ${url}.`
+        );
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(
+                `Failed to fetch SchaleDB data. Status: ${response.status}`
+            );
+        }
+
+        const data = await response.json();
+
+        try {
+            sessionStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {
+            console.error("Failed to cache SchaleDB data:", e);
+            sessionStorage.removeItem(cacheKey);
+        }
+
+        return data;
     },
 };
 

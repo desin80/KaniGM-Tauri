@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import api from "../services/api";
 
 const getNestedValue = (obj, path) => {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
@@ -8,7 +7,7 @@ const getNestedValue = (obj, path) => {
 
 const ArenaCharacterEditModal = ({
     characterData,
-    getStudentNameById,
+    allStudentsData,
     onClose,
     onSave,
 }) => {
@@ -16,15 +15,14 @@ const ArenaCharacterEditModal = ({
     const [formData, setFormData] = useState(
         JSON.parse(JSON.stringify(characterData))
     );
-    const [localization, setLocalization] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
     useEffect(() => {
+        const char = characterData.character;
         setFormData(JSON.parse(JSON.stringify(characterData)));
-        setSearchInput(getStudentNameById(characterData.character.uniqueId));
-        api.getLocalization().then(setLocalization);
-    }, [characterData, getStudentNameById]);
+        setSearchInput(char.Name || `ID: ${char.uniqueId}`);
+    }, [characterData]);
 
     const handleInputChange = (path, event) => {
         const { value, min, max } = event.target;
@@ -69,25 +67,30 @@ const ArenaCharacterEditModal = ({
         setFormData(newFormData);
     };
 
-    const selectCharacter = (charId) => {
+    const selectCharacter = (student) => {
         const newFormData = JSON.parse(JSON.stringify(formData));
-        newFormData.character.uniqueId = charId;
+        const existingData = newFormData.character;
+        newFormData.character = {
+            ...existingData,
+            ...student,
+            uniqueId: student.Id,
+        };
+
         setFormData(newFormData);
-        setSearchInput(getStudentNameById(charId));
+        setSearchInput(student.Name);
         setDropdownOpen(false);
     };
 
-    const filteredCharacters = localization.filter(
-        (char) =>
-            getStudentNameById(char.Id)
-                .toLowerCase()
-                .includes(searchInput.toLowerCase()) ||
-            String(char.Id).includes(searchInput)
-    );
+    const filteredCharacters = allStudentsData
+        ? Object.values(allStudentsData).filter(
+              (char) =>
+                  char.Name.toLowerCase().includes(searchInput.toLowerCase()) ||
+                  String(char.Id).includes(searchInput)
+          )
+        : [];
 
     if (!formData) return null;
-    // eslint-disable-next-line no-unused-vars
-    const { character, weapon, equippedEquipment, gear } = formData;
+    const { weapon, equippedEquipment, gear } = formData;
 
     return (
         <div
@@ -143,22 +146,18 @@ const ArenaCharacterEditModal = ({
                                                         key={char.Id}
                                                         onMouseDown={() =>
                                                             selectCharacter(
-                                                                char.Id
+                                                                char
                                                             )
                                                         }
                                                         className="flex items-center p-2 hover:bg-gray-100 cursor-pointer"
                                                     >
                                                         <img
                                                             src={`https://schaledb.com/images/student/icon/${char.Id}.webp`}
-                                                            alt={getStudentNameById(
-                                                                char.Id
-                                                            )}
+                                                            alt={char.Name}
                                                             className="w-6 h-6 rounded-full mr-2"
                                                         />
                                                         <span>
-                                                            {getStudentNameById(
-                                                                char.Id
-                                                            )}{" "}
+                                                            {char.Name}
                                                             (ID: {char.Id})
                                                         </span>
                                                     </div>

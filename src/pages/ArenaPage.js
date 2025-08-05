@@ -25,18 +25,19 @@ const StatusPopup = ({ message, isError }) => {
 };
 
 const ArenaPage = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [activeTab, setActiveTab] = useState("records");
     const [isLoading, setIsLoading] = useState({
         dummy: true,
         records: true,
         summaries: true,
+        students: true,
     });
 
     const [dummyTeam, setDummyTeam] = useState({ main: [], support: [] });
     const [records, setRecords] = useState([]);
     const [summaries, setSummaries] = useState([]);
-    const [localization, setLocalization] = useState([]);
+    const [allStudents, setAllStudents] = useState({});
 
     const [statusMessage, setStatusMessage] = useState({
         text: "",
@@ -54,60 +55,110 @@ const ArenaPage = () => {
     };
 
     const loadAllData = useCallback(async () => {
+        setIsLoading({
+            dummy: true,
+            records: true,
+            summaries: true,
+            students: true,
+        });
         try {
-            const locData = await api.getLocalization();
-            setLocalization(locData);
+            const [studentData, dummyData, recordsData, summariesData] =
+                await Promise.all([
+                    api.getSchaleDBStudents(i18n.language).finally(() =>
+                        setIsLoading((prev) => ({
+                            ...prev,
+                            students: false,
+                        }))
+                    ),
+                    api
+                        .getArenaDummy()
+                        .finally(() =>
+                            setIsLoading((prev) => ({ ...prev, dummy: false }))
+                        ),
+                    api.getArenaRecords().finally(() =>
+                        setIsLoading((prev) => ({
+                            ...prev,
+                            records: false,
+                        }))
+                    ),
+                    api.getArenaSummaries().finally(() =>
+                        setIsLoading((prev) => ({
+                            ...prev,
+                            summaries: false,
+                        }))
+                    ),
+                ]);
 
-            setIsLoading({ dummy: true, records: true, summaries: true });
-            const [dummyData, recordsData, summariesData] = await Promise.all([
-                api
-                    .getArenaDummy()
-                    .finally(() =>
-                        setIsLoading((prev) => ({ ...prev, dummy: false }))
-                    ),
-                api
-                    .getArenaRecords()
-                    .finally(() =>
-                        setIsLoading((prev) => ({ ...prev, records: false }))
-                    ),
-                api
-                    .getArenaSummaries()
-                    .finally(() =>
-                        setIsLoading((prev) => ({ ...prev, summaries: false }))
-                    ),
-            ]);
-            setDummyTeam(dummyData);
-            setRecords(recordsData);
-            setSummaries(summariesData);
+            setAllStudents(studentData);
+
+            const enrichCharacter = (charWrapper) => {
+                const studentInfo =
+                    studentData[charWrapper.character.uniqueId] || {};
+                return {
+                    ...charWrapper,
+                    character: {
+                        ...studentInfo,
+                        ...charWrapper.character,
+                    },
+                };
+            };
+
+            const getTeamObjectsByIds = (idArray) => {
+                return idArray.map(
+                    (id) => studentData[id] || { Id: id, Name: `ID: ${id}` }
+                );
+            };
+
+            const enrichedDummy = {
+                main: dummyData.main.map(enrichCharacter),
+                support: dummyData.support.map(enrichCharacter),
+            };
+            setDummyTeam(enrichedDummy);
+
+            const enrichedRecords = recordsData.map((record) => ({
+                ...record,
+                attackingTeam: getTeamObjectsByIds(record.attackingTeamIds),
+                defendingTeam: getTeamObjectsByIds(record.defendingTeamIds),
+            }));
+            setRecords(enrichedRecords);
+
+            const enrichedSummaries = summariesData.map((summary) => ({
+                ...summary,
+                attackingTeam: getTeamObjectsByIds(summary.attackingTeamIds),
+                defendingTeam: getTeamObjectsByIds(summary.defendingTeamIds),
+            }));
+            setSummaries(enrichedSummaries);
         } catch (err) {
             showStatus(`Failed to load arena data: ${err.message}`, true);
-            setIsLoading({ dummy: false, records: false, summaries: false });
+            setIsLoading({
+                dummy: false,
+                records: false,
+                summaries: false,
+                students: false,
+            });
         }
-    }, []);
+    }, [i18n.language]);
 
     useEffect(() => {
         loadAllData();
     }, [loadAllData]);
 
-    const getStudentNameById = useCallback(
-        (studentId) => {
-            if (!localization.length) return `ID: ${studentId}`;
-            const student = localization.find(
-                (s) => s.Id === parseInt(studentId)
-            );
-            return student ? student.Name_en : `ID: ${studentId}`;
-        },
-        [localization]
-    );
-
     const handleDeleteRecord = async (recordToDelete) => {
         if (window.confirm(t("arena.confirmDeleteRecord"))) {
             try {
-                await api.deleteArenaRecord(recordToDelete);
+                const originalRecord = {
+                    attackingTeamIds: recordToDelete.attackingTeamIds,
+                    defendingTeamIds: recordToDelete.defendingTeamIds,
+                    win: recordToDelete.win,
+                };
+                await api.deleteArenaRecord(originalRecord);
                 setRecords((prev) =>
                     prev.filter(
                         (r) =>
-                            JSON.stringify(r) !== JSON.stringify(recordToDelete)
+                            r.attackingTeamIds.join() !==
+                                recordToDelete.attackingTeamIds.join() ||
+                            r.defendingTeamIds.join() !==
+                                recordToDelete.defendingTeamIds.join()
                     )
                 );
                 showStatus(t("arena.recordDeleted"), false);
@@ -135,9 +186,10 @@ const ArenaPage = () => {
     };
 
     const handleSaveCharacter = async (updatedCharData) => {
-        showStatus(
-            `Saving ${getStudentNameById(updatedCharData.character.uniqueId)}...`
-        );
+        const studentName =
+            updatedCharData.character.Name ||
+            `ID: ${updatedCharData.character.uniqueId}`;
+        showStatus(`Saving ${studentName}...`);
         try {
             await api.setArenaDummy(updatedCharData);
             await loadAllData();
@@ -150,6 +202,7 @@ const ArenaPage = () => {
         }
     };
 
+    // Drag and Drop logic remains the same
     const onDragStart = (e, teamType, index) => {
         dragItem.current = { teamType, index };
         e.currentTarget.classList.add("dragging");
@@ -249,7 +302,7 @@ const ArenaPage = () => {
                 isError={statusMessage.isError}
             />
 
-            {isLoading.dummy ? (
+            {isLoading.dummy || isLoading.students ? (
                 <p className="text-center text-gray-500 py-8">
                     {t("arena.loadingDummyTeam")}
                 </p>
@@ -257,7 +310,6 @@ const ArenaPage = () => {
                 dummyTeam && (
                     <DummyTeamDisplay
                         dummyTeam={dummyTeam}
-                        getStudentNameById={getStudentNameById}
                         onEditCharacter={handleEditCharacter}
                         dragHandlers={dragHandlers}
                     />
@@ -267,7 +319,7 @@ const ArenaPage = () => {
             {isModalOpen && editingCharacter && (
                 <ArenaCharacterEditModal
                     characterData={editingCharacter}
-                    getStudentNameById={getStudentNameById}
+                    allStudentsData={allStudents}
                     onClose={() => setIsModalOpen(false)}
                     onSave={handleSaveCharacter}
                 />
@@ -281,21 +333,13 @@ const ArenaPage = () => {
                     >
                         <button
                             onClick={() => setActiveTab("records")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${
-                                activeTab === "records"
-                                    ? "text-sky-600 border-sky-500"
-                                    : "text-gray-500 border-transparent"
-                            }`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "records" ? "text-sky-600 border-sky-500" : "text-gray-500 border-transparent"}`}
                         >
                             {t("arena.battleRecords")}
                         </button>
                         <button
                             onClick={() => setActiveTab("summaries")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${
-                                activeTab === "summaries"
-                                    ? "text-sky-600 border-sky-500"
-                                    : "text-gray-500 border-transparent"
-                            }`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "summaries" ? "text-sky-600 border-sky-500" : "text-gray-500 border-transparent"}`}
                         >
                             {t("arena.teamSummaries")}
                         </button>
@@ -306,46 +350,44 @@ const ArenaPage = () => {
             <main>
                 {activeTab === "records" && (
                     <div>
-                        {isLoading.records && (
+                        {isLoading.records ? (
                             <p className="text-center text-gray-500 py-8">
                                 {t("arena.loadingRecords")}
                             </p>
-                        )}
-                        {!isLoading.records && records.length === 0 && (
+                        ) : records.length === 0 ? (
                             <p className="text-center text-gray-500 py-8">
                                 {t("arena.noRecords")}
                             </p>
+                        ) : (
+                            records.map((record, index) => (
+                                <ArenaRecordCard
+                                    key={`${record.attackingTeamIds.join()}-${record.defendingTeamIds.join()}-${index}`}
+                                    record={record}
+                                    onDelete={handleDeleteRecord}
+                                />
+                            ))
                         )}
-                        {records.map((record, index) => (
-                            <ArenaRecordCard
-                                key={JSON.stringify(record) + index}
-                                record={record}
-                                onDelete={handleDeleteRecord}
-                                getStudentNameById={getStudentNameById}
-                            />
-                        ))}
                     </div>
                 )}
                 {activeTab === "summaries" && (
                     <div>
-                        {isLoading.summaries && (
+                        {isLoading.summaries ? (
                             <p className="text-center text-gray-500 py-8">
                                 {t("arena.loadingSummaries")}
                             </p>
-                        )}
-                        {!isLoading.summaries && summaries.length === 0 && (
+                        ) : summaries.length === 0 ? (
                             <p className="text-center text-gray-500 py-8">
                                 {t("arena.noSummaries")}
                             </p>
+                        ) : (
+                            summaries.map((summary, index) => (
+                                <ArenaSummaryCard
+                                    key={`${summary.attackingTeamIds.join()}-${summary.defendingTeamIds.join()}-${index}`}
+                                    summary={summary}
+                                    onDelete={handleDeleteSummary}
+                                />
+                            ))
                         )}
-                        {summaries.map((summary, index) => (
-                            <ArenaSummaryCard
-                                key={JSON.stringify(summary) + index}
-                                summary={summary}
-                                onDelete={handleDeleteSummary}
-                                getStudentNameById={getStudentNameById}
-                            />
-                        ))}
                     </div>
                 )}
             </main>

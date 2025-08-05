@@ -1,7 +1,8 @@
 import React from "react";
 
-const CharacterCard = ({ character, localizedName, onCardClick }) => {
-    const { uniqueId } = character.character;
+const CharacterCard = ({ characterWrapper, onCardClick }) => {
+    const { character } = characterWrapper;
+    const { uniqueId, Name } = character;
 
     const handleImageError = (e) => {
         e.target.src = "https://placehold.co/96x96/33363d/e0e0e0?text=No+Img";
@@ -16,13 +17,13 @@ const CharacterCard = ({ character, localizedName, onCardClick }) => {
             <div className="relative p-4 flex flex-col items-center text-center">
                 <img
                     src={`https://schaledb.com/images/student/collection/${uniqueId}.webp`}
-                    alt={localizedName}
+                    alt={Name || `Character ${uniqueId}`}
                     className="character-image w-24 h-24 rounded-md object-cover mb-3 border-2 border-gray-200"
                     onError={handleImageError}
                 />
                 <div>
                     <h2 className="character-card-title text-sky-700">
-                        {localizedName}
+                        {Name || `Character ${uniqueId}`}
                     </h2>
                     <p className="character-ids text-xs text-gray-500 mt-1">
                         ID:{" "}

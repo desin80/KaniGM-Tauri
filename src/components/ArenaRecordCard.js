@@ -6,15 +6,15 @@ import vsIcon from "../assets/vs.png";
 import winIcon from "../assets/win.png";
 import loseIcon from "../assets/lose.png";
 
-const TeamAvatars = ({ teamIds, getStudentNameById }) => (
+const TeamAvatars = ({ team }) => (
     <div className="team-avatars">
-        {teamIds.map((id) => (
-            <div key={id} className="rs-char-card">
+        {team.map((student) => (
+            <div key={student.Id} className="rs-char-card">
                 <div className="background-plate"></div>
                 <img
                     className="portrait-image"
-                    src={`https://schaledb.com/images/student/icon/${id}.webp`}
-                    alt={getStudentNameById(id)}
+                    src={`https://schaledb.com/images/student/icon/${student.Id}.webp`}
+                    alt={student.Name}
                     onError={(e) => {
                         e.currentTarget.parentElement.style.display = "none";
                     }}
@@ -24,15 +24,12 @@ const TeamAvatars = ({ teamIds, getStudentNameById }) => (
     </div>
 );
 
-const ArenaRecordCard = ({ record, onDelete, getStudentNameById }) => {
+const ArenaRecordCard = ({ record, onDelete }) => {
     const { t } = useTranslation();
     return (
         <div className="arena-card">
             <div className="team-display-container">
-                <TeamAvatars
-                    teamIds={record.attackingTeamIds}
-                    getStudentNameById={getStudentNameById}
-                />
+                <TeamAvatars team={record.attackingTeam} />
                 <div className="icon-display attacking-icon">
                     <img src={attackIcon} alt="Attacking" />
                 </div>
@@ -46,10 +43,7 @@ const ArenaRecordCard = ({ record, onDelete, getStudentNameById }) => {
                 <div className="icon-display defending-icon">
                     <img src={defendIcon} alt="Defending" />
                 </div>
-                <TeamAvatars
-                    teamIds={record.defendingTeamIds}
-                    getStudentNameById={getStudentNameById}
-                />
+                <TeamAvatars team={record.defendingTeam} />
             </div>
 
             <div className="icon-display status-icon">

@@ -14,12 +14,7 @@ const getNestedValue = (obj, path) => {
     return result;
 };
 
-const CharacterEditorModal = ({
-    characterData,
-    localizedName,
-    onClose,
-    onSave,
-}) => {
+const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
     const { t } = useTranslation();
     const [formData, setFormData] = useState(
         JSON.parse(JSON.stringify(characterData))
@@ -80,6 +75,7 @@ const CharacterEditorModal = ({
     if (!formData) return null;
 
     const { character, weapon, equippedEquipment, gear } = formData;
+    const localizedName = character.Name || `Character ${character.uniqueId}`;
 
     return (
         <div
