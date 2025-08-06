@@ -464,8 +464,8 @@ details[open]>summary::after {
     object-fit: contain;
 }
 
-.attribute-icon--heavy { background-color: rgb(167, 12, 25); }
-.attribute-icon--light { background-color: rgb(178, 109, 31); }
+.attribute-icon--light { background-color: rgb(167, 12, 25); }
+.attribute-icon--heavy { background-color: rgb(178, 109, 31); }
 .attribute-icon--unarmed { background-color: rgb(33, 111, 156); }
 .attribute-icon--elastic { background-color: rgb(148, 49, 165); }
 .attribute-icon--normal { background-color: rgb(72, 85, 130); }
