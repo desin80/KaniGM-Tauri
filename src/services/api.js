@@ -163,7 +163,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property containing raid types.
      */
     getRaid: function () {
-        return fetch(`/dev/api/get_raid`).then((response) =>
+        return fetch(`/dev/api/get_raidinfo`).then((response) =>
             this._handleResponse(response)
         );
     },
@@ -452,6 +452,116 @@ const api = {
                             weaponStarGrade: 3,
                         },
                     ],
+                },
+            },
+        ];
+        return Promise.resolve(mockData);
+    },
+
+    getTADRecordsBySeason: function (dungeonId) {
+        console.warn(
+            `API call 'getTADRecordsBySeason' for dungeon ${dungeonId} is using mock data.`
+        );
+        const teamA = [
+            { id: 10001, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10002, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10003, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10004, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+        const teamB = [
+            { id: 10011, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10012, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10013, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10014, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+        const teamC = [
+            { id: 10021, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10022, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10023, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10024, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+        const teamD = [
+            { id: 10031, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10032, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10033, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10034, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+        const teamE = [
+            { id: 10041, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10042, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10043, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10044, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+        const teamF = [
+            { id: 10051, level: 85, starGrade: 5, weaponStarGrade: 2 },
+            { id: 10052, level: 87, starGrade: 4, weaponStarGrade: 1 },
+            { id: 10053, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10054, level: 80, starGrade: 3, weaponStarGrade: 0 },
+        ];
+
+        const mockData = [
+            {
+                battleId: `tad_rec_${dungeonId}_1`,
+                totalScore: 78000,
+                difficulty: 4,
+                teams: {
+                    1: { score: 26000, members: teamA },
+                    2: { score: 26500, members: teamB },
+                    3: { score: 25500, members: teamC },
+                },
+            },
+            {
+                battleId: `tad_rec_${dungeonId}_2`,
+                totalScore: 75500,
+                difficulty: 3,
+                teams: {
+                    1: { score: 25000, members: teamD },
+                    2: { score: 25100, members: teamE },
+                    3: { score: 25400, members: teamF },
+                },
+            },
+        ];
+        return Promise.resolve(mockData);
+    },
+
+    getMultiFloorRaidRecordsBySeason: function (seasonId) {
+        console.warn(
+            `API call 'getMultiFloorRaidRecordsBySeason' for season ${seasonId} is using mock data.`
+        );
+
+        const characterPool = [
+            { id: 10001, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10002, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10003, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10004, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10005, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10006, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10007, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10008, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10009, level: 90, starGrade: 5, weaponStarGrade: 3 },
+            { id: 10010, level: 90, starGrade: 5, weaponStarGrade: 3 },
+        ];
+
+        const mockData = [
+            {
+                battleId: `mfr_rec_${seasonId}_1`,
+                difficulty: 124,
+                teams: {
+                    1: characterPool.slice(0, 10),
+                },
+            },
+            {
+                battleId: `mfr_rec_${seasonId}_2`,
+                difficulty: 80,
+                teams: {
+                    1: characterPool.slice(0, 6),
+                },
+            },
+            {
+                battleId: `mfr_rec_${seasonId}_3`,
+                difficulty: 35,
+                teams: {
+                    1: characterPool.slice(0, 4),
                 },
             },
         ];

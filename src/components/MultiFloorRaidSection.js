@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
-import RaidItem from "./RaidItem";
-import RaidDetailsPanel from "./RaidDetailsPanel";
-import GrandAssaultDetailsPanel from "./GrandAssaultDetailsPanel";
+import MultiFloorRaidItem from "./MultiFloorRaidItem";
+import MultiFloorRaidDetailsPanel from "./MultiFloorRaidDetailsPanel";
 
-const RaidSection = ({
+const MultiFloorRaidSection = ({
     title,
     raids,
-    raidType,
     onSetRaid,
     isLoading: isLoadingList,
     showStatus,
@@ -20,19 +18,16 @@ const RaidSection = ({
     const [isLoadingRecords, setIsLoadingRecords] = useState(false);
 
     const handleSelectRaid = async (raid) => {
-        if (raidType === "eliminateraids") {
-            setSelectedRaid(raid);
-            return;
-        }
-
         setSelectedRaid(raid);
         setIsLoadingRecords(true);
         try {
-            const fetchedRecords = await api.getRaidRecordsBySeason(raid.id);
+            const fetchedRecords = await api.getMultiFloorRaidRecordsBySeason(
+                raid.seasonId
+            );
             setRecords(fetchedRecords);
         } catch (error) {
             console.error(
-                `Error fetching records for season ${raid.id}:`,
+                `Error fetching records for season ${raid.seasonId}:`,
                 error
             );
             showStatus(`Failed to load records: ${error.message}`, true);
@@ -49,7 +44,6 @@ const RaidSection = ({
             )
         )
             return;
-
         try {
             await api.deleteRaidRecord(battleId);
             setRecords((prevRecords) =>
@@ -61,6 +55,10 @@ const RaidSection = ({
             showStatus(`Error: ${error.message}`, true);
         }
     };
+
+    const sortedRaids = [...raids].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+    );
 
     return (
         <details>
@@ -74,20 +72,20 @@ const RaidSection = ({
                                     {t("content.loadingData")}
                                 </p>
                             )}
-                            {!isLoadingList && raids.length === 0 && (
+                            {!isLoadingList && sortedRaids.length === 0 && (
                                 <p className="text-center text-gray-500 py-4">
                                     {t("content.noData")}
                                 </p>
                             )}
                             {!isLoadingList &&
-                                raids.map((raid) => (
-                                    <RaidItem
-                                        key={raid.id}
+                                sortedRaids.map((raid) => (
+                                    <MultiFloorRaidItem
+                                        key={raid.seasonId}
                                         raid={raid}
-                                        raidType={raidType}
                                         onSetRaid={onSetRaid}
                                         isSelected={
-                                            selectedRaid?.id === raid.id
+                                            selectedRaid?.seasonId ===
+                                            raid.seasonId
                                         }
                                         onSelect={handleSelectRaid}
                                     />
@@ -95,23 +93,16 @@ const RaidSection = ({
                         </div>
                     </div>
 
-                    {raidType === "eliminateraids" ? (
-                        <GrandAssaultDetailsPanel
-                            selectedRaid={selectedRaid}
-                            showStatus={showStatus}
-                        />
-                    ) : (
-                        <RaidDetailsPanel
-                            selectedRaid={selectedRaid}
-                            records={records}
-                            isLoading={isLoadingRecords}
-                            onDeleteRecord={handleDeleteRecord}
-                        />
-                    )}
+                    <MultiFloorRaidDetailsPanel
+                        selectedRaid={selectedRaid}
+                        records={records}
+                        isLoading={isLoadingRecords}
+                        onDeleteRecord={handleDeleteRecord}
+                    />
                 </div>
             </div>
         </details>
     );
 };
 
-export default RaidSection;
+export default MultiFloorRaidSection;

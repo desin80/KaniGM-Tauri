@@ -66,7 +66,7 @@ const CharacterIcon = ({ charInfo }) => {
     );
 };
 
-const RaidDetailsPanel = ({
+const TotalAssaultDetailsPanel = ({
     selectedRaid,
     records,
     isLoading,
@@ -103,7 +103,7 @@ const RaidDetailsPanel = ({
                     textAlign: "left",
                 }}
             >
-                {selectedRaid.title.split(". ")[1]}
+                {`${selectedRaid.bossName}`}
             </h3>
             <hr
                 style={{
@@ -170,4 +170,4 @@ const RaidDetailsPanel = ({
     );
 };
 
-export default RaidDetailsPanel;
+export default TotalAssaultDetailsPanel;

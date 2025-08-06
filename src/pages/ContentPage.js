@@ -2,112 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ContentPage.css";
-import RaidSection from "../components/RaidSection";
-
-const jfdTypeMap = {
-    1: "Defense",
-    2: "Shooting",
-    3: "Destruction",
-    4: "Escort",
-};
-
-const formatRaidData = (item, raidTypeKey) => {
-    let bossName,
-        terrain,
-        armors = [];
-
-    if (raidTypeKey === "eliminateraids") {
-        let bossDetail = item.bossDetail || "";
-        const armorMatch = bossDetail.match(/^(.*?)\s*\((.*)\)$/);
-
-        if (armorMatch && armorMatch[1] && armorMatch[2]) {
-            bossDetail = armorMatch[1].trim();
-            armors = armorMatch[2].split(",").map((a) => a.trim());
-        }
-
-        const nameAndTerrain = bossDetail.split(/\s+/);
-        bossName = nameAndTerrain[0];
-        terrain = nameAndTerrain.length > 1 ? nameAndTerrain[1] : "";
-    } else {
-        const detailParts = (item.bossDetail || "default").split("_");
-        bossName = detailParts[0];
-        terrain = detailParts.length > 1 ? detailParts[1] : "";
-    }
-
-    const aliasMapping = { ShiroKuro: "Shirokuro", Kaitenger: "KaitenFxMk0" };
-    let finalBossName = aliasMapping[bossName] || bossName;
-
-    const terrainAliasMapping = {
-        KaitenFxMk0: "Outdoor",
-        HOD: "Street",
-        Shirokuro: "Street",
-        EN0005: "Indoor",
-        HoverCraft: "Outdoor",
-        EN0006: "Street",
-        Chesed: "Indoor",
-        Binah: "Outdoor",
-    };
-
-    const terrainKey = terrain;
-    let finalTerrain = terrain ? `_${terrain}` : "";
-
-    if (
-        terrainAliasMapping[finalBossName] &&
-        terrainAliasMapping[finalBossName] === terrainKey
-    ) {
-        finalTerrain = "";
-    }
-
-    let portraitImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_Lobby.png`;
-    let bgImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${finalBossName}_LobbyBG${finalTerrain}.png`;
-
-    if (raidTypeKey === "multifloreraids") {
-        bgImageUrl =
-            "https://schaledb.com/images/raid/MultiFloorRaid_Floor_BG.png";
-    }
-
-    const date =
-        item.date ||
-        item.SeasonStartData ||
-        item.seasonStartDate ||
-        item.StartDate;
-
-    let title = `${item.seasonId || item.Id}. ${item.bossDetail}`;
-    if (raidTypeKey === "eliminateraids") {
-        const match = item.bossDetail.match(/^(.*?)\s*\(/);
-        const bossDisplayName = (
-            match && match[1] ? match[1] : item.bossDetail
-        ).trim();
-        title = `${item.seasonId || item.Id}. ${bossDisplayName}`;
-    }
-
-    return {
-        id: item.seasonId || item.Id,
-        title: title,
-        date,
-        bgImageUrl,
-        portraitImageUrl,
-        armors: raidTypeKey === "eliminateraids" ? armors : [],
-    };
-};
-
-const formatDrillData = (item) => {
-    const drillName = jfdTypeMap[item.jfdType];
-    const urlMapping = {
-        1: "https://schaledb.com/images/enemy/enemyinfo_boxcat_terror.webp",
-        2: "https://schaledb.com/images/enemy/enemyinfo_sweeper_decagram_taser_white.webp",
-        3: "https://schaledb.com/images/enemy/enemyinfo_totem03_timeattack.webp",
-        4: "https://schaledb.com/images/enemy/enemyinfo_avantgardekun_millenium_ar.webp",
-    };
-    const date = item.date || item.startDate;
-    return {
-        id: item.id,
-        title: `${item.id}. ${drillName} Drill`,
-        date,
-        bgImageUrl: "",
-        portraitImageUrl: urlMapping[item.jfdType],
-    };
-};
+import TotalAssaultSection from "../components/TotalAssaultSection";
+import GrandAssaultSection from "../components/GrandAssaultSection";
+import TimeAttackDungeonSection from "../components/TimeAttackDungeonSection";
+import MultiFloorRaidSection from "../components/MultiFloorRaidSection";
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;
@@ -127,12 +25,10 @@ const StatusPopup = ({ message, isError }) => {
 
 const ContentPage = () => {
     const { t } = useTranslation();
-    const [raidData, setRaidData] = useState({
-        raids: [],
-        timeAttackDungeons: [],
-        eliminateRaids: [],
-        multiFloorRaids: [],
-    });
+    const [totalAssaults, setTotalAssaults] = useState([]);
+    const [grandAssaults, setGrandAssaults] = useState([]);
+    const [timeAttackDungeons, setTimeAttackDungeons] = useState([]);
+    const [multiFloorRaids, setMultiFloorRaids] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [statusMessage, setStatusMessage] = useState({
         text: "",
@@ -146,43 +42,13 @@ const ContentPage = () => {
 
     useEffect(() => {
         const loadRaidData = async () => {
+            setIsLoading(true);
             try {
                 const data = await api.getRaid();
-                const normalizedData = {
-                    raids: (data.raids || data.Raids)
-                        .map((item) => formatRaidData(item, "raids"))
-                        .sort(
-                            (a, b) =>
-                                new Date(b.date.split("~")[0]) -
-                                new Date(a.date.split("~")[0])
-                        ),
-                    timeAttackDungeons: (
-                        data.timeAttackDungeons || data.TimeAttackDungeons
-                    )
-                        .map(formatDrillData)
-                        .sort(
-                            (a, b) =>
-                                new Date(b.date.split("~")[0]) -
-                                new Date(a.date.split("~")[0])
-                        ),
-                    eliminateRaids: (data.eliminateRaids || data.EliminateRaids)
-                        .map((item) => formatRaidData(item, "eliminateraids"))
-                        .sort(
-                            (a, b) =>
-                                new Date(b.date.split("~")[0]) -
-                                new Date(a.date.split("~")[0])
-                        ),
-                    multiFloorRaids: (
-                        data.multiFloorRaids || data.MultiFloorRaids
-                    )
-                        .map((item) => formatRaidData(item, "multifloreraids"))
-                        .sort(
-                            (a, b) =>
-                                new Date(b.date.split("~")[0]) -
-                                new Date(a.date.split("~")[0])
-                        ),
-                };
-                setRaidData(normalizedData);
+                setTotalAssaults(data.totalAssault || []);
+                setGrandAssaults(data.grandAssault || []);
+                setTimeAttackDungeons(data.timeAttackDungeon || []);
+                setMultiFloorRaids(data.multiFloor || []);
             } catch (error) {
                 console.error("Error fetching raid data:", error);
                 showStatus(`Failed to load raid data: ${error.message}`, true);
@@ -216,34 +82,30 @@ const ContentPage = () => {
                 isError={statusMessage.isError}
             />
             <div className="details-grid">
-                <RaidSection
+                <TotalAssaultSection
                     title={t("content.totalAssault")}
-                    raids={raidData.raids}
-                    raidType="raids"
+                    raids={totalAssaults}
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
                     showStatus={showStatus}
                 />
-                <RaidSection
+                <GrandAssaultSection
                     title={t("content.grandAssault")}
-                    raids={raidData.eliminateRaids}
-                    raidType="eliminateraids"
+                    raids={grandAssaults}
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
                     showStatus={showStatus}
                 />
-                <RaidSection
+                <TimeAttackDungeonSection
                     title={t("content.jointFiringDrill")}
-                    raids={raidData.timeAttackDungeons}
-                    raidType="timeattackdungeons"
+                    dungeons={timeAttackDungeons}
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
                     showStatus={showStatus}
                 />
-                <RaidSection
+                <MultiFloorRaidSection
                     title={t("content.finalRestrictionRelease")}
-                    raids={raidData.multiFloorRaids}
-                    raidType="multifloreraids"
+                    raids={multiFloorRaids}
                     onSetRaid={handleSetRaid}
                     isLoading={isLoading}
                     showStatus={showStatus}

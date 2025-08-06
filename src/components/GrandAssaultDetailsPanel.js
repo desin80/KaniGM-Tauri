@@ -15,6 +15,14 @@ const difficultyMap = {
     7: "Lunatic",
 };
 
+const getArmorClass = (armor) => {
+    if (armor === "HeavyArmor") return "heavy";
+    if (armor === "LightArmor") return "light";
+    if (armor === "Unarmed") return "unarmed";
+    if (armor === "ElasticArmor") return "elastic";
+    return "";
+};
+
 const CharacterIcon = ({ charInfo }) => {
     const { id, level, starGrade, weaponStarGrade } = charInfo;
     const hasWeapon = weaponStarGrade > 0;
@@ -70,21 +78,25 @@ const CharacterIcon = ({ charInfo }) => {
 const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
     const { t } = useTranslation();
     const [records, setRecords] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [activeArmor, setActiveArmor] = useState("HeavyArmor");
-    const armorTypes = ["HeavyArmor", "LightArmor", "Unarmed", "ElasticArmor"];
+    const [isLoading, setIsLoading] = useState(false);
+    const [activeArmor, setActiveArmor] = useState(null);
 
     useEffect(() => {
         if (!selectedRaid) {
-            setIsLoading(false);
+            setRecords([]);
+            setActiveArmor(null);
             return;
+        }
+
+        if (selectedRaid.armorTypes && selectedRaid.armorTypes.length > 0) {
+            setActiveArmor(selectedRaid.armorTypes[0]);
         }
 
         const fetchRecords = async () => {
             setIsLoading(true);
             try {
                 const fetchedRecords = await api.getGrandAssaultRecordsBySeason(
-                    selectedRaid.id
+                    selectedRaid.seasonId
                 );
                 setRecords(fetchedRecords);
             } catch (error) {
@@ -108,27 +120,10 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
         );
     }
 
-    if (isLoading) {
-        return (
-            <div className="boss-details-panel">
-                <p>{t("content.loadingData")}</p>
-            </div>
-        );
-    }
-
+    const panelClassName = `boss-details-panel boss-details-panel--${getArmorClass(activeArmor)}`;
     const filteredRecords = records
         .filter((rec) => rec.armor === activeArmor)
         .sort((a, b) => b.score - a.score);
-
-    const getArmorClass = (armor) => {
-        if (armor === "HeavyArmor") return "heavy";
-        if (armor === "LightArmor") return "light";
-        if (armor === "Unarmed") return "unarmed";
-        if (armor === "ElasticArmor") return "elastic";
-        return "";
-    };
-
-    const panelClassName = `boss-details-panel boss-details-panel--${getArmorClass(activeArmor)}`;
 
     return (
         <div className={panelClassName}>
@@ -141,16 +136,14 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
                     textAlign: "left",
                 }}
             >
-                {selectedRaid.title.split(". ")[1]}
+                {selectedRaid.bossName}
             </h3>
 
             <div className="armor-tabs-container">
-                {armorTypes.map((armor) => (
+                {(selectedRaid.armorTypes || []).map((armor) => (
                     <button
                         key={armor}
-                        className={`armor-tab armor-tab--${getArmorClass(
-                            armor
-                        )} ${activeArmor === armor ? "armor-tab--active" : ""}`}
+                        className={`armor-tab armor-tab--${getArmorClass(armor)} ${activeArmor === armor ? "armor-tab--active" : ""}`}
                         onClick={() => setActiveArmor(armor)}
                     >
                         {t(`armorTypes.${getArmorClass(armor)}`)}
@@ -158,17 +151,16 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
                 ))}
             </div>
 
-            {filteredRecords.length === 0 ? (
+            {isLoading ? (
+                <p>{t("content.loadingData")}</p>
+            ) : filteredRecords.length === 0 ? (
                 <p>{t("content.noRecordsForArmor")}</p>
             ) : (
                 filteredRecords.map((record) => (
                     <div key={record.battleId} className="raid-record-card">
                         <div className="raid-record-header">
                             <div
-                                className={`difficulty-badge difficulty-${(
-                                    difficultyMap[record.difficulty] ||
-                                    "Unknown"
-                                ).toLowerCase()}`}
+                                className={`difficulty-badge difficulty-${(difficultyMap[record.difficulty] || "Unknown").toLowerCase()}`}
                             >
                                 {difficultyMap[record.difficulty] || "Unknown"}
                             </div>
