@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import typeDefenseIcon from "../assets/Type_Defense.png";
-import typeAttackIcon from "../assets/Type_Attack.png";
-import terrainStreet from "../assets/Terrain_Street.png";
-import terrainOutdoor from "../assets/Terrain_Outdoor.png";
-import terrainIndoor from "../assets/Terrain_Indoor.png";
+import typeDefenseIcon from "../../assets/Type_Defense.png";
+import typeAttackIcon from "../../assets/Type_Attack.png";
+import terrainStreet from "../../assets/Terrain_Street.png";
+import terrainOutdoor from "../../assets/Terrain_Outdoor.png";
+import terrainIndoor from "../../assets/Terrain_Indoor.png";
 
 const terrainIconMap = {
     Street: terrainStreet,

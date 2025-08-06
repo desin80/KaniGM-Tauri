@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import charStarIcon from "../assets/char_star.png";
-import weaponStarIcon from "../assets/weapon_star.png";
+import charStarIcon from "../../assets/char_star.png";
+import weaponStarIcon from "../../assets/weapon_star.png";
 
 const difficultyMap = {
     1: "Stage 1",

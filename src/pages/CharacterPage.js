@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./CharacterPage.css";
 
-import CharacterCard from "../components/CharacterCard";
-import CharacterEditorModal from "../components/CharacterEditorModal";
+import CharacterCard from "../components/character/CharacterCard";
+import CharacterEditorModal from "../components/character/CharacterEditorModal";
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;

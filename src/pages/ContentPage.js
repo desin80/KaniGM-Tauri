@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ContentPage.css";
-import TotalAssaultSection from "../components/TotalAssaultSection";
-import GrandAssaultSection from "../components/GrandAssaultSection";
-import TimeAttackDungeonSection from "../components/TimeAttackDungeonSection";
-import MultiFloorRaidSection from "../components/MultiFloorRaidSection";
+import TotalAssaultSection from "../components/raid/TotalAssaultSection";
+import GrandAssaultSection from "../components/raid/GrandAssaultSection";
+import TimeAttackDungeonSection from "../components/raid/TimeAttackDungeonSection";
+import MultiFloorRaidSection from "../components/raid/MultiFloorRaidSection";
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import api from "../services/api";
+import api from "../../services/api";
 import TotalAssaultItem from "./TotalAssaultItem";
 import TotalAssaultDetailsPanel from "./TotalAssaultDetailsPanel";
 

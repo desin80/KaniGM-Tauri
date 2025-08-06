@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import attackIcon from "../assets/attack.png";
-import defendIcon from "../assets/defend.png";
-import vsIcon from "../assets/vs.png";
+import attackIcon from "../../assets/attack.png";
+import defendIcon from "../../assets/defend.png";
+import vsIcon from "../../assets/vs.png";
 
 const TeamAvatars = ({ team }) => (
     <div className="team-avatars">

@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ArenaPage.css";
 
-import DummyTeamDisplay from "../components/DummyTeamDisplay";
-import ArenaRecordCard from "../components/ArenaRecordCard";
-import ArenaSummaryCard from "../components/ArenaSummaryCard";
-import ArenaCharacterEditModal from "../components/ArenaCharacterEditModal";
+import DummyTeamDisplay from "../components/arena/DummyTeamDisplay";
+import ArenaRecordCard from "../components/arena/ArenaRecordCard";
+import ArenaSummaryCard from "../components/arena/ArenaSummaryCard";
+import ArenaCharacterEditModal from "../components/arena/ArenaCharacterEditModal";
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;

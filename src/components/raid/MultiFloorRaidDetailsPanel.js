@@ -1,17 +1,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import charStarIcon from "../assets/char_star.png";
-import weaponStarIcon from "../assets/weapon_star.png";
+import charStarIcon from "../../assets/char_star.png";
+import weaponStarIcon from "../../assets/weapon_star.png";
 
-const difficultyMap = {
-    0: "Normal",
-    1: "Hard",
-    2: "VeryHard",
-    3: "Hardcore",
-    4: "Extreme",
-    5: "Insane",
-    6: "Torment",
-    7: "Lunatic",
+const getFloorColorClass = (floor) => {
+    if (floor >= 100) return "floor-tier5";
+    if (floor >= 75) return "floor-tier4";
+    if (floor >= 50) return "floor-tier3";
+    if (floor >= 25) return "floor-tier2";
+    return "floor-tier1";
 };
 
 const CharacterIcon = ({ charInfo }) => {
@@ -66,7 +63,7 @@ const CharacterIcon = ({ charInfo }) => {
     );
 };
 
-const TotalAssaultDetailsPanel = ({
+const MultiFloorRaidDetailsPanel = ({
     selectedRaid,
     records,
     isLoading,
@@ -81,7 +78,6 @@ const TotalAssaultDetailsPanel = ({
             </div>
         );
     }
-
     if (isLoading) {
         return (
             <div className="boss-details-panel">
@@ -90,12 +86,15 @@ const TotalAssaultDetailsPanel = ({
         );
     }
 
-    const sortedRecords = [...records].sort((a, b) => b.score - a.score);
+    const sortedRecords = [...records].sort(
+        (a, b) => b.difficulty - a.difficulty
+    );
 
     return (
         <div className="boss-details-panel">
             <div className="details-panel-header">
                 <h3
+                    className="details-panel-title"
                     style={{
                         fontSize: "1.5rem",
                         fontWeight: 700,
@@ -123,28 +122,26 @@ const TotalAssaultDetailsPanel = ({
                 <p>{t("content.noRecords")}</p>
             ) : (
                 sortedRecords.map((record) => {
-                    const difficultyName =
-                        difficultyMap[record.difficulty] || "Unknown";
+                    const difficultyName = `Floor ${record.difficulty}`;
+                    const floorColorClass = getFloorColorClass(
+                        record.difficulty
+                    );
                     return (
                         <div key={record.battleId} className="raid-record-card">
                             <div className="raid-record-header">
                                 <div
-                                    className={`difficulty-badge difficulty-${difficultyName.toLowerCase()}`}
+                                    className={`difficulty-badge ${floorColorClass}`}
                                 >
                                     {difficultyName}
-                                </div>
-                                <div className="score-display">
-                                    <small>SCORE</small>
-                                    {record.score.toLocaleString()}
                                 </div>
                             </div>
                             <div className="teams-list">
                                 {Object.entries(record.teams || {}).map(
                                     ([attempt, team]) => (
-                                        <div key={attempt} className="team-row">
-                                            <span className="team-attempt-number">
-                                                {attempt}.
-                                            </span>
+                                        <div
+                                            key={attempt}
+                                            className="team-row multiflor-team-row"
+                                        >
                                             <div className="team-avatars-horizontal">
                                                 {(team || []).map(
                                                     (charInfo) => (
@@ -176,4 +173,4 @@ const TotalAssaultDetailsPanel = ({
     );
 };
 
-export default TotalAssaultDetailsPanel;
+export default MultiFloorRaidDetailsPanel;

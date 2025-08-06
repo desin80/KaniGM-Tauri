@@ -1,10 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import typeDefenseIcon from "../assets/Type_Defense.png";
-import typeAttackIcon from "../assets/Type_Attack.png";
-import terrainStreet from "../assets/Terrain_Street.png";
-import terrainOutdoor from "../assets/Terrain_Outdoor.png";
-import terrainIndoor from "../assets/Terrain_Indoor.png";
+import typeDefenseIcon from "../../assets/Type_Defense.png";
+import typeAttackIcon from "../../assets/Type_Attack.png";
+import terrainStreet from "../../assets/Terrain_Street.png";
+import terrainOutdoor from "../../assets/Terrain_Outdoor.png";
+import terrainIndoor from "../../assets/Terrain_Indoor.png";
 
 const terrainIconMap = {
     Street: terrainStreet,
@@ -28,21 +28,22 @@ const getAttackClass = (attackType) => {
     return "";
 };
 
-const GrandAssaultItem = ({ raid, onSetRaid, isSelected, onSelect }) => {
+const MultiFloorRaidItem = ({ raid, onSetRaid, isSelected, onSelect }) => {
     const { t } = useTranslation();
     const [isSetting, setIsSetting] = React.useState(false);
 
     const handleSetRaid = async (e) => {
         e.stopPropagation();
         setIsSetting(true);
-        await onSetRaid("eliminateraids", raid.seasonId);
+        await onSetRaid("multifloreraids", raid.seasonId);
         setIsSetting(false);
     };
 
     const itemClassName = `raid-item ${isSelected ? "raid-item--selected" : ""}`;
 
-    const bgImageUrl = `https://schaledb.com/images/raid/${raid.bgPath}.png`;
-    const portraitImageUrl = `https://schaledb.com/images/raid/${raid.portraitPath}.png`;
+    const bgImageUrl =
+        "https://schaledb.com/images/raid/MultiFloorRaid_Floor_BG.png";
+    const portraitImageUrl = `https://schaledb.com/images/raid/Boss_Portrait_${raid.bossName}_Lobby.png`;
     const terrainIcon = terrainIconMap[raid.groundType];
 
     return (
@@ -65,30 +66,22 @@ const GrandAssaultItem = ({ raid, onSetRaid, isSelected, onSelect }) => {
                     <div className="raid-date">{raid.date}</div>
 
                     <div className="attribute-icon-list">
-                        <div className="armor-group-container">
-                            {raid.armorTypes &&
-                                raid.armorTypes.map((armor) => (
-                                    <div
-                                        key={armor}
-                                        title={`Armor: ${armor}`}
-                                        className={`attribute-icon-container attribute-icon--${getArmorClass(
-                                            armor
-                                        )}`}
-                                    >
-                                        <img
-                                            src={typeDefenseIcon}
-                                            alt={armor}
-                                            className="attribute-icon-image"
-                                        />
-                                    </div>
-                                ))}
-                        </div>
+                        {raid.armorType && (
+                            <div
+                                title={`Armor: ${raid.armorType}`}
+                                className={`attribute-icon-container attribute-icon--${getArmorClass(raid.armorType)}`}
+                            >
+                                <img
+                                    src={typeDefenseIcon}
+                                    alt={raid.armorType}
+                                    className="attribute-icon-image"
+                                />
+                            </div>
+                        )}
                         {raid.attackType && (
                             <div
                                 title={`Attack: ${raid.attackType}`}
-                                className={`attribute-icon-container attribute-icon--${getAttackClass(
-                                    raid.attackType
-                                )}`}
+                                className={`attribute-icon-container attribute-icon--${getAttackClass(raid.attackType)}`}
                             >
                                 <img
                                     src={typeAttackIcon}
@@ -131,4 +124,4 @@ const GrandAssaultItem = ({ raid, onSetRaid, isSelected, onSelect }) => {
     );
 };
 
-export default GrandAssaultItem;
+export default MultiFloorRaidItem;

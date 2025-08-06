@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import api from "../services/api";
-import charStarIcon from "../assets/char_star.png";
-import weaponStarIcon from "../assets/weapon_star.png";
+import api from "../../services/api";
+import charStarIcon from "../../assets/char_star.png";
+import weaponStarIcon from "../../assets/weapon_star.png";
 
 const difficultyMap = {
     0: "Normal",
