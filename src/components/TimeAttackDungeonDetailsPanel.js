@@ -92,17 +92,23 @@ const TimeAttackDungeonDetailsPanel = ({
 
     return (
         <div className="boss-details-panel tad-details-panel">
-            <h3
-                style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    color: "#1f2937",
-                    marginBottom: "1rem",
-                    textAlign: "left",
-                }}
-            >
-                {`${selectedDungeon.dungeonType} Drill`}
-            </h3>
+            <div className="details-panel-header">
+                <h3
+                    style={{
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        color: "#1f2937",
+                        textAlign: "left",
+                    }}
+                >
+                    {`${selectedDungeon.dungeonType} Drill`}
+                </h3>
+                {selectedDungeon.date && (
+                    <span className="details-panel-date">
+                        {selectedDungeon.date.split(" ")[0]}
+                    </span>
+                )}
+            </div>
 
             {sortedRecords.length === 0 ? (
                 <p>{t("content.noRecords")}</p>

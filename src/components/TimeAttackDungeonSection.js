@@ -60,46 +60,43 @@ const TimeAttackDungeonSection = ({
     );
 
     return (
-        <details>
-            <summary className="tab-decoration">{title}</summary>
-            <div className="mt-2 p-4 character-card card-decoration">
-                <div className="inner-content-grid">
-                    <div className="raid-list-column">
-                        <div className="raid-item-container">
-                            {isLoadingList && (
-                                <p className="text-center text-gray-500 py-4">
-                                    {t("content.loadingData")}
-                                </p>
-                            )}
-                            {!isLoadingList && sortedDungeons.length === 0 && (
-                                <p className="text-center text-gray-500 py-4">
-                                    {t("content.noData")}
-                                </p>
-                            )}
-                            {!isLoadingList &&
-                                sortedDungeons.map((dungeon) => (
-                                    <TimeAttackDungeonItem
-                                        key={dungeon.id}
-                                        dungeon={dungeon}
-                                        onSetRaid={onSetRaid}
-                                        isSelected={
-                                            selectedDungeon?.id === dungeon.id
-                                        }
-                                        onSelect={handleSelectDungeon}
-                                    />
-                                ))}
-                        </div>
+        <div className="mt-2 p-4 character-card card-decoration">
+            <div className="inner-content-grid">
+                <div className="raid-list-column">
+                    <div className="raid-item-container">
+                        {isLoadingList && (
+                            <p className="text-center text-gray-500 py-4">
+                                {t("content.loadingData")}
+                            </p>
+                        )}
+                        {!isLoadingList && sortedDungeons.length === 0 && (
+                            <p className="text-center text-gray-500 py-4">
+                                {t("content.noData")}
+                            </p>
+                        )}
+                        {!isLoadingList &&
+                            sortedDungeons.map((dungeon) => (
+                                <TimeAttackDungeonItem
+                                    key={dungeon.id}
+                                    dungeon={dungeon}
+                                    onSetRaid={onSetRaid}
+                                    isSelected={
+                                        selectedDungeon?.id === dungeon.id
+                                    }
+                                    onSelect={handleSelectDungeon}
+                                />
+                            ))}
                     </div>
-
-                    <TimeAttackDungeonDetailsPanel
-                        selectedDungeon={selectedDungeon}
-                        records={records}
-                        isLoading={isLoadingRecords}
-                        onDeleteRecord={handleDeleteRecord}
-                    />
                 </div>
+
+                <TimeAttackDungeonDetailsPanel
+                    selectedDungeon={selectedDungeon}
+                    records={records}
+                    isLoading={isLoadingRecords}
+                    onDeleteRecord={handleDeleteRecord}
+                />
             </div>
-        </details>
+        </div>
     );
 };
 

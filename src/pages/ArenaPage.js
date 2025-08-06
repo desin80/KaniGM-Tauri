@@ -333,13 +333,13 @@ const ArenaPage = () => {
                     >
                         <button
                             onClick={() => setActiveTab("records")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "records" ? "text-sky-600 border-sky-500" : "text-gray-500 border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "records" ? "text-sky-600 border-sky-500" : "text-white border-transparent"}`}
                         >
                             {t("arena.battleRecords")}
                         </button>
                         <button
                             onClick={() => setActiveTab("summaries")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "summaries" ? "text-sky-600 border-sky-500" : "text-gray-500 border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-700 hover:border-gray-300 transition-colors duration-150 ${activeTab === "summaries" ? "text-sky-600 border-sky-500" : "text-white border-transparent"}`}
                         >
                             {t("arena.teamSummaries")}
                         </button>

@@ -94,17 +94,23 @@ const TotalAssaultDetailsPanel = ({
 
     return (
         <div className="boss-details-panel">
-            <h3
-                style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    color: "#1f2937",
-                    marginBottom: "0.5rem",
-                    textAlign: "left",
-                }}
-            >
-                {`${selectedRaid.bossName}`}
-            </h3>
+            <div className="details-panel-header">
+                <h3
+                    style={{
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        color: "#1f2937",
+                        textAlign: "left",
+                    }}
+                >
+                    {selectedRaid.bossName}
+                </h3>
+                {selectedRaid.date && (
+                    <span className="details-panel-date">
+                        {selectedRaid.date.split(" ")[0]}
+                    </span>
+                )}
+            </div>
             <hr
                 style={{
                     border: "none",

@@ -93,6 +93,21 @@ details[open]>summary::after {
     padding-top: 2rem;
 }
 
+.details-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.details-panel-date {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6b7280;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
 
 .raid-item-container {
     display: flex;
@@ -455,7 +470,7 @@ details[open]>summary::after {
 .attribute-icon--elastic { background-color: rgb(148, 49, 165); }
 .attribute-icon--normal { background-color: rgb(72, 85, 130); }
 .attribute-icon--terrain { 
-    background-color: rgba(75, 85, 99, 0.8);
+    background-color: rgba(75, 85, 99, 1);
 }
 
 .attribute-icon--terrain .attribute-icon-image {

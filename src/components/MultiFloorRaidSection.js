@@ -61,47 +61,43 @@ const MultiFloorRaidSection = ({
     );
 
     return (
-        <details>
-            <summary className="tab-decoration">{title}</summary>
-            <div className="mt-2 p-4 character-card card-decoration">
-                <div className="inner-content-grid">
-                    <div className="raid-list-column">
-                        <div className="raid-item-container">
-                            {isLoadingList && (
-                                <p className="text-center text-gray-500 py-4">
-                                    {t("content.loadingData")}
-                                </p>
-                            )}
-                            {!isLoadingList && sortedRaids.length === 0 && (
-                                <p className="text-center text-gray-500 py-4">
-                                    {t("content.noData")}
-                                </p>
-                            )}
-                            {!isLoadingList &&
-                                sortedRaids.map((raid) => (
-                                    <MultiFloorRaidItem
-                                        key={raid.seasonId}
-                                        raid={raid}
-                                        onSetRaid={onSetRaid}
-                                        isSelected={
-                                            selectedRaid?.seasonId ===
-                                            raid.seasonId
-                                        }
-                                        onSelect={handleSelectRaid}
-                                    />
-                                ))}
-                        </div>
+        <div className="mt-2 p-4 character-card card-decoration">
+            <div className="inner-content-grid">
+                <div className="raid-list-column">
+                    <div className="raid-item-container">
+                        {isLoadingList && (
+                            <p className="text-center text-gray-500 py-4">
+                                {t("content.loadingData")}
+                            </p>
+                        )}
+                        {!isLoadingList && sortedRaids.length === 0 && (
+                            <p className="text-center text-gray-500 py-4">
+                                {t("content.noData")}
+                            </p>
+                        )}
+                        {!isLoadingList &&
+                            sortedRaids.map((raid) => (
+                                <MultiFloorRaidItem
+                                    key={raid.seasonId}
+                                    raid={raid}
+                                    onSetRaid={onSetRaid}
+                                    isSelected={
+                                        selectedRaid?.seasonId === raid.seasonId
+                                    }
+                                    onSelect={handleSelectRaid}
+                                />
+                            ))}
                     </div>
-
-                    <MultiFloorRaidDetailsPanel
-                        selectedRaid={selectedRaid}
-                        records={records}
-                        isLoading={isLoadingRecords}
-                        onDeleteRecord={handleDeleteRecord}
-                    />
                 </div>
+
+                <MultiFloorRaidDetailsPanel
+                    selectedRaid={selectedRaid}
+                    records={records}
+                    isLoading={isLoadingRecords}
+                    onDeleteRecord={handleDeleteRecord}
+                />
             </div>
-        </details>
+        </div>
     );
 };
 
