@@ -656,24 +656,21 @@ const api = {
     },
 
     // --- Settings APIs ---
-    // ---------------------------------------------------------------------------------------
-    // CURRENTLY HARDCODED FOR TESTING
     /**
      * Fetches the current account settings.
      * @returns {Promise<object>} A promise that resolves with the settings object.
      */
     getSettings: function () {
-        console.warn("API call 'getSettings' is using mock data.");
-
-        return Promise.resolve({
-            trackpvp: true,
-            usefinal: false,
-            bypassteam: true,
-            changetime: {
-                enabled: true,
-                offset: 5,
+        return fetch(`/dev/api/get_settings`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                RequestVerificationToken: this._getRequestVerificationToken(),
             },
-        });
+            body: JSON.stringify({
+                UserID: api.getCurrentUserId(),
+            }),
+        }).then((response) => this._handleResponse(response));
     },
 
     /**
@@ -682,13 +679,19 @@ const api = {
      * @returns {Promise<object>} A promise that resolves on successful save.
      */
     setSettings: function (settings) {
-        console.log("API call 'setSettings' received:", settings);
-        return Promise.resolve({
-            status: "Success",
-            message: "Settings saved successfully.",
-        });
+        return fetch(`/dev/api/set_settings`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                RequestVerificationToken: this._getRequestVerificationToken(),
+            },
+            body: JSON.stringify({
+                UserID: api.getCurrentUserId(),
+                ...settings,
+            }),
+        }).then((response) => this._handleResponse(response));
     },
-    // ---------------------------------------------------------------------------------------
+
     /**
      * Fetches extensive student data from SchaleDB, with session-level caching.
      * @param {string} lang - The current language code (e.g., 'en', 'zh').
