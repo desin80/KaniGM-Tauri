@@ -92,25 +92,25 @@ const ContentPage = () => {
                     >
                         <button
                             onClick={() => setActiveTab("totalAssault")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "totalAssault" ? "text-sky-400 border-sky-500" : "text-white border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "totalAssault" ? "text-sky-400 border-sky-500" : "text-black border-transparent"}`}
                         >
                             {t("content.totalAssault")}
                         </button>
                         <button
                             onClick={() => setActiveTab("grandAssault")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "grandAssault" ? "text-sky-400 border-sky-500" : "text-white border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "grandAssault" ? "text-sky-400 border-sky-500" : "text-black border-transparent"}`}
                         >
                             {t("content.grandAssault")}
                         </button>
                         <button
                             onClick={() => setActiveTab("timeAttackDungeon")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150 ${activeTab === "timeAttackDungeon" ? "text-sky-400 border-sky-500" : "text-white border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150 ${activeTab === "timeAttackDungeon" ? "text-sky-400 border-sky-500" : "text-black border-transparent"}`}
                         >
                             {t("content.jointFiringDrill")}
                         </button>
                         <button
                             onClick={() => setActiveTab("multiFloorRaid")}
-                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "multiFloorRaid" ? "text-sky-400 border-sky-500" : "text-white border-transparent"}`}
+                            className={`px-4 py-3 sm:px-6 text-center border-b-2 cursor-pointer hover:text-gray-200 hover:border-gray-300 transition-colors duration-150  ${activeTab === "multiFloorRaid" ? "text-sky-400 border-sky-500" : "text-black border-transparent"}`}
                         >
                             {t("content.finalRestrictionRelease")}
                         </button>
