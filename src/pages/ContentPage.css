@@ -118,7 +118,7 @@ details[open]>summary::after {
 .raid-item {
     position: relative;
     width: 100%;
-    min-height: 90px;
+    min-height: 100px;
     border-radius: 12px;
     overflow: hidden;
     background-color: #e9eaf0; 
