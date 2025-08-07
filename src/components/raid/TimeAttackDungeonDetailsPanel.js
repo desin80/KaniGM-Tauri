@@ -111,7 +111,8 @@ const TimeAttackDungeonDetailsPanel = ({
             </div>
 
             {sortedRecords.length === 0 ? (
-                <p>{t("content.noRecords")}</p>
+                // <p>{t("content.noRecords")}</p>
+                <p>Coming Soon...</p>
             ) : (
                 sortedRecords.map((record) => (
                     <div key={record.battleId} className="tad-record-container">

@@ -218,100 +218,17 @@ const api = {
      * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects with armor types.
      */
     getGrandAssaultRecordsBySeason: function (seasonId) {
-        console.warn(
-            "API call 'getGrandAssaultRecordsBySeason' is using mock data."
-        );
-        const mockData = [
-            {
-                battleId: "ga_rec1",
-                score: 25000000,
-                difficulty: 6,
-                armor: "HeavyArmor",
-                teams: {
-                    1: [
-                        {
-                            id: 10006,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10000,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
+        return fetch(`/dev/api/get_grand_records_by_season`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                RequestVerificationToken: this._getRequestVerificationToken(),
             },
-            {
-                battleId: "ga_rec2",
-                score: 24500000,
-                difficulty: 6,
-                armor: "HeavyArmor",
-                teams: {
-                    1: [
-                        {
-                            id: 10007,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10015,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "ga_rec3",
-                score: 26000000,
-                difficulty: 6,
-                armor: "LightArmor",
-                teams: {
-                    1: [
-                        {
-                            id: 10013,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10019,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "ga_rec4",
-                score: 27100000,
-                difficulty: 6,
-                armor: "Unarmed",
-                teams: {
-                    1: [
-                        {
-                            id: 10059,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10020,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-        ];
-        return Promise.resolve(mockData);
+            body: JSON.stringify({
+                UserID: api.getCurrentUserId(),
+                SeasonId: seasonId,
+            }),
+        }).then((response) => this._handleResponse(response));
     },
 
     getTADRecordsBySeason: function (dungeonId) {
