@@ -191,171 +191,27 @@ const api = {
 
     // --- Raid Record APIs ---
 
-    // ------------------------------------------------------------------------------------------------------------------------------
-    // The functions below are placeholders
     /**
      * Fetches battle records for a specific raid season.
      * @param {number|string} seasonId - The ID of the raid season.
      * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects.
      */
     getRaidRecordsBySeason: function (seasonId) {
-        // This is a placeholder for the actual API call.
-        // In a real scenario, you would fetch from an endpoint like:
-        // return fetch(`/dev/api/get_raid_records?seasonId=${seasonId}`).then(this._handleResponse);
-
-        // For now, returning mock data to simulate the feature.
-        console.warn("API call 'getRaidRecordsBySeason' is using mock data.");
-        return Promise.resolve([
-            {
-                battleId: "rec_d1",
-                score: 1000000,
-                difficulty: 1,
-                teams: {
-                    1: [
-                        {
-                            id: 10001,
-                            level: 60,
-                            starGrade: 3,
-                            weaponStarGrade: 1,
-                        },
-                        {
-                            id: 10002,
-                            level: 60,
-                            starGrade: 3,
-                            weaponStarGrade: 1,
-                        },
-                    ],
-                },
+        return fetch(`/dev/api/get_raid_records_by_season`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                RequestVerificationToken: this._getRequestVerificationToken(),
             },
-            {
-                battleId: "rec_d2",
-                score: 2000000,
-                difficulty: 2,
-                teams: {
-                    1: [
-                        {
-                            id: 10003,
-                            level: 65,
-                            starGrade: 3,
-                            weaponStarGrade: 2,
-                        },
-                        {
-                            id: 10004,
-                            level: 65,
-                            starGrade: 4,
-                            weaponStarGrade: 1,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "rec_d3",
-                score: 3500000,
-                difficulty: 3,
-                teams: {
-                    1: [
-                        {
-                            id: 10005,
-                            level: 70,
-                            starGrade: 4,
-                            weaponStarGrade: 2,
-                        },
-                        {
-                            id: 10006,
-                            level: 70,
-                            starGrade: 4,
-                            weaponStarGrade: 2,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "rec_d4",
-                score: 5000000,
-                difficulty: 4,
-                teams: {
-                    1: [
-                        {
-                            id: 10007,
-                            level: 75,
-                            starGrade: 4,
-                            weaponStarGrade: 2,
-                        },
-                        {
-                            id: 10008,
-                            level: 75,
-                            starGrade: 4,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "rec_d5",
-                score: 6500000,
-                difficulty: 5,
-                teams: {
-                    1: [
-                        {
-                            id: 10009,
-                            level: 80,
-                            starGrade: 5,
-                            weaponStarGrade: 2,
-                        },
-                        {
-                            id: 10010,
-                            level: 80,
-                            starGrade: 5,
-                            weaponStarGrade: 2,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "rec_d6",
-                score: 8000000,
-                difficulty: 6,
-                teams: {
-                    1: [
-                        {
-                            id: 10011,
-                            level: 85,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10012,
-                            level: 85,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-            {
-                battleId: "rec_d7",
-                score: 9500000,
-                difficulty: 7,
-                teams: {
-                    1: [
-                        {
-                            id: 10013,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                        {
-                            id: 10014,
-                            level: 90,
-                            starGrade: 5,
-                            weaponStarGrade: 3,
-                        },
-                    ],
-                },
-            },
-        ]);
+            body: JSON.stringify({
+                UserID: api.getCurrentUserId(),
+                SeasonId: seasonId,
+            }),
+        }).then((response) => this._handleResponse(response));
     },
 
+    // ------------------------------------------------------------------------------------------------------------------------------
+    // The functions below are placeholders
     /**
      * Fetches battle records for a specific Grand Assault season.
      * @param {number|string} seasonId - The ID of the raid season.

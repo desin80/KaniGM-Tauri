@@ -95,10 +95,11 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
         const fetchRecords = async () => {
             setIsLoading(true);
             try {
-                const fetchedRecords = await api.getGrandAssaultRecordsBySeason(
+                const apiData = await api.getGrandAssaultRecordsBySeason(
                     selectedRaid.seasonId
                 );
-                setRecords(fetchedRecords);
+                const fetchedRecords = apiData?.records;
+                setRecords(Array.isArray(fetchedRecords) ? fetchedRecords : []);
             } catch (error) {
                 showStatus(
                     t("content.loadRecordsError", { message: error.message }),

@@ -21,10 +21,11 @@ const MultiFloorRaidSection = ({
         setSelectedRaid(raid);
         setIsLoadingRecords(true);
         try {
-            const fetchedRecords = await api.getMultiFloorRaidRecordsBySeason(
+            const apiData = await api.getMultiFloorRaidRecordsBySeason(
                 raid.seasonId
             );
-            setRecords(fetchedRecords);
+            const fetchedRecords = apiData?.records;
+            setRecords(Array.isArray(fetchedRecords) ? fetchedRecords : []);
         } catch (error) {
             console.error(
                 `Error fetching records for season ${raid.seasonId}:`,

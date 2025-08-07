@@ -21,8 +21,9 @@ const TimeAttackDungeonSection = ({
         setSelectedDungeon(dungeon);
         setIsLoadingRecords(true);
         try {
-            const fetchedRecords = await api.getTADRecordsBySeason(dungeon.id);
-            setRecords(fetchedRecords);
+            const apiData = await api.getTADRecordsBySeason(dungeon.id);
+            const fetchedRecords = apiData?.records;
+            setRecords(Array.isArray(fetchedRecords) ? fetchedRecords : []);
         } catch (error) {
             console.error(
                 `Error fetching records for dungeon ${dungeon.id}:`,

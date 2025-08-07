@@ -21,10 +21,9 @@ const TotalAssaultSection = ({
         setSelectedRaid(raid);
         setIsLoadingRecords(true);
         try {
-            const fetchedRecords = await api.getRaidRecordsBySeason(
-                raid.seasonId
-            );
-            setRecords(fetchedRecords);
+            const apiData = await api.getRaidRecordsBySeason(raid.seasonId);
+            const fetchedRecords = apiData?.records;
+            setRecords(Array.isArray(fetchedRecords) ? fetchedRecords : []);
         } catch (error) {
             console.error(
                 `Error fetching records for season ${raid.seasonId}:`,
