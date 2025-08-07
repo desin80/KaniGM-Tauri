@@ -159,7 +159,7 @@ const TotalAssaultDetailsPanel = ({
                                     )
                                 )}
                             </div>
-                            <div className="record-actions">
+                            {/* <div className="record-actions">
                                 <button
                                     className="delete-record-button"
                                     title="Delete this record"
@@ -167,7 +167,7 @@ const TotalAssaultDetailsPanel = ({
                                         onDeleteRecord(record.battleId)
                                     }
                                 ></button>
-                            </div>
+                            </div> */}
                         </div>
                     );
                 })
