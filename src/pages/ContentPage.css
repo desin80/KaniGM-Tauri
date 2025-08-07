@@ -263,6 +263,8 @@ details[open]>summary::after {
     display: flex;
     flex-wrap: nowrap;
     gap: 0.25rem;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .record-actions {
@@ -742,3 +744,37 @@ details[open]>summary::after {
 .floor-tier5 {                               
     background: linear-gradient(45deg, #7e22ce, #be185d, #c2410c); 
 }
+
+.empty-slot-card {
+    cursor: default;
+    margin-left: 0.3rem;
+}
+.empty-slot-card:hover {
+    transform: translateY(0.35rem); 
+}
+.empty-slot-card .background-plate {
+    filter: grayscale(80%) brightness(0.9); 
+}
+.empty-slot-card + .empty-slot-card {
+    margin-left: 0.6rem;
+}
+
+.empty-slot-overlay {
+    position: absolute;
+    inset: 8px 0;
+    background-color: rgba(55, 65, 81, 1); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; 
+    transform: skew(-10deg) translateY(-7px)
+}
+
+.empty-slot-overlay span {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    user-select: none;
+}
+

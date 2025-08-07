@@ -75,6 +75,17 @@ const CharacterIcon = ({ charInfo }) => {
     );
 };
 
+const EmptySlot = () => {
+    return (
+        <div className="rs-char-card empty-slot-card">
+            <div className="background-plate"></div>
+            <div className="empty-slot-overlay">
+                <span>EMPTY</span>
+            </div>
+        </div>
+    );
+};
+
 const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
     const { t } = useTranslation();
     const [records, setRecords] = useState([]);
@@ -178,21 +189,37 @@ const GrandAssaultDetailsPanel = ({ selectedRaid, showStatus }) => {
                         </div>
                         <div className="teams-list">
                             {Object.entries(record.teams || {}).map(
-                                ([attempt, team]) => (
-                                    <div key={attempt} className="team-row">
-                                        <span className="team-attempt-number">
-                                            {attempt}.
-                                        </span>
-                                        <div className="team-avatars-horizontal">
-                                            {(team || []).map((charInfo) => (
-                                                <CharacterIcon
-                                                    key={charInfo.id}
-                                                    charInfo={charInfo}
-                                                />
-                                            ))}
+                                ([attempt, team]) => {
+                                    const teamSize = 6;
+                                    const emptySlotsCount =
+                                        teamSize - (team?.length || 0);
+
+                                    return (
+                                        <div key={attempt} className="team-row">
+                                            <span className="team-attempt-number">
+                                                {attempt}.
+                                            </span>
+                                            <div className="team-avatars-horizontal">
+                                                {(team || []).map(
+                                                    (charInfo) => (
+                                                        <CharacterIcon
+                                                            key={charInfo.id}
+                                                            charInfo={charInfo}
+                                                        />
+                                                    )
+                                                )}
+                                                {emptySlotsCount > 0 &&
+                                                    Array.from({
+                                                        length: emptySlotsCount,
+                                                    }).map((_, index) => (
+                                                        <EmptySlot
+                                                            key={`empty-${index}`}
+                                                        />
+                                                    ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                )
+                                    );
+                                }
                             )}
                         </div>
                     </div>

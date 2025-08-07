@@ -103,7 +103,7 @@
     "armorTypes": {
         "heavy": "Heavy",
         "light": "Light",
-        "unarmed": "Unarmed",
+        "unarmed": "Special",
         "elastic": "Elastic"
     },
     "command": {
