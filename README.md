@@ -1,5 +1,4 @@
-Some features in this project are still under development, and some are hardcoded or placeholders.
-For example, the raid detail on the Content page, as well as the delete function and the settings page.
+Some features in this project are still under development.
 
 ## Setup
 
