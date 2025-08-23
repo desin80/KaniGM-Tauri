@@ -15,6 +15,19 @@ const api = {
         Error: "Error",
     },
 
+    hinaCheck: async function () {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/hina`);
+            if (!response.ok) {
+                return false;
+            }
+            const isReady = await response.json();
+            return isReady === true;
+        } catch (error) {
+            return false;
+        }
+    },
+
     /**
      * Retrieves the current user ID from the DOM.
      * @returns {number|null} The user ID, or null if not found or invalid.

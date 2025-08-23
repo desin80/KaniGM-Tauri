@@ -8,8 +8,40 @@ import CharacterPage from "./pages/CharacterPage";
 import ArenaPage from "./pages/ArenaPage";
 import ContentPage from "./pages/ContentPage";
 import SettingsPage from "./pages/SettingsPage";
+import React, { useState, useEffect } from "react";
+import api from "./services/api";
+import Hina from "./components/Hina";
 
 function App() {
+    const [isBackendReady, setIsBackendReady] = useState(false);
+
+    useEffect(() => {
+        if (isBackendReady) {
+            return;
+        }
+
+        let intervalId;
+
+        const checkStatus = async () => {
+            const ready = await api.hinaCheck();
+            if (ready) {
+                setIsBackendReady(true);
+                clearInterval(intervalId);
+            }
+        };
+
+        checkStatus();
+        intervalId = setInterval(checkStatus, 1000);
+
+        return () => clearInterval(intervalId);
+    }, [isBackendReady]);
+
+    if (!isBackendReady) {
+        const message =
+            "Sensei, please make sure the server is running and\n you’ve registered an in-game account before using";
+        return <Hina message={message} />;
+    }
+
     return (
         <BrowserRouter>
             <Routes>
