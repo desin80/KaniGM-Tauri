@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./ContentPage.css";
@@ -37,10 +37,10 @@ const ContentPage = () => {
         isError: false,
     });
 
-    const showStatus = (text, isError = false) => {
+    const showStatus = useCallback((text, isError = false) => {
         setStatusMessage({ text, isError });
         setTimeout(() => setStatusMessage({ text: "", isError: false }), 2500);
-    };
+    }, []);
 
     useEffect(() => {
         const loadRaidData = async () => {
@@ -59,7 +59,7 @@ const ContentPage = () => {
             }
         };
         loadRaidData();
-    }, []);
+    }, [showStatus]);
 
     const handleSetRaid = async (raidType, seasonId) => {
         try {

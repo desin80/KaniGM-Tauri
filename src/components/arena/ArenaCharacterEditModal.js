@@ -93,10 +93,7 @@ const ArenaCharacterEditModal = ({
     const { weapon, equippedEquipment, gear } = formData;
 
     return (
-        <div
-            className="fixed inset-0 bg-gray-600/50 backdrop-blur-sm overflow-y-auto h-full w-full z-50"
-            onClick={onClose}
-        >
+        <div className="fixed inset-0 bg-gray-600/50 backdrop-blur-sm overflow-y-auto h-full w-full z-50">
             <div
                 className="relative top-10 mx-auto p-5 border w-full max-w-xl shadow-xl rounded-lg bg-white text-slate-800"
                 onClick={(e) => e.stopPropagation()}

@@ -78,10 +78,7 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
     const localizedName = character.Name || `Character ${character.uniqueId}`;
 
     return (
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4"
-            onClick={onClose}
-        >
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4">
             <div
                 className="character-editor-content bg-white shadow-xl overflow-hidden transition-all duration-300 ease-in-out rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col"
                 onClick={(e) => e.stopPropagation()}
