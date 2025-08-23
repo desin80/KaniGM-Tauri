@@ -1,9 +1,8 @@
 Some features in this project are still under development.
 
-## Setup
+## How to build
 
-1. Download and install Node.js from [nodejs.org](https://nodejs.org/)
-1. Run the backend
-1. Open a new terminal window and navigate to the project's root directory.
-1. Run `npm install --legacy-peer-deps`
-1. Run `npm start`
+1. Install Node.js
+1. Install Rust
+1. Run `npm install`
+1. Run `npm run tauri build`

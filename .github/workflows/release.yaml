@@ -1,0 +1,52 @@
+name: Build and Release
+
+on:
+    push:
+        tags:
+            - "v*"
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest, macos-latest, windows-latest]
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cargo/registry
+                      ~/.cargo/git
+                      node_modules
+                  key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-cargo-
+                      ${{ runner.os }}-node-
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build Tauri app
+              run: npm run tauri build
+
+            - name: Upload Release Artifacts
+              uses: softprops/action-gh-release@v2
+              with:
+                  files: |
+                      src-tauri/target/release/bundle/**/*
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

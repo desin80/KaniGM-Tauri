@@ -1,4 +1,4 @@
-// const API_BASE_URL = "http://127.0.0.1:80";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const getSchaleDbLangCode = (lang) => {
     const langMap = {
@@ -88,7 +88,7 @@ const api = {
      * @returns {Promise<Array<object>>} A promise that resolves to the 'data' property of the API response.
      */
     getCharacter: function () {
-        return fetch(`/dev/api/get_character`, {
+        return fetch(`${API_BASE_URL}/api/get_character`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property of the server's success response.
      */
     modifyCharacter: function (characterData) {
-        return fetch(`/dev/api/modify_character`, {
+        return fetch(`${API_BASE_URL}/api/modify_character`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -143,7 +143,7 @@ const api = {
      * @returns {Promise<any>} A promise that resolves with the 'data' property of the result.
      */
     executeCommand: function (commandText) {
-        return fetch(`/dev/api/command`, {
+        return fetch(`${API_BASE_URL}/api/command`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -163,7 +163,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property containing raid types.
      */
     getRaid: function () {
-        return fetch(`/dev/api/get_raidinfo`).then((response) =>
+        return fetch(`${API_BASE_URL}/api/get_raidinfo`).then((response) =>
             this._handleResponse(response)
         );
     },
@@ -175,7 +175,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the 'data' property of the server's success response.
      */
     setRaid: function (raidType, seasonId) {
-        return fetch(`/dev/api/set_raid`, {
+        return fetch(`${API_BASE_URL}/api/set_raid`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -197,7 +197,7 @@ const api = {
      * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects.
      */
     getRaidRecordsBySeason: function (seasonId) {
-        return fetch(`/dev/api/get_raid_records_by_season`, {
+        return fetch(`${API_BASE_URL}/api/get_raid_records_by_season`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -218,7 +218,7 @@ const api = {
      * @returns {Promise<Array<object>>} A promise that resolves to an array of record objects with armor types.
      */
     getGrandAssaultRecordsBySeason: function (seasonId) {
-        return fetch(`/dev/api/get_grand_records_by_season`, {
+        return fetch(`${API_BASE_URL}/api/get_grand_records_by_season`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -349,7 +349,7 @@ const api = {
      */
     deleteRaidRecord: function (battleId) {
         // This is a placeholder for the actual API call.
-        // return fetch(`/dev/api/delete_raid_record`, {
+        // return fetch(`${API_BASE_URL}/api/delete_raid_record`, {
         //     method: 'POST',
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify({ UserId: api.getCurrentUserId(), BattleId: battleId })
@@ -365,25 +365,25 @@ const api = {
     // --- Arena APIs ---
 
     getArenaRecords: function () {
-        return fetch(`/dev/api/get_arena_records`).then((response) =>
+        return fetch(`${API_BASE_URL}/api/get_arena_records`).then((response) =>
             this._handleResponse(response)
         );
     },
 
     getArenaSummaries: function () {
-        return fetch(`/dev/api/get_arena_summaries`).then((response) =>
-            this._handleResponse(response)
+        return fetch(`${API_BASE_URL}/api/get_arena_summaries`).then(
+            (response) => this._handleResponse(response)
         );
     },
 
     getArenaDummy: function () {
-        return fetch(`/dev/api/get_arena_dummy`).then((response) =>
+        return fetch(`${API_BASE_URL}/api/get_arena_dummy`).then((response) =>
             this._handleResponse(response)
         );
     },
 
     setArenaDummy: function (characterData) {
-        return fetch(`/dev/api/set_arena_dummy`, {
+        return fetch(`${API_BASE_URL}/api/set_arena_dummy`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -400,7 +400,7 @@ const api = {
     },
 
     deleteArenaRecord: function (recordObject) {
-        return fetch(`/dev/api/delete_arena_record`, {
+        return fetch(`${API_BASE_URL}/api/delete_arena_record`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -414,7 +414,7 @@ const api = {
     },
 
     deleteArenaSummary: function (attackingTeamIds, defendingTeamIds) {
-        return fetch(`/dev/api/delete_arena_summary`, {
+        return fetch(`${API_BASE_URL}/api/delete_arena_summary`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -434,7 +434,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves with the settings object.
      */
     getSettings: function () {
-        return fetch(`/dev/api/get_settings`, {
+        return fetch(`${API_BASE_URL}/api/get_settings`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -452,7 +452,7 @@ const api = {
      * @returns {Promise<object>} A promise that resolves on successful save.
      */
     setSettings: function (settings) {
-        return fetch(`/dev/api/set_settings`, {
+        return fetch(`${API_BASE_URL}/api/set_settings`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
