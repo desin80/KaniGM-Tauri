@@ -82,16 +82,23 @@ const CharacterPage = () => {
         loadData();
     }, [i18n.language]);
 
-    const filteredCharacters = allCharacters.filter((charWrapper) => {
-        const char = charWrapper.character;
-        if (!char) return false;
-        const lowerSearchTerm = searchTerm.toLowerCase();
+    const filteredCharacters = allCharacters
+        .filter((charWrapper) => {
+            const char = charWrapper.character;
+            if (!char) return false;
+            const lowerSearchTerm = searchTerm.toLowerCase();
 
-        const nameMatch = char.Name?.toLowerCase().includes(lowerSearchTerm);
-        const idMatch = String(char.uniqueId).includes(lowerSearchTerm);
+            const nameMatch =
+                char.Name?.toLowerCase().includes(lowerSearchTerm);
+            const idMatch = String(char.uniqueId).includes(lowerSearchTerm);
 
-        return nameMatch || idMatch;
-    });
+            return nameMatch || idMatch;
+        })
+        .sort((a, b) => {
+            const nameA = a.character.Name || "";
+            const nameB = b.character.Name || "";
+            return nameA.localeCompare(nameB);
+        });
 
     const handleOpenModal = (uniqueId) => {
         const characterToEdit = allCharacters.find(
