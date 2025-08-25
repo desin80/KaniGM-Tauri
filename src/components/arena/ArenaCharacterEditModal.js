@@ -90,7 +90,7 @@ const ArenaCharacterEditModal = ({
         : [];
 
     if (!formData) return null;
-    const { weapon, equippedEquipment, gear } = formData;
+    const { equippedEquipment, gear } = formData;
 
     return (
         <div className="fixed inset-0 bg-gray-600/50 backdrop-blur-sm overflow-y-auto h-full w-full z-50">
@@ -415,56 +415,47 @@ const ArenaCharacterEditModal = ({
                             <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.weapon")}
                             </legend>
-                            {weapon ? (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
-                                    <label className="block text-xs font-medium text-gray-700">
-                                        {t("character.level")}:
-                                        <input
-                                            type="number"
-                                            value={
-                                                getNestedValue(
-                                                    formData,
-                                                    "weapon.level"
-                                                ) ?? ""
-                                            }
-                                            onChange={(e) =>
-                                                handleInputChange(
-                                                    "weapon.level",
-                                                    e
-                                                )
-                                            }
-                                            min="1"
-                                            max="60"
-                                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
-                                        />
-                                    </label>
-                                    <label className="block text-xs font-medium text-gray-700">
-                                        {t("character.starGrade")}:
-                                        <input
-                                            type="number"
-                                            value={
-                                                getNestedValue(
-                                                    formData,
-                                                    "weapon.starGrade"
-                                                ) ?? ""
-                                            }
-                                            onChange={(e) =>
-                                                handleInputChange(
-                                                    "weapon.starGrade",
-                                                    e
-                                                )
-                                            }
-                                            min="1"
-                                            max="4"
-                                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
-                                        />
-                                    </label>
-                                </div>
-                            ) : (
-                                <div className="text-gray-500 italic text-center py-2">
-                                    {t("common.na")}
-                                </div>
-                            )}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                                <label className="block text-xs font-medium text-gray-700">
+                                    {t("character.level")}:
+                                    <input
+                                        type="number"
+                                        value={
+                                            getNestedValue(
+                                                formData,
+                                                "weapon.level"
+                                            ) ?? ""
+                                        }
+                                        onChange={(e) =>
+                                            handleInputChange("weapon.level", e)
+                                        }
+                                        min="1"
+                                        max="60"
+                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                                    />
+                                </label>
+                                <label className="block text-xs font-medium text-gray-700">
+                                    {t("character.starGrade")}:
+                                    <input
+                                        type="number"
+                                        value={
+                                            getNestedValue(
+                                                formData,
+                                                "weapon.starGrade"
+                                            ) ?? ""
+                                        }
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                "weapon.starGrade",
+                                                e
+                                            )
+                                        }
+                                        min="1"
+                                        max="4"
+                                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
+                                    />
+                                </label>
+                            </div>
                         </fieldset>
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
@@ -536,8 +527,6 @@ const ArenaCharacterEditModal = ({
                                     min="1"
                                     max="2"
                                     className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"
-                                    disabled={!gear}
-                                    placeholder={!gear ? t("common.na") : ""}
                                 />
                             </div>
                         </fieldset>

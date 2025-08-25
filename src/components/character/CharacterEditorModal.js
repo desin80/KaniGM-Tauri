@@ -74,7 +74,7 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
 
     if (!formData) return null;
 
-    const { character, weapon, equippedEquipment, gear } = formData;
+    const { character, equippedEquipment, gear } = formData;
     const localizedName = character.Name || `Character ${character.uniqueId}`;
 
     return (
@@ -369,60 +369,54 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
                                 <legend className="text-gray-500 px-1 text-xs">
                                     {t("character.weapon")}
                                 </legend>
-                                {weapon ? (
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-                                        <label className="block">
-                                            <span className="stat-label inline-block">
-                                                {t("character.level")}:
-                                            </span>
-                                            <input
-                                                type="number"
-                                                value={
-                                                    getNestedValue(
-                                                        formData,
-                                                        "weapon.level"
-                                                    ) ?? ""
-                                                }
-                                                onChange={(e) =>
-                                                    handleInputChange(
-                                                        "weapon.level",
-                                                        e
-                                                    )
-                                                }
-                                                min="1"
-                                                max="60"
-                                                className="number-input form-input"
-                                            />
-                                        </label>
-                                        <label className="block">
-                                            <span className="stat-label inline-block">
-                                                {t("character.starGrade")}:
-                                            </span>
-                                            <input
-                                                type="number"
-                                                value={
-                                                    getNestedValue(
-                                                        formData,
-                                                        "weapon.starGrade"
-                                                    ) ?? ""
-                                                }
-                                                onChange={(e) =>
-                                                    handleInputChange(
-                                                        "weapon.starGrade",
-                                                        e
-                                                    )
-                                                }
-                                                min="1"
-                                                max="4"
-                                                className="number-input form-input"
-                                            />
-                                        </label>
-                                    </div>
-                                ) : (
-                                    <div className="weapon-internal-na-message">
-                                        {t("common.na")}
-                                    </div>
-                                )}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
+                                    <label className="block">
+                                        <span className="stat-label inline-block">
+                                            {t("character.level")}:
+                                        </span>
+                                        <input
+                                            type="number"
+                                            value={
+                                                getNestedValue(
+                                                    formData,
+                                                    "weapon.level"
+                                                ) ?? ""
+                                            }
+                                            onChange={(e) =>
+                                                handleInputChange(
+                                                    "weapon.level",
+                                                    e
+                                                )
+                                            }
+                                            min="1"
+                                            max="60"
+                                            className="number-input form-input"
+                                        />
+                                    </label>
+                                    <label className="block">
+                                        <span className="stat-label inline-block">
+                                            {t("character.starGrade")}:
+                                        </span>
+                                        <input
+                                            type="number"
+                                            value={
+                                                getNestedValue(
+                                                    formData,
+                                                    "weapon.starGrade"
+                                                ) ?? ""
+                                            }
+                                            onChange={(e) =>
+                                                handleInputChange(
+                                                    "weapon.starGrade",
+                                                    e
+                                                )
+                                            }
+                                            min="1"
+                                            max="4"
+                                            className="number-input form-input"
+                                        />
+                                    </label>
+                                </div>
                             </fieldset>
                         </div>
 
@@ -500,10 +494,6 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
                                             min="0"
                                             max="2"
                                             className="number-input form-input"
-                                            disabled={!gear}
-                                            placeholder={
-                                                !gear ? t("common.na") : ""
-                                            }
                                         />
                                     </label>
                                 </div>
