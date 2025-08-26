@@ -153,7 +153,7 @@ const BatchCharacterEditorModal = ({ selectedCharacters, onClose, onSave }) => {
                             <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.potentialStats")}
                             </legend>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2 small-label-grid">
                                 <BatchUpdateField
                                     label={t("character.maxHP")}
                                     path="character.potentialStats.1"
@@ -308,7 +308,7 @@ const BatchCharacterEditorModal = ({ selectedCharacters, onClose, onSave }) => {
                             <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.equipmentTiers")}
                             </legend>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2 equipment-slots-grid">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2 small-label-grid">
                                 {[0, 1, 2].map((i) => (
                                     <BatchUpdateField
                                         key={i}

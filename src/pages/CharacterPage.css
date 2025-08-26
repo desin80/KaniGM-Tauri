@@ -53,8 +53,8 @@
     color: #4b5563;
 }
 
-.equipment-slots-grid .stat-label {
-    min-width: 50px;
+.small-label-grid .stat-label {
+    min-width: 70px;
 }
 
 .form-input {
