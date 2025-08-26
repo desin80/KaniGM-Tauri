@@ -53,7 +53,7 @@
         "weapon": "Weapon",
         "equipment": "Equipment Tiers",
         "equipmentTiers": "Equipment Tiers",
-        "equipmentTier": "Eq. {{num}} Tier",
+        "equipmentTier": "Eq. {{num}}",
         "gear": "Gear",
         "gearTier": "Gear Tier",
         "tier": "Tier",

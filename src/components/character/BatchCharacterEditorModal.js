@@ -96,13 +96,10 @@ const BatchCharacterEditorModal = ({ selectedCharacters, onClose, onSave }) => {
                 <div className="p-5 card-decoration overflow-y-auto">
                     <div className="mb-4">
                         <h2 className="character-editor-title text-sky-600">
-                            {t("character.batchEditTitle")}
-                        </h2>
-                        <p className="text-sm text-gray-500">
                             {t("character.batchEditSubtitle", {
                                 count: selectedCharacters.length,
                             })}
-                        </p>
+                        </h2>
                     </div>
 
                     <form
@@ -152,7 +149,61 @@ const BatchCharacterEditorModal = ({ selectedCharacters, onClose, onSave }) => {
                                 />
                             </div>
                         </fieldset>
-
+                        <fieldset className="border border-gray-300 p-3 rounded-md">
+                            <legend className="text-gray-500 px-1 text-xs">
+                                {t("character.potentialStats")}
+                            </legend>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
+                                <BatchUpdateField
+                                    label={t("character.maxHP")}
+                                    path="character.potentialStats.1"
+                                    min="0"
+                                    max="50"
+                                    checked={
+                                        !!fieldsToUpdate[
+                                            "character.potentialStats.1"
+                                        ]
+                                    }
+                                    value={
+                                        formData["character.potentialStats.1"]
+                                    }
+                                    onCheckboxChange={handleCheckboxChange}
+                                    onValueChange={handleValueChange}
+                                />
+                                <BatchUpdateField
+                                    label={t("character.attack")}
+                                    path="character.potentialStats.2"
+                                    min="0"
+                                    max="50"
+                                    checked={
+                                        !!fieldsToUpdate[
+                                            "character.potentialStats.2"
+                                        ]
+                                    }
+                                    value={
+                                        formData["character.potentialStats.2"]
+                                    }
+                                    onCheckboxChange={handleCheckboxChange}
+                                    onValueChange={handleValueChange}
+                                />
+                                <BatchUpdateField
+                                    label={t("character.heal")}
+                                    path="character.potentialStats.3"
+                                    min="0"
+                                    max="50"
+                                    checked={
+                                        !!fieldsToUpdate[
+                                            "character.potentialStats.3"
+                                        ]
+                                    }
+                                    value={
+                                        formData["character.potentialStats.3"]
+                                    }
+                                    onCheckboxChange={handleCheckboxChange}
+                                    onValueChange={handleValueChange}
+                                />
+                            </div>
+                        </fieldset>
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.skills")}
@@ -257,7 +308,7 @@ const BatchCharacterEditorModal = ({ selectedCharacters, onClose, onSave }) => {
                             <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.equipmentTiers")}
                             </legend>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2 equipment-slots-grid">
                                 {[0, 1, 2].map((i) => (
                                     <BatchUpdateField
                                         key={i}

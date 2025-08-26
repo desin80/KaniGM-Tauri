@@ -436,7 +436,10 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
                                                         : ""
                                                 }
                                             >
-                                                Eq. {i + 1}:
+                                                {t("character.equipmentTier", {
+                                                    num: i + 1,
+                                                })}
+                                                :
                                             </span>
                                             <input
                                                 type="number"
