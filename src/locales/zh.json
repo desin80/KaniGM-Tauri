@@ -53,11 +53,19 @@
         "weapon": "武器",
         "equipment": "装备",
         "equipmentTiers": "装备等级",
+        "equipmentTier": "装备{{num}} 等级",
         "gear": "爱用品",
         "gearTier": "爱用品等级",
         "tier": "等级",
         "characterStats": "角色属性",
-        "idLabel": "ID"
+        "idLabel": "ID",
+        "batchEditTitle": "批量编辑角色",
+        "batchEditSubtitle": "正在编辑 {{count}} 个角色",
+        "selectedCount": "已选中 {{count}} 个",
+        "saving": "正在保存角色 {{name}}...",
+        "saveSuccess": "角色 {{name}} 保存成功！",
+        "batchSaving": "正在保存 {{count}} 个角色...",
+        "batchSaveSuccess": "成功保存 {{count}} 个角色！"
     },
     "arena": {
         "title": "竞技场管理",
@@ -134,7 +142,11 @@
         "clickToEdit": "点击编辑",
         "deleteRecord": "删除此记录",
         "searchByIdOrName": "按ID或名称搜索...",
-        "errorSaving": "保存时出错: {{error}}"
+        "errorSaving": "保存时出错: {{error}}",
+        "selectAll": "全选",
+        "deselectAll": "全不选",
+        "edit": "编辑",
+        "noChange": "无变更"
     },
     "settings": {
         "trackpvp": {

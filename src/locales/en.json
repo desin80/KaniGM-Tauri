@@ -53,12 +53,20 @@
         "weapon": "Weapon",
         "equipment": "Equipment Tiers",
         "equipmentTiers": "Equipment Tiers",
+        "equipmentTier": "Eq. {{num}} Tier",
         "gear": "Gear",
         "gearTier": "Gear Tier",
         "tier": "Tier",
         "characterStats": "Character Stats",
         "imageNotFound": "Image not found",
-        "idLabel": "ID"
+        "idLabel": "ID",
+        "batchEditTitle": "Batch Edit Characters",
+        "batchEditSubtitle": "Editing {{count}} characters",
+        "selectedCount": "{{count}} selected",
+        "saving": "Saving character {{name}}...",
+        "saveSuccess": "Character {{name}} saved successfully!",
+        "batchSaving": "Saving {{count}} characters...",
+        "batchSaveSuccess": "{{count}} characters saved successfully!"
     },
     "arena": {
         "title": "Arena Management",
@@ -135,7 +143,11 @@
         "clickToEdit": "Click to edit",
         "deleteRecord": "Delete this record",
         "searchByIdOrName": "Search by ID or Name...",
-        "errorSaving": "Error saving: {{error}}"
+        "errorSaving": "Error saving: {{error}}",
+        "selectAll": "Select All",
+        "deselectAll": "Deselect All",
+        "edit": "Edit",
+        "noChange": "No Change"
     },
     "settings": {
         "trackpvp": {

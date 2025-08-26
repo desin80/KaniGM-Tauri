@@ -189,6 +189,83 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
 
                         <fieldset className="border border-gray-300 p-3 rounded-md">
                             <legend className="text-gray-500 px-1 text-xs">
+                                {t("character.potentialStats")}
+                            </legend>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
+                                <label className="block">
+                                    <span className="stat-label inline-block">
+                                        {t("character.maxHP")}:
+                                    </span>
+                                    <input
+                                        type="number"
+                                        value={
+                                            getNestedValue(
+                                                formData,
+                                                "character.potentialStats.1"
+                                            ) ?? ""
+                                        }
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                "character.potentialStats.1",
+                                                e
+                                            )
+                                        }
+                                        min="0"
+                                        max="50"
+                                        className="number-input form-input"
+                                    />
+                                </label>
+                                <label className="block">
+                                    <span className="stat-label inline-block">
+                                        {t("character.attack")}:
+                                    </span>
+                                    <input
+                                        type="number"
+                                        value={
+                                            getNestedValue(
+                                                formData,
+                                                "character.potentialStats.2"
+                                            ) ?? ""
+                                        }
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                "character.potentialStats.2",
+                                                e
+                                            )
+                                        }
+                                        min="0"
+                                        max="50"
+                                        className="number-input form-input"
+                                    />
+                                </label>
+                                <label className="block">
+                                    <span className="stat-label inline-block">
+                                        {t("character.heal")}:
+                                    </span>
+                                    <input
+                                        type="number"
+                                        value={
+                                            getNestedValue(
+                                                formData,
+                                                "character.potentialStats.3"
+                                            ) ?? ""
+                                        }
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                "character.potentialStats.3",
+                                                e
+                                            )
+                                        }
+                                        min="0"
+                                        max="50"
+                                        className="number-input form-input"
+                                    />
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset className="border border-gray-300 p-3 rounded-md">
+                            <legend className="text-gray-500 px-1 text-xs">
                                 {t("character.skills")}
                             </legend>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
@@ -281,83 +358,6 @@ const CharacterEditorModal = ({ characterData, onClose, onSave }) => {
                                         }
                                         min="1"
                                         max="10"
-                                        className="number-input form-input"
-                                    />
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset className="border border-gray-300 p-3 rounded-md">
-                            <legend className="text-gray-500 px-1 text-xs">
-                                {t("character.potentialStats")}
-                            </legend>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 gap-y-2">
-                                <label className="block">
-                                    <span className="stat-label inline-block">
-                                        {t("character.maxHP")}:
-                                    </span>
-                                    <input
-                                        type="number"
-                                        value={
-                                            getNestedValue(
-                                                formData,
-                                                "character.potentialStats.1"
-                                            ) ?? ""
-                                        }
-                                        onChange={(e) =>
-                                            handleInputChange(
-                                                "character.potentialStats.1",
-                                                e
-                                            )
-                                        }
-                                        min="0"
-                                        max="50"
-                                        className="number-input form-input"
-                                    />
-                                </label>
-                                <label className="block">
-                                    <span className="stat-label inline-block">
-                                        {t("character.attack")}:
-                                    </span>
-                                    <input
-                                        type="number"
-                                        value={
-                                            getNestedValue(
-                                                formData,
-                                                "character.potentialStats.2"
-                                            ) ?? ""
-                                        }
-                                        onChange={(e) =>
-                                            handleInputChange(
-                                                "character.potentialStats.2",
-                                                e
-                                            )
-                                        }
-                                        min="0"
-                                        max="50"
-                                        className="number-input form-input"
-                                    />
-                                </label>
-                                <label className="block">
-                                    <span className="stat-label inline-block">
-                                        {t("character.heal")}:
-                                    </span>
-                                    <input
-                                        type="number"
-                                        value={
-                                            getNestedValue(
-                                                formData,
-                                                "character.potentialStats.3"
-                                            ) ?? ""
-                                        }
-                                        onChange={(e) =>
-                                            handleInputChange(
-                                                "character.potentialStats.3",
-                                                e
-                                            )
-                                        }
-                                        min="0"
-                                        max="50"
                                         className="number-input form-input"
                                     />
                                 </label>

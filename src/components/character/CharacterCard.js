@@ -1,6 +1,6 @@
 import React from "react";
 
-const CharacterCard = ({ characterWrapper, onCardClick }) => {
+const CharacterCard = ({ characterWrapper, onCardClick, isSelected }) => {
     const { character } = characterWrapper;
     const { uniqueId, Name } = character;
 
@@ -11,14 +11,16 @@ const CharacterCard = ({ characterWrapper, onCardClick }) => {
 
     return (
         <div
-            className="character-card cursor-pointer hover:-translate-y-1"
-            onClick={() => onCardClick(uniqueId)}
+            className={`character-card cursor-pointer hover:-translate-y-1 ${
+                isSelected ? "selected-highlight" : ""
+            }`}
+            onClick={(e) => onCardClick(uniqueId, e)}
         >
             <div className="relative p-4 flex flex-col items-center text-center">
                 <img
                     src={`https://schaledb.com/images/student/collection/${uniqueId}.webp`}
                     alt={Name || `Character ${uniqueId}`}
-                    className="character-image w-24 h-24 rounded-md object-cover mb-3 border-2 border-gray-200"
+                    className={`character-image w-24 h-24 rounded-md object-cover mb-3 border-2`}
                     onError={handleImageError}
                 />
                 <div>

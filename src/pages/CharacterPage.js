@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import api from "../services/api";
 import "./CharacterPage.css";
+import { produce } from "immer";
+import { set } from "lodash";
 
 import CharacterCard from "../components/character/CharacterCard";
 import CharacterEditorModal from "../components/character/CharacterEditorModal";
+import BatchCharacterEditorModal from "../components/character/BatchCharacterEditorModal";
 
 const StatusPopup = ({ message, isError }) => {
     if (!message) return null;
@@ -29,6 +32,8 @@ const CharacterPage = () => {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [editingCharacter, setEditingCharacter] = useState(null);
+    const [selectedIds, setSelectedIds] = useState(new Set());
+    const [isBatchEditorOpen, setIsBatchEditorOpen] = useState(false);
     const [statusMessage, setStatusMessage] = useState({
         text: "",
         isError: false,
@@ -100,18 +105,59 @@ const CharacterPage = () => {
             return nameA.localeCompare(nameB);
         });
 
-    const handleOpenModal = (uniqueId) => {
-        const characterToEdit = allCharacters.find(
-            (cw) => cw.character.uniqueId === uniqueId
+    const handleCardClick = (uniqueId, event) => {
+        if (event.ctrlKey) {
+            const newSelectedIds = new Set(selectedIds);
+            if (newSelectedIds.has(uniqueId)) {
+                newSelectedIds.delete(uniqueId);
+            } else {
+                newSelectedIds.add(uniqueId);
+            }
+            setSelectedIds(newSelectedIds);
+        } else {
+            const characterToEdit = allCharacters.find(
+                (cw) => cw.character.uniqueId === uniqueId
+            );
+            if (characterToEdit) {
+                setEditingCharacter(characterToEdit);
+            }
+        }
+    };
+
+    const handleSelectAll = () => {
+        const allFilteredIds = filteredCharacters.map(
+            (cw) => cw.character.uniqueId
         );
-        if (characterToEdit) {
-            setEditingCharacter(characterToEdit);
+        setSelectedIds(new Set(allFilteredIds));
+    };
+
+    const handleDeselect = (uniqueId) => {
+        const newSelectedIds = new Set(selectedIds);
+        newSelectedIds.delete(uniqueId);
+        setSelectedIds(newSelectedIds);
+    };
+
+    const handleClearSelection = () => {
+        setSelectedIds(new Set());
+    };
+
+    const handleToggleSelectAll = () => {
+        const areAllFilteredSelected =
+            filteredCharacters.length > 0 &&
+            filteredCharacters.every((cw) =>
+                selectedIds.has(cw.character.uniqueId)
+            );
+
+        if (areAllFilteredSelected) {
+            handleClearSelection();
+        } else {
+            handleSelectAll();
         }
     };
 
     const handleSaveChanges = async (updatedCharacterData) => {
         const charName = updatedCharacterData.character.Name;
-        showStatus(`Saving character ${charName}...`);
+        showStatus(t("character.saving", { name: charName }));
 
         try {
             await api.modifyCharacter(updatedCharacterData);
@@ -127,7 +173,7 @@ const CharacterPage = () => {
             });
             setAllCharacters(updatedList);
 
-            showStatus(`Character ${charName} saved successfully!`, false);
+            showStatus(t("character.saveSuccess", { name: charName }), false);
         } catch (error) {
             console.error("Error saving character:", error);
             showStatus(
@@ -139,6 +185,61 @@ const CharacterPage = () => {
         }
     };
 
+    const handleSaveBatchChanges = async (changes) => {
+        const selectedCount = selectedIds.size;
+        showStatus(t("character.batchSaving", { count: selectedCount }));
+
+        const charactersToUpdate = allCharacters.filter((cw) =>
+            selectedIds.has(cw.character.uniqueId)
+        );
+
+        const updatePromises = charactersToUpdate.map((charWrapper) => {
+            const updatedCharWrapper = produce(charWrapper, (draft) => {
+                Object.keys(changes).forEach((path) => {
+                    const value = changes[path];
+                    set(draft, path, value);
+                });
+            });
+            return api.modifyCharacter(updatedCharWrapper);
+        });
+
+        try {
+            await Promise.all(updatePromises);
+
+            const newAllCharacters = produce(allCharacters, (draft) => {
+                draft.forEach((charWrapper, index) => {
+                    if (selectedIds.has(charWrapper.character.uniqueId)) {
+                        Object.keys(changes).forEach((path) => {
+                            const value = changes[path];
+                            set(draft[index], path, value);
+                        });
+                    }
+                });
+            });
+            setAllCharacters(newAllCharacters);
+            showStatus(
+                t("character.batchSaveSuccess", { count: selectedCount }),
+                false
+            );
+        } catch (error) {
+            console.error("Error saving multiple characters:", error);
+            showStatus(t("common.errorSaving", { error: error.message }), true);
+        } finally {
+            setIsBatchEditorOpen(false);
+            handleClearSelection();
+        }
+    };
+
+    const selectedCharactersForFooter = allCharacters.filter((cw) =>
+        selectedIds.has(cw.character.uniqueId)
+    );
+
+    const areAllFilteredSelected =
+        filteredCharacters.length > 0 &&
+        filteredCharacters.every((cw) =>
+            selectedIds.has(cw.character.uniqueId)
+        );
+
     return (
         <>
             <StatusPopup
@@ -146,7 +247,7 @@ const CharacterPage = () => {
                 isError={statusMessage.isError}
             />
             <header className="mb-8">
-                <div className="flex justify-center items-center space-x-2">
+                <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-2">
                     <input
                         type="search"
                         id="searchInput"
@@ -156,6 +257,15 @@ const CharacterPage = () => {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         disabled={isLoading}
                     />
+                    <button
+                        className="px-4 py-2 border border-gray-300 rounded-lg bg-white/80 text-gray-700 hover:bg-gray-100/80 shadow-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-20 text-center"
+                        onClick={handleToggleSelectAll}
+                        disabled={isLoading || filteredCharacters.length === 0}
+                    >
+                        {areAllFilteredSelected
+                            ? t("common.deselectAll")
+                            : t("common.selectAll")}
+                    </button>
                 </div>
             </header>
 
@@ -184,7 +294,10 @@ const CharacterPage = () => {
                         <CharacterCard
                             key={charWrapper.character.uniqueId}
                             characterWrapper={charWrapper}
-                            onCardClick={handleOpenModal}
+                            onCardClick={handleCardClick}
+                            isSelected={selectedIds.has(
+                                charWrapper.character.uniqueId
+                            )}
                         />
                     ))}
             </main>
@@ -195,6 +308,53 @@ const CharacterPage = () => {
                     onClose={() => setEditingCharacter(null)}
                     onSave={handleSaveChanges}
                 />
+            )}
+
+            {isBatchEditorOpen && (
+                <BatchCharacterEditorModal
+                    selectedCharacters={allCharacters.filter((cw) =>
+                        selectedIds.has(cw.character.uniqueId)
+                    )}
+                    onClose={() => setIsBatchEditorOpen(false)}
+                    onSave={handleSaveBatchChanges}
+                />
+            )}
+
+            {selectedIds.size > 0 && (
+                <div className="batch-edit-footer">
+                    <div className="selected-tags-container">
+                        {selectedCharactersForFooter.map((cw) => (
+                            <div
+                                key={cw.character.uniqueId}
+                                className="selected-character-tag"
+                            >
+                                <span>{cw.character.Name}</span>
+                                <button
+                                    onClick={() =>
+                                        handleDeselect(cw.character.uniqueId)
+                                    }
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="flex items-center space-x-3 flex-shrink-0">
+                        <button
+                            className="skewed-button skewed-button--primary"
+                            onClick={() => setIsBatchEditorOpen(true)}
+                        >
+                            <span>{t("common.edit")}</span>
+                        </button>
+                        <button
+                            className="skewed-button skewed-button--cancel"
+                            onClick={handleClearSelection}
+                        >
+                            <span>{t("common.cancel")}</span>
+                        </button>
+                    </div>
+                </div>
             )}
         </>
     );

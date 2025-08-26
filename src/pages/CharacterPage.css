@@ -3,6 +3,12 @@
     color: #6b7280; 
 }
 
+.character-card.selected-highlight {
+    border-color: #38bdf8;
+    box-shadow: 0 0 16px 4px rgba(56, 189, 248, 0.5);
+    transform: translateY(-6px) scale(1.05);
+}
+
 .weapon-internal-na-message {
     color: #6b7280; 
     font-style: italic;
@@ -146,4 +152,56 @@ legend {
 
 #searchInput::placeholder {
     color: #9ca3af;
+}
+
+.batch-edit-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 40;
+    border-top: 1px solid rgba(209, 213, 219, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selected-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-height: 100px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+.selected-character-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #e0f2fe;
+    color: #0c4a6e; 
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.selected-character-tag button {
+    margin-left: 0.5rem;
+    background: none;
+    border: none;
+    color: #38bdf8; 
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+.selected-character-tag button:hover {
+    color: #0c4a6e;
 }
